@@ -27,6 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <h1>Minstagram Beta</h1>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -34,6 +35,24 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
+        <Route path='/pages' exact={true} >
+          {/* <PagesList/> */}
+          <p>Pages Index!</p>
+        </Route>
+        <Route path='/posts' exact={true} >
+          {/* <PostsList/> */}
+          <p>Posts Index!</p>
+        </Route>
+        <Route path='/pages/:pageId' exact={true} >
+          {/* <Page /> */}
+          <p>Page View!</p>
+        </Route>
+        <Route path='/posts/:postId' exact={true} >
+          {/* <Post /> */}
+          <p>Post View!</p>
+        </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
@@ -41,7 +60,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h3>Welcome back!</h3>
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
