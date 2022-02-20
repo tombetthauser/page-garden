@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import PagesList from './components/PagesList';
+import Page from './components/Page';
 
 import { authenticate } from './store/session';
 
@@ -41,15 +42,13 @@ function App() {
 
         <Route path='/pages' exact={true} >
           <PagesList/>
-          {/* <p>Pages Index!</p> */}
+        </Route>
+        <Route path='/pages/:pageId' exact={true} >
+          <Page />
         </Route>
         <Route path='/posts' exact={true} >
           {/* <PostsList/> */}
           <p>Posts Index!</p>
-        </Route>
-        <Route path='/pages/:pageId' exact={true} >
-          {/* <Page /> */}
-          <p>Page View!</p>
         </Route>
         <Route path='/posts/:postId' exact={true} >
           {/* <Post /> */}
