@@ -1,0 +1,34 @@
+pipenv shell ........ flask run
+
+pipenv run flask run
+
+postgres=# create user "minstagram_app" with createdb;
+postgres=# create database "minstagram_db" with owner "minstagram_app";
+postgres=# drop database "minstagram_db";
+postgres=# drop user "minstagram_app";
+
+DATABASE_URL=postgresql://minstagram_app:password@localhost/minstagram_db
+
+remember to run migrations and seeders if you havent already
+
+
+
+$ pipenv run flask db downgrade
+$ pipenv run flask db upgrade
+
+$ pipenv run flask seed all
+$ pipenv run flask seed undo
+
+$ npm install
+$ npm start
+
+
+
+
+pl[$ touch app/models/foo.py
+import Foo model into app/models/__init__.py
+$ pipenv run flask db migrate -m "Meaningless message"
+$ pipenv run flask db upgrade
+
+
+https://github.com/appacademy-starters/python-project-starter
