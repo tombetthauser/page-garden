@@ -10,7 +10,7 @@ function Page() {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/pages/$: {pageId}`);
+      const response = await fetch(`/api/pages/${pageId}`);
       const page = await response.json();
       setPage(page);
     })();

@@ -10,6 +10,8 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PagesList from './components/PagesList';
 import Page from './components/Page';
+import PostsList from './components/PostsList';
+import Post from './components/Post';
 
 import { authenticate } from './store/session';
 
@@ -47,12 +49,10 @@ function App() {
           <Page />
         </Route>
         <Route path='/posts' exact={true} >
-          {/* <PostsList/> */}
-          <p>Posts Index!</p>
+          <PostsList/>
         </Route>
         <Route path='/posts/:postId' exact={true} >
-          {/* <Post /> */}
-          <p>Post View!</p>
+          <Post /> 
         </Route>
 
         <ProtectedRoute path='/users' exact={true} >
