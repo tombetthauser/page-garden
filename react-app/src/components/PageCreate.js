@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 // import { createPage } from '../../store/pages';
 
 const PageCreate = () => {
@@ -17,6 +17,8 @@ const PageCreate = () => {
   const [link3Text, setLink3Text] = useState('');
   const [link3Url, setLink3Url] = useState('');
   const [contact, setContact] = useState('');
+
+  const history = useHistory();
   // ...
 
   // const name = useSelector(state => state.session.name);
@@ -45,8 +47,7 @@ const PageCreate = () => {
     });
 
     if (response.ok) {
-      // const data = await response.json();
-      // dispatch(setUser(data))
+      history.push("/pages")
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
