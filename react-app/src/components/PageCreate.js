@@ -29,18 +29,18 @@ const PageCreate = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId: "1",
-        url: "foo",
-        title: "Foo Page",
-        text: "lorem ipsum",
-        location: "bar",
-        link1Text: "baz",
-        link1Url: "fan",
-        link2Text: "faz",
-        link2Url: "boo",
-        link3Text: "bun",
-        link3Url: "sun",
-        contact: "run"
+        userId: userId,
+        url: url,
+        title: title,
+        text: text,
+        location: location,
+        link1Text: link1Text,
+        link1Url: link1Url,
+        link2Text: link2Text,
+        link2Url: link2Url,
+        link3Text: link3Text,
+        link3Url: link3Url,
+        contact: contact
       }),
     });
 

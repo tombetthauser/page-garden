@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, session, request
 from app.models import Page, db
 from app.forms import NewPageForm
 
@@ -45,24 +45,38 @@ def page(id):
 
 @page_routes.route('/test', methods=['POST'])
 def create_page_2():
-  print("TESTING HI! <------------------------------")
-  page = Page(
-    userId = "1",
-    url = "url!",
-    title = "title!",
-    text = "text!",
-    location = "location!",
-    link1Text = "link1Text!",
-    link1Url = "link1Url!",
-    link2Text = "link2Text!",
-    link2Url = "link2Url!",
-    link3Text = "link3Text!",
-    link3Url = "link3Url!",
-    contact = "contact!",
-  )
-  db.session.add(page)
-  db.session.commit()
+  print("TESTING FORM! <------------------------------")
+  form = NewPageForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    print("FORM VALID! <------------------------------")
+    print(form.userId.data)
+    print(form.title.data)
+  else:
+    print("FORM NOT VALID! <------------------------------")
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
   return {'foo': 'bar'}
+
+  # Page creation and db add / commit working
+  # page = Page(
+  #   userId = "1",
+  #   url = "url!",
+  #   title = "title!",
+  #   text = "text!",
+  #   location = "location!",
+  #   link1Text = "link1Text!",
+  #   link1Url = "link1Url!",
+  #   link2Text = "link2Text!",
+  #   link2Url = "link2Url!",
+  #   link3Text = "link3Text!",
+  #   link3Url = "link3Url!",
+  #   contact = "contact!",
+  # )
+  # db.session.add(page)
+  # db.session.commit()
+  # return {'foo': 'bar'}
+
+  # testing...
 
     # return page.to_dict()
 
