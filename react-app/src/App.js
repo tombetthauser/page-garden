@@ -10,6 +10,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import PagesList from './components/PagesList';
 import Page from './components/Page';
+import PageCreate from './components/PageCreate';
 import PostsList from './components/PostsList';
 import Post from './components/Post';
 
@@ -45,11 +46,21 @@ function App() {
         <Route path='/pages' exact={true} >
           <PagesList/>
         </Route>
+        <Route path='/pages/new' exact={true}>
+          {/* PageCreate! */}
+          <PageCreate />
+        </Route>
         <Route path='/pages/:pageId' exact={true} >
           <Page />
         </Route>
+
+
         <Route path='/posts' exact={true} >
           <PostsList/>
+        </Route>
+        <Route path='/posts/new' exact={true}>
+          PostCreate!
+          {/* <PostCreate /> */}
         </Route>
         <Route path='/posts/:postId' exact={true} >
           <Post /> 

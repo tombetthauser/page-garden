@@ -23,7 +23,7 @@ function Page() {
   return (
     <ul>
         <li><strong>id</strong>: {page.id}</li>
-        <li><strong>userId</strong>: {page.id}</li>
+        <li><strong>userId</strong>: {page.userId}</li>
         <li><strong>url</strong>: {page.url}</li>
         <li><strong>title</strong>: {page.title}</li>
         <li><strong>text</strong>: {page.text}</li>

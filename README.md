@@ -1,8 +1,26 @@
-# Flask React Project
+# Minstagram Beta
 
-This is the starter for the Flask React project.
+## Development Notes
 
-## Getting started
+1. To install dependencies:
+
+      ```bash
+      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+
+      cd react-app
+      npm install
+      ```
+
+2. To start up the app locally:
+
+      ```bash
+      pipenv run flask run
+
+      cd react-app
+      npm start
+      ```
+
+## Starter Notes
 
 1. Clone this repository (only this branch)
 
