@@ -12,6 +12,14 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
+@user_routes.route('/test', methods=['GET'])
+def users_test():
+  # pages = Page.query.all()
+  print("USERS TEST ROUTE HIT <--------------------------------")
+  # return {'pages': [page.to_dict() for page in pages]}
+  return {"foo": "bar"}
+
+
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):

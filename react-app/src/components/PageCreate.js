@@ -23,24 +23,24 @@ const PageCreate = () => {
   const dispatch = useDispatch();
 
   const createPage = ( userId, url, title, text, location, link1Text, link1Url, link2Text, link2Url, link3Text, link3Url, contact) => async (dispatch) => {
-    const response = await fetch('/api/pages', {
+    const response = await fetch('/api/pages/test', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId,
-        url,
-        title,
-        text,
-        location,
-        link1Text,
-        link1Url,
-        link2Text,
-        link2Url,
-        link3Text,
-        link3Url,
-        contact
+        userId: "1",
+        url: "foo",
+        title: "Foo Page",
+        text: "lorem ipsum",
+        location: "bar",
+        link1Text: "baz",
+        link1Url: "fan",
+        link2Text: "faz",
+        link2Url: "boo",
+        link3Text: "bun",
+        link3Url: "sun",
+        contact: "run"
       }),
     });
 

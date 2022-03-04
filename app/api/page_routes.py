@@ -1,8 +1,8 @@
 from flask import Blueprint, jsonify
-from app.models import Page
+from app.models import Page, db
 from app.forms import NewPageForm
 
-page_routes = Blueprint('page', __name__)
+page_routes = Blueprint('pages', __name__)
 
 
 def validation_errors_to_error_messages(validation_errors):
@@ -28,42 +28,42 @@ def page(id):
   return page.to_dict()
 
 
-@page_routes.route('/', methods=['POST'])
-# @page_routes.route('/test', methods=['GET'])
-def create_note():
-  print("TEST ROUTE HIT <--------------------------------")
-    # form = NoteForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
-    # if form.validate_on_submit():
-    #     note = Note(user_id=form['user_id'].data,
-    #                 group_id=form['group_id'].data,
-    #                 note_title=form['note_title'].data
-    #                 )
-    #     db.session.add(note)
-    #     db.session.commit()
-    #     return note.to_dict()
-    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-  return {"foo": "bar"}
+# @page_routes.route('/', methods=['POST'])
+# def create_page():
+#   form = NoteForm()
+#   form['csrf_token'].data = request.cookies['csrf_token']
+#   if form.validate_on_submit():
+#       note = Note(user_id=form['user_id'].data,
+#                   group_id=form['group_id'].data,
+#                   note_title=form['note_title'].data
+#                   )
+#       db.session.add(note)
+#       db.session.commit()
+#       return note.to_dict()
+#   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-@page_routes.route('/', methods=['POST'])
-def create_page():
-    # page = Page(
-    #     userId='1',
-    #     url='test-test',
-    #     title='Test Page',
-    #     text='Blah blah this is my text check it out blah blah.',
-    #     location='San Franpsycho, CA',
-    #     link1Text='a link to google',
-    #     link1Url='http://google.com',
-    #     link2Text='',
-    #     link2Url='',
-    #     link3Text='',
-    #     link3Url='',
-    #     contact='tom@mail.com'
-    # )
-    # db.session.add(page)
-    # db.session.commit()
+@page_routes.route('/test', methods=['POST'])
+def create_page_2():
+  print("TESTING HI! <------------------------------")
+  page = Page(
+    userId = "1",
+    url = "url!",
+    title = "title!",
+    text = "text!",
+    location = "location!",
+    link1Text = "link1Text!",
+    link1Url = "link1Url!",
+    link2Text = "link2Text!",
+    link2Url = "link2Url!",
+    link3Text = "link3Text!",
+    link3Url = "link3Url!",
+    contact = "contact!",
+  )
+  db.session.add(page)
+  db.session.commit()
+  return {'foo': 'bar'}
+
     # return page.to_dict()
 
     # form = NewPageForm()
@@ -87,4 +87,3 @@ def create_page():
     #     db.session.commit()
     #     return page.to_dict()
     # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-    print("TESTING! <------------------------------")

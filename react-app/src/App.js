@@ -33,8 +33,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <h1>Minstagram Beta</h1>
+      <NavBar />
+      <hr/>
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
