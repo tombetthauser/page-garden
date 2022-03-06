@@ -18,7 +18,7 @@ const PostCreate = () => {
   const dispatch = useDispatch();
 
   const createPost = ( pageId, imageUrl, title, text, location, linkText, linkUrl, date ) => async (dispatch) => {
-    const response = await fetch('/api/posts/test', {
+    const response = await fetch('/api/posts/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

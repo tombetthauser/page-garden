@@ -30,7 +30,7 @@ def post(id):
 
 
 # ~~~~~~~~~~~ Create ~~~~~~~~~~~ 
-@post_routes.route('/test', methods=['POST'])
+@post_routes.route('/new', methods=['POST'])
 def create_post():
   form = NewPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']

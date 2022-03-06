@@ -21,7 +21,7 @@ const PageCreate = () => {
   const dispatch = useDispatch();
 
   const createPage = ( userId, url, title, text, location, link1Text, link1Url, link2Text, link2Url, link3Text, link3Url, contact) => async (dispatch) => {
-    const response = await fetch('/api/pages/test', {
+    const response = await fetch('/api/pages/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

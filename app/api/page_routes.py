@@ -30,8 +30,8 @@ def page(id):
 
 
 # ~~~~~~~~~~~ Create ~~~~~~~~~~~ 
-@page_routes.route('/test', methods=['POST'])
-def create_page_2():
+@page_routes.route('/new', methods=['POST'])
+def create_page():
   form = NewPageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
