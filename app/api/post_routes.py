@@ -58,7 +58,6 @@ def create_post():
 def edit_message(post_id):
   post = Post.query.filter_by(id=post_id).one()
   post_data = request.json
-  # post.example_field = post_data['example_field']
   post.pageId = post_data['pageId']
   post.imageUrl = post_data['imageUrl']
   post.title = post_data['title']

@@ -3,6 +3,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Page() {
   const [page, setPage] = useState({});
+  const [posts, setPosts] = useState([]);
   const { pageId } = useParams();
   const history = useHistory();
 
@@ -12,6 +13,10 @@ function Page() {
       const response = await fetch(`/api/pages/${pageId}`);
       const page = await response.json();
       setPage(page);
+
+      const response2 = await fetch(`/api/pages/${pageId}/posts`);
+      const response2Data = await response2.json();
+      setPosts(response2Data.posts)
     })();
   }, [pageId]);
 
@@ -24,6 +29,18 @@ function Page() {
     });
     if (res.ok) history.push(`/pages`);
   };
+
+  const postComponents = posts.map((post) => {
+    return (
+      <li key={post.id}>
+        <NavLink to={`/posts/${post.id}`}>
+          {post.imageUrl ? <img src={post.imageUrl} /> : null}
+          {post.title ? <h3>{post.title}</h3> : null}
+          {post.text ? <p>{post.text}</p> : null}
+        </NavLink>
+      </li>
+    );
+  })
 
   if (!page) return null;
 
@@ -46,6 +63,11 @@ function Page() {
       </ul>
       <button onClick={handleDelete}>delete page</button>
       <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink>
+      <hr/>
+      <h2>Page Posts:</h2>
+      <ul>
+        {postComponents}
+      </ul>
     </>
   )
 }
