@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, jsonify, request
 from app.models import Page, db
 from flask_login import login_required
 from app.forms import NewPageForm
@@ -54,6 +54,30 @@ def create_page():
     return page.to_dict()
   else:
     return {'errors': error_messages(form.errors)}, 401
+
+
+# ~~~~~~~~~~~ Edit ~~~~~~~~~~~ 
+@page_routes.route('/<page_id>', methods=['PUT'])
+@login_required
+def edit_message(page_id):
+  page = Page.query.filter_by(id=page_id).one()
+  page_data = request.json
+  # page.example_field = page_data['example_field']
+  page.userId = page_data['userId']
+  page.url = page_data['url']
+  page.title = page_data['title']
+  page.text = page_data['text']
+  page.location = page_data['location']
+  page.link1Text = page_data['link1Text']
+  page.link1Url = page_data['link1Url']
+  page.link2Text = page_data['link2Text']
+  page.link2Url = page_data['link2Url']
+  page.link3Text = page_data['link3Text']
+  page.link3Url = page_data['link3Url']
+  page.contact = page_data['contact']
+
+  db.session.commit()
+  return jsonify(page.to_dict())
 
 
 # ~~~~~~~~~~~ Delete ~~~~~~~~~~~ 

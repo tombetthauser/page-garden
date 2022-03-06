@@ -14,6 +14,7 @@ import PageCreate from './components/PageCreate';
 import PostsList from './components/PostsList';
 import Post from './components/Post';
 import PostCreate from './components/PostCreate';
+import PageEdit from './components/PageEdit';
 
 import { authenticate } from './store/session';
 
@@ -55,13 +56,15 @@ function App() {
         <Route path='/pages/:pageId' exact={true} >
           <Page />
         </Route>
-
+        <Route path='/pages/:pageId/edit' exact={true} >
+          {/* Edit Page! */}
+          <PageEdit /> 
+        </Route>
 
         <Route path='/posts' exact={true} >
           <PostsList/>
         </Route>
         <Route path='/posts/new' exact={true}>
-          {/* PostCreate! */}
           <PostCreate />
         </Route>
         <Route path='/posts/:postId' exact={true} >
