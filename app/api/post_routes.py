@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from app.models import Post, db
 from flask_login import login_required
 from app.forms import NewPostForm
@@ -50,6 +50,26 @@ def create_post():
     return post.to_dict()
   else:
     return {'errors': error_messages(form.errors)}, 401
+
+
+# ~~~~~~~~~~~ Edit ~~~~~~~~~~~ 
+@post_routes.route('/<post_id>', methods=['PUT'])
+@login_required
+def edit_message(post_id):
+  post = Post.query.filter_by(id=post_id).one()
+  post_data = request.json
+  # post.example_field = post_data['example_field']
+  post.pageId = post_data['pageId']
+  post.imageUrl = post_data['imageUrl']
+  post.title = post_data['title']
+  post.text = post_data['text']
+  post.location = post_data['location']
+  post.linkText = post_data['linkText']
+  post.linkUrl = post_data['linkUrl']
+  post.date = post_data['date']
+
+  db.session.commit()
+  return jsonify(post.to_dict())
 
 
 # ~~~~~~~~~~~ Delete ~~~~~~~~~~~ 

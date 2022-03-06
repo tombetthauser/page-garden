@@ -15,6 +15,7 @@ import PostsList from './components/PostsList';
 import Post from './components/Post';
 import PostCreate from './components/PostCreate';
 import PageEdit from './components/PageEdit';
+import PostEdit from './components/PostEdit';
 
 import { authenticate } from './store/session';
 
@@ -39,47 +40,19 @@ function App() {
       <NavBar />
       <hr/>
       <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-
-        <Route path='/pages' exact={true} >
-          <PagesList/>
-        </Route>
-        <Route path='/pages/new' exact={true}>
-          {/* PageCreate! */}
-          <PageCreate />
-        </Route>
-        <Route path='/pages/:pageId' exact={true} >
-          <Page />
-        </Route>
-        <Route path='/pages/:pageId/edit' exact={true} >
-          {/* Edit Page! */}
-          <PageEdit /> 
-        </Route>
-
-        <Route path='/posts' exact={true} >
-          <PostsList/>
-        </Route>
-        <Route path='/posts/new' exact={true}>
-          <PostCreate />
-        </Route>
-        <Route path='/posts/:postId' exact={true} >
-          <Post /> 
-        </Route>
-
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h3>Welcome back!</h3>
-        </ProtectedRoute>
+        <Route path='/login' exact={true}><LoginForm/></Route>
+        <Route path='/sign-up' exact={true}><SignUpForm/></Route>
+        <Route path='/pages' exact={true}><PagesList/></Route>
+        <Route path='/pages/new' exact={true}><PageCreate/></Route>
+        <Route path='/pages/:pageId' exact={true}><Page/></Route>
+        <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
+        <Route path='/posts' exact={true}><PostsList/></Route>
+        <Route path='/posts/new' exact={true}><PostCreate/></Route>
+        <Route path='/posts/:postId' exact={true}><Post/></Route>
+        <Route path='/posts/:postId/edit' exact={true}><PostEdit/></Route>
+        <ProtectedRoute path='/users' exact={true} ><UsersList/></ProtectedRoute>
+        <ProtectedRoute path='/users/:userId' exact={true} ><User /></ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} ><h3>Welcome back!</h3></ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
