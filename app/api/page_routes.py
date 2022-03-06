@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
-from app.models import Page, db
+from app.api.post_routes import posts
+from app.models import Page, Post, db
 from flask_login import login_required
 from app.forms import NewPageForm
 
@@ -78,6 +79,33 @@ def edit_message(page_id):
 
   db.session.commit()
   return jsonify(page.to_dict())
+
+
+# ~~~~~~~~~~~ All Page Posts ~~~~~~~~~~~ 
+@page_routes.route('/<page_id>/posts', methods=['GET'])
+def all_page_posts(page_id):
+  posts = Post.query.filter_by(pageId=page_id).all()
+  return {'posts': [post.to_dict() for post in posts]}
+
+
+# ~~~~~~~~~~~ Limited / Filtered / Sorted Page Posts ~~~~~~~~~~~ 
+# https://www.merixstudio.com/blog/best-practices-rest-api-development/
+
+# Filtering:
+# GET /users?country=USA
+# GET /users?creation_date=2019-11-11
+# GET /users?creation_date=2019-11-11
+
+# Sorting:
+# GET /users?sort=birthdate_date:asc
+# GET /users?sort=birthdate_date:desc
+
+# Paging:
+# GET /users?limit=100
+# GET /users?offset=2
+
+# All together:
+# GET /users?country=USA&creation_date=2019-11-11&sort=birthdate_date:desc&limit=100&offset=2
 
 
 # ~~~~~~~~~~~ Delete ~~~~~~~~~~~ 
