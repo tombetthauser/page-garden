@@ -15,6 +15,7 @@ a {
   color: white;
 }
 
-button {
-
+img {
+  width: 500px;
+  display: block;
 }

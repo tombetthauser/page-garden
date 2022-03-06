@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link, useHistory } from 'react-router-dom';
-// import { createPage } from '../../store/pages';
 
 const PageCreate = () => {
   const [errors, setErrors] = useState([]);
@@ -19,9 +18,6 @@ const PageCreate = () => {
   const [contact, setContact] = useState('');
 
   const history = useHistory();
-  // ...
-
-  // const name = useSelector(state => state.session.name);
   const dispatch = useDispatch();
 
   const createPage = ( userId, url, title, text, location, link1Text, link1Url, link2Text, link2Url, link3Text, link3Url, contact) => async (dispatch) => {

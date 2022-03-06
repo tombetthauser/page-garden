@@ -34,7 +34,6 @@ def page(id):
 def create_page_2():
   form = NewPageForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  # print(form.data["cat"], "<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
   if form.validate_on_submit():
     page = Page(
       userId = form.data["userId"],

@@ -5,15 +5,12 @@ from app.models import Page, User
 
 
 def page_exists(form, field):
-    # Checking if page exists
     url = field.data
     page = Page.query.filter(Page.url == url).first()
     if page:
         raise ValidationError('Page url is address is already in use.')
 
-
 def bad_user_id(form, field):
-    # Checking if user id is valid
     userId = int(field.data)
     user = User.query.filter(User.id == userId).first()
     if not user:
@@ -32,4 +29,3 @@ class NewPageForm(FlaskForm):
     link3Text = StringField('link3Text')
     link3Url = StringField('link3Url')
     contact = StringField('contact')
-    # print("\n\n\n\n", userId, "HELLOOOOO <~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n")
