@@ -101,114 +101,18 @@ const PageCreate = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label>User Id</label>
-        <input
-          type='text'
-          name='userId'
-          onChange={updateUserId}
-          value={userId}
-        ></input>
-      </div>
-      <div>
-        <label>Url</label>
-        <input
-          type='text'
-          name='url'
-          onChange={updateUrl}
-          value={url}
-        ></input>
-      </div>
-      <div>
-        <label>Title</label>
-        <input
-          type='text'
-          name='title'
-          onChange={updateTitle}
-          value={title}
-        ></input>
-      </div>
-      <div>
-        <label>Text</label>
-        <input
-          type='text'
-          name='text'
-          onChange={updateText}
-          value={text}
-        ></input>
-      </div>
-      <div>
-        <label>Location</label>
-        <input
-          type='text'
-          name='location'
-          onChange={updateLocation}
-          value={location}
-        ></input>
-      </div>
-      <div>
-        <label>Link 1 Url</label>
-        <input
-          type='text'
-          name='link1Url'
-          onChange={updateLink1Url}
-          value={link1Url}
-        ></input>
-      </div>
-      <div>
-        <label>Link 1 Text</label>
-        <input
-          type='text'
-          name='link1Text'
-          onChange={updateLink1Text}
-          value={link1Text}
-        ></input>
-      </div>
-      <div>
-        <label>Link 2 Url</label>
-        <input
-          type='text'
-          name='link2Url'
-          onChange={updateLink2Url}
-          value={link2Url}
-        ></input>
-      </div>
-      <div>
-        <label>Link 2 Text</label>
-        <input
-          type='text'
-          name='link2Text'
-          onChange={updateLink2Text}
-          value={link2Text}
-        ></input>
-      </div>
-      <div>
-        <label>Link 3 Url</label>
-        <input
-          type='text'
-          name='link3Url'
-          onChange={updateLink3Url}
-          value={link3Url}
-        ></input>
-      </div>
-      <div>
-        <label>Link 3 Text</label>
-        <input
-          type='text'
-          name='link3Text'
-          onChange={updateLink3Text}
-          value={link3Text}
-        ></input>
-      </div>
-      <div>
-        <label>Contact</label>
-        <input
-          type='text'
-          name='contact'
-          onChange={updateContact}
-          value={contact}
-        ></input>
-      </div>
+      <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div>
+      <div><label>Url</label><input type='text' name='url' onChange={updateUrl} value={url}></input></div>
+      <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
+      <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
+      <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location}></input></div>
+      <div><label>Link 1 Url</label><input type='text' name='link1Url' onChange={updateLink1Url} value={link1Url}></input></div>
+      <div><label>Link 1 Text</label><input type='text' name='link1Text' onChange={updateLink1Text} value={link1Text}></input></div>
+      <div><label>Link 2 Url</label><input type='text' name='link2Url' onChange={updateLink2Url} value={link2Url}></input></div>
+      <div><label>Link 2 Text</label><input type='text' name='link2Text' onChange={updateLink2Text} value={link2Text}></input></div>
+      <div><label>Link 3 Url</label><input type='text' name='link3Url' onChange={updateLink3Url} value={link3Url}></input></div>
+      <div><label>Link 3 Text</label><input type='text' name='link3Text' onChange={updateLink3Text} value={link3Text}></input></div>
+      <div><label>Contact</label><input type='text' name='contact' onChange={updateContact} value={contact}></input></div>
 
       <button type='submit'>Create Page!</button>
     </form>

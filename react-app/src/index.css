@@ -1,1 +1,20 @@
 /* TODO Add site wide styles */
+
+body {
+  color: white;
+  background-color: black;
+}
+
+input {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+}
+
+a {
+  color: white;
+}
+
+button {
+
+}

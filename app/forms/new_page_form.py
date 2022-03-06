@@ -32,3 +32,4 @@ class NewPageForm(FlaskForm):
     link3Text = StringField('link3Text')
     link3Url = StringField('link3Url')
     contact = StringField('contact')
+    # print("\n\n\n\n", userId, "HELLOOOOO <~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n")

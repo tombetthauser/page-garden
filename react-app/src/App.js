@@ -13,6 +13,7 @@ import Page from './components/Page';
 import PageCreate from './components/PageCreate';
 import PostsList from './components/PostsList';
 import Post from './components/Post';
+import PostCreate from './components/PostCreate';
 
 import { authenticate } from './store/session';
 
@@ -33,7 +34,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1>Minstagram Beta</h1>
+      <h1>📸 Minstagram Beta</h1>
       <NavBar />
       <hr/>
       <Switch>
@@ -60,8 +61,8 @@ function App() {
           <PostsList/>
         </Route>
         <Route path='/posts/new' exact={true}>
-          PostCreate!
-          {/* <PostCreate /> */}
+          {/* PostCreate! */}
+          <PostCreate />
         </Route>
         <Route path='/posts/:postId' exact={true} >
           <Post /> 
