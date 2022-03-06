@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Page() {
   const [page, setPage] = useState({});
@@ -45,6 +45,7 @@ function Page() {
           <li><strong>contact</strong>: {page.contact}</li>
       </ul>
       <button onClick={handleDelete}>delete page</button>
+      <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink>
     </>
   )
 }
