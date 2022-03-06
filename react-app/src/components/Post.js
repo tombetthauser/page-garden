@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Post() {
   const [post, setPost] = useState({});
@@ -40,7 +40,8 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
-      <button onClick={handleDelete}>delete page</button>
+      <button onClick={handleDelete}>delete post</button>
+      <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink>
     </>
   )
 }
