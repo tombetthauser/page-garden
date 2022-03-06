@@ -5,7 +5,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     pageId = db.Column(db.Integer, nullable=False)
-    imageUrl = db.Column(db.String(255), nullable=False, unique=True)
+    imageUrl = db.Column(db.String(255), nullable=False, unique=True) # <---- should unique constraint be removed?
     title = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text(), nullable=True)
     location = db.Column(db.String(255), nullable=True)

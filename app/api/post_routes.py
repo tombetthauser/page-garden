@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from app.models import Post, db
 from flask_login import login_required
-from app.forms import NewPostForm, NewPageForm, TestForm
+from app.forms import NewPostForm
 
 post_routes = Blueprint('posts', __name__)
 
@@ -32,7 +32,7 @@ def post(id):
 # ~~~~~~~~~~~ Create ~~~~~~~~~~~ 
 @post_routes.route('/test', methods=['POST'])
 def create_post():
-  form = TestForm()
+  form = NewPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     post = Post(
