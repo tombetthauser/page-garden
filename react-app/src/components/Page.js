@@ -39,7 +39,7 @@ function Page() {
   const postComponents = posts.map((post) => {
     return (
       <li key={post.id}>
-        <NavLink to={`/posts/${post.id}`}>
+        <NavLink to={`/pages/${pageId}/posts/${post.id}`}>
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
           {post.title ? <h3>{post.title}</h3> : null}
           {post.text ? <p>{post.text}</p> : null}

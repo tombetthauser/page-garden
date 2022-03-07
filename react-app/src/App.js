@@ -36,7 +36,23 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1>Minstagram</h1>
+      <h1>Shoestagram 👟</h1>
+      {/* <h1>Kickstagram 👟</h1> */}
+      {/* <h1>Footstagram 👟</h1> */}
+      {/* <h1>Spacetagram</h1> */}
+      {/* <h1>Altstagram</h1> */}
+      {/* <h1>Fosstagram</h1> */}
+      {/* <h1>Nonstagram</h1> */}
+      {/* <h1>Whatstagram</h1> */}
+      {/* <h1>Notstagram</h1> */}
+      {/* <h1>Unstagram</h1> */}
+      {/* <h1>Dogstagram</h1> */}
+      {/* <h1>Grimstagram</h1> */}
+      {/* <h1>Spinstagram</h1> */}
+      {/* <h1>Winstagram</h1> */}
+      {/* <h1>Betagram</h1> */}
+      {/* <h1>Deltagram</h1> */}
+      {/* <h1>Minstagram</h1> */}
       {/* <h1>Xstagram</h1> */}
       {/* <h1>🥪 Breadstagram</h1> */}
       {/* <h1>Catstagram</h1> */}
@@ -52,6 +68,14 @@ function App() {
         <Route path='/pages/new' exact={true}><PageCreate/></Route>
         <Route path='/pages/:pageId' exact={true}><Page/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
+        
+        {/* 
+          These dont exist yet.
+          We're creating them so that we retain access to the post id when we are viewing / editing 
+        */}
+        <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route>
+        <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
+
         <Route path='/posts' exact={true}><PostsList/></Route>
         <Route path='/posts/new' exact={true}><PostCreate/></Route>
         <Route path='/posts/:postId' exact={true}><Post/></Route>

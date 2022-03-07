@@ -13,6 +13,10 @@ class Post(db.Model):
     linkUrl = db.Column(db.String(2048), nullable=True)
     date = db.Column(db.String(255), nullable=True)
 
+    # A user has many messages, a message belongs to a user
+    # user = db.relationship('User', back_populates='messages')
+    # messages = db.relationship('Message', back_populates='creator')
+
     def to_dict(self):
         return {
           'id': self.id,

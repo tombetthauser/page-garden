@@ -4,7 +4,8 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Post() {
   const [post, setPost] = useState({});
-  const { postId } = useParams();
+  const [page, setPage] = useState({});
+  const { postId, pageId } = useParams();
   const history = useHistory();
 
   const currUserId = useSelector((state) => {
@@ -21,6 +22,10 @@ function Post() {
       const response = await fetch(`/api/posts/${postId}`);
       const post = await response.json();
       setPost(post);
+      
+      const response2 = await fetch(`/api/pages/${pageId}`);
+      const page = await response2.json();
+      setPage(page);
     })();
   }, [postId]);
 
@@ -38,6 +43,9 @@ function Post() {
 
   return (
     <>
+      <img src={post.imageUrl} />
+      <h2>{post.title}</h2>
+      <p>{post.text}</p>
       <ul>
         <li><strong>id</strong>: {post.id}</li>
         <li><strong>pageId</strong>: {post.pageId}</li>
@@ -51,8 +59,10 @@ function Post() {
       </ul>
       {/* these need to get the userId from the page associated with the pageId */}
       {/* this is going to be easiest to do with an association on the model */}
-      {currUserId && currUserId == post.user.id ? <button onClick={handleDelete}>delete post</button> : null}
-      {currUserId && currUserId == post.user.id ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
+      {/* this might not be a normal thing in sqlalchemy? */}
+      {/* just add a user_id column to posts and rebuild db... */}
+      {currUserId == page.userId ? <button onClick={handleDelete}>delete post</button> : null}
+      {currUserId == page.userId ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
     </>
   )
 }

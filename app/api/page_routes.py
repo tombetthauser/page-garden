@@ -116,3 +116,22 @@ def delete_page(page_id):
     db.session.delete(page)
     db.session.commit()
     return page_id
+
+
+# ~~~~~~~~~~~ New Page Post ~~~~~~~~~~~ 
+"""
+  This will give RESTful access to the parent page for a post.
+  This means we can access the the user.
+  Why do we need the user?
+  We needed to know if we had edit access for a post.
+  This was a problem with rendering an individual post view.
+  This is a frontend problem not an api problem.
+  So we dont need this?
+"""
+# @page_routes.route('</page_id>/posts/<post_id>/new', methods=['POST'])
+# @login_required
+
+
+# # ~~~~~~~~~~~ Edit Page Post ~~~~~~~~~~~ 
+# @page_routes.route('</page_id>/posts/<post_id>', methods=['PUT'])
+# @login_required
