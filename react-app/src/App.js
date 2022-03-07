@@ -36,7 +36,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1>📸 Minstagram Beta</h1>
+      <h1>Minstagram</h1>
+      {/* <h1>Xstagram</h1> */}
+      {/* <h1>🥪 Breadstagram</h1> */}
+      {/* <h1>Catstagram</h1> */}
+      {/* <h1>Duckstagram</h1> */}
+      {/* <h1>Minstagram</h1> */}
+      {/* <h1>Kushtagram</h1> */}
       <NavBar />
       <hr/>
       <Switch>

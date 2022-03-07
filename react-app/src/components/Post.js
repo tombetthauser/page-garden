@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Post() {
   const [post, setPost] = useState({});
   const { postId } = useParams();
   const history = useHistory();
+
+  const currUserId = useSelector((state) => {
+    if (state.session.user) {
+      return state.session.user.id
+    } else {
+      return null;
+    }
+  });
 
   useEffect(() => {
     if (!postId) return;
@@ -40,8 +49,10 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
-      <button onClick={handleDelete}>delete post</button>
-      <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink>
+      {currUserId && currUserId == post.id ? <button onClick={handleDelete}>delete post</button> : null}
+      {currUserId && currUserId == post.id ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
+      {/* <button onClick={handleDelete}>delete post</button> */}
+      {/* <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> */}
     </>
   )
 }

@@ -64,7 +64,7 @@ function Page() {
       <button onClick={handleDelete}>delete page</button>
       <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink>
       <hr/>
-      <h2>Page Posts:</h2>
+      <h2>{page.title ? page.title : 'Page'} Posts:</h2>
       <ul>
         {postComponents}
       </ul>
