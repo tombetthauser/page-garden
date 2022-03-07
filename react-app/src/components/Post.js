@@ -49,10 +49,10 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
-      {currUserId && currUserId == post.id ? <button onClick={handleDelete}>delete post</button> : null}
-      {currUserId && currUserId == post.id ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
-      {/* <button onClick={handleDelete}>delete post</button> */}
-      {/* <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> */}
+      {/* these need to get the userId from the page associated with the pageId */}
+      {/* this is going to be easiest to do with an association on the model */}
+      {currUserId && currUserId == post.user.id ? <button onClick={handleDelete}>delete post</button> : null}
+      {currUserId && currUserId == post.user.id ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
     </>
   )
 }

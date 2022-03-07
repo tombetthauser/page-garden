@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 
 function Page() {
   const [page, setPage] = useState({});
   const [posts, setPosts] = useState([]);
   const { pageId } = useParams();
+  
   const history = useHistory();
+  
+  const currUserId = useSelector(state => {
+    return state.session.user ? state.session.user.id : null;
+  })
 
   useEffect(() => {
     if (!pageId) return;
@@ -61,8 +67,10 @@ function Page() {
           <li><strong>link3Url</strong>: {page.link3Url}</li>
           <li><strong>contact</strong>: {page.contact}</li>
       </ul>
-      <button onClick={handleDelete}>delete page</button>
-      <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink>
+      {/* <button onClick={handleDelete}>delete page</button> */}
+      {/* <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> */}
+      {currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null}
+      {currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null}
       <hr/>
       <h2>{page.title ? page.title : 'Page'} Posts:</h2>
       <ul>
