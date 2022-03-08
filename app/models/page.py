@@ -1,5 +1,4 @@
 from .db import db
-from .post import Post
 
 
 class Page(db.Model):

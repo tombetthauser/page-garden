@@ -36,7 +36,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1>Shoestagram 👟</h1>
+      <h1>Minstagram</h1>
+      {/* <h1>Shoestagram 👟</h1> */}
       {/* <h1>Kickstagram 👟</h1> */}
       {/* <h1>Footstagram 👟</h1> */}
       {/* <h1>Spacetagram</h1> */}
@@ -57,7 +58,6 @@ function App() {
       {/* <h1>🥪 Breadstagram</h1> */}
       {/* <h1>Catstagram</h1> */}
       {/* <h1>Duckstagram</h1> */}
-      {/* <h1>Minstagram</h1> */}
       {/* <h1>Kushtagram</h1> */}
       <NavBar />
       <hr/>
@@ -68,23 +68,12 @@ function App() {
         <Route path='/pages/new' exact={true}><PageCreate/></Route>
         <Route path='/pages/:pageId' exact={true}><Page/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
-        
-        {/* 
-          These dont exist yet.
-          We're creating them so that we retain access to the post id when we are viewing / editing 
-        */}
         <Route path='/pages/:pageId/posts/new' exact={true}><PostCreate/></Route>
         <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route>
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
-
-        {/* <Route path='/posts' exact={true}><PostsList/></Route> */}
-        {/* <Route path='/posts/new' exact={true}><PostCreate/></Route> */}
-        {/* <Route path='/posts/:postId' exact={true}><Post/></Route> */}
-        {/* <Route path='/posts/:postId/edit' exact={true}><PostEdit/></Route> */}
-        
         <ProtectedRoute path='/users' exact={true} ><UsersList/></ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} ><User /></ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} ><h3>Welcome back!</h3></ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} ><p>Welcome to Minstagram. No likes, no follows, no snitches. Good luck finding anything!</p></ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
