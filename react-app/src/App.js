@@ -36,7 +36,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h1>Minstagram</h1>
+      <h1>Minstagram 🏄‍♂️</h1>
       {/* <h1>Shoestagram 👟</h1> */}
       {/* <h1>Kickstagram 👟</h1> */}
       {/* <h1>Footstagram 👟</h1> */}
@@ -81,6 +81,7 @@ function App() {
           </p>
         </Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
+        <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
       </Switch>
     </BrowserRouter>
   );
