@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostCreate = () => {
   const [errors, setErrors] = useState([]);
 
-  const [pageId, setPageId] = useState('');
+  // const [pageId, setPageId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
@@ -16,6 +16,8 @@ const PostCreate = () => {
 
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const { pageId } = useParams()
 
   const createPost = ( pageId, imageUrl, title, text, location, linkText, linkUrl, date ) => async (dispatch) => {
     const response = await fetch('/api/posts/new', {
@@ -65,7 +67,7 @@ const PostCreate = () => {
     }
   };
 
-  const updatePageId = (e) => {setPageId(e.target.value)};
+  // const updatePageId = (e) => {setPageId(e.target.value)};
   const updateImageUrl = (e) => {setImageUrl(e.target.value)};
   const updateTitle = (e) => {setTitle(e.target.value)};
   const updateText = (e) => {setText(e.target.value)};
@@ -82,7 +84,7 @@ const PostCreate = () => {
         ))}
       </div>
 
-      <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div>
+      {/* <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div> */}
       <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
       <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
       <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>

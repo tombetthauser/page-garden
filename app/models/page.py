@@ -20,7 +20,7 @@ class Page(db.Model):
     def to_dict(self):
         return {
           "id": self.id,
-          "userId": self.id,
+          "userId": self.userId,
           "url": self.url,
           "title": self.title,
           "text": self.text,

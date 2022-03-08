@@ -73,13 +73,15 @@ function App() {
           These dont exist yet.
           We're creating them so that we retain access to the post id when we are viewing / editing 
         */}
+        <Route path='/pages/:pageId/posts/new' exact={true}><PostCreate/></Route>
         <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route>
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
 
-        <Route path='/posts' exact={true}><PostsList/></Route>
-        <Route path='/posts/new' exact={true}><PostCreate/></Route>
-        <Route path='/posts/:postId' exact={true}><Post/></Route>
-        <Route path='/posts/:postId/edit' exact={true}><PostEdit/></Route>
+        {/* <Route path='/posts' exact={true}><PostsList/></Route> */}
+        {/* <Route path='/posts/new' exact={true}><PostCreate/></Route> */}
+        {/* <Route path='/posts/:postId' exact={true}><Post/></Route> */}
+        {/* <Route path='/posts/:postId/edit' exact={true}><PostEdit/></Route> */}
+        
         <ProtectedRoute path='/users' exact={true} ><UsersList/></ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} ><User /></ProtectedRoute>
         <ProtectedRoute path='/' exact={true} ><h3>Welcome back!</h3></ProtectedRoute>

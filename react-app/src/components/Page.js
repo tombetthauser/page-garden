@@ -10,7 +10,9 @@ function Page() {
   const history = useHistory();
   
   const currUserId = useSelector(state => {
-    return state.session.user ? state.session.user.id : null;
+    if (state.session.user) {
+      return state.session.user.id;
+    } 
   })
 
   useEffect(() => {
@@ -49,6 +51,7 @@ function Page() {
   })
 
   if (!page) return null;
+  console.log(page)
 
   return (
     <>
@@ -67,10 +70,13 @@ function Page() {
           <li><strong>link3Url</strong>: {page.link3Url}</li>
           <li><strong>contact</strong>: {page.contact}</li>
       </ul>
+      { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null }
       {/* <button onClick={handleDelete}>delete page</button> */}
       {/* <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> */}
-      {currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null}
-      {currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null}
+      { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null }
+      { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
+      <hr/>
+      { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/posts/new`}>add post</NavLink> : null }
       <hr/>
       <h2>{page.title ? page.title : 'Page'} Posts:</h2>
       <ul>

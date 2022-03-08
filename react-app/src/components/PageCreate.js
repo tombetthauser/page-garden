@@ -4,7 +4,7 @@ import { Redirect, Link, useHistory } from 'react-router-dom';
 
 const PageCreate = () => {
   const [errors, setErrors] = useState([]);
-  const [userId, setUserId] = useState('');
+  // const [userId, setUserId] = useState('');
   const [url, setUrl] = useState('');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
@@ -19,6 +19,10 @@ const PageCreate = () => {
 
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const currUserId = useSelector(state => {
+    return state.session.user ? state.session.user.id : null;
+  })
 
   const createPage = ( userId, url, title, text, location, link1Text, link1Url, link2Text, link2Url, link3Text, link3Url, contact) => async (dispatch) => {
     const response = await fetch('/api/pages/new', {
@@ -58,7 +62,7 @@ const PageCreate = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(createPage(
-      userId,
+      currUserId,
       url,
       title,
       text,
@@ -76,7 +80,7 @@ const PageCreate = () => {
     }
   };
 
-  const updateUserId = (e) => {setUserId(e.target.value)};
+  // const updateUserId = (e) => {setUserId(e.target.value)};
   const updateUrl = (e) => {setUrl(e.target.value)};
   const updateTitle = (e) => {setTitle(e.target.value)};
   const updateText = (e) => {setText(e.target.value)};
@@ -97,7 +101,7 @@ const PageCreate = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div>
+      {/* <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div> */}
       <div><label>Url</label><input type='text' name='url' onChange={updateUrl} value={url}></input></div>
       <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
       <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
