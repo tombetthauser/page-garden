@@ -38,7 +38,7 @@ const PostCreate = () => {
     });
 
     if (response.ok) {
-      history.push("/posts")
+      history.push(`/pages/${pageId}`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();

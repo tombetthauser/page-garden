@@ -1,4 +1,6 @@
 from .db import db
+from .post import Post
+
 
 class Page(db.Model):
     __tablename__ = 'pages'
@@ -16,6 +18,7 @@ class Page(db.Model):
     link3Text = db.Column(db.String(255), nullable=True)
     link3Url = db.Column(db.String(2048), nullable=True)
     contact = db.Column(db.String(255), nullable=True)
+    posts = db.relationship('Post', back_populates='page', cascade="all, delete")
 
     def to_dict(self):
         return {

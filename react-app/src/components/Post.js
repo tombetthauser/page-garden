@@ -57,6 +57,7 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
+      <NavLink to={`/pages/${pageId}`}>back to {page.title} page</NavLink>
       {/* these need to get the userId from the page associated with the pageId */}
       {/* this is going to be easiest to do with an association on the model */}
       {/* this might not be a normal thing in sqlalchemy? */}

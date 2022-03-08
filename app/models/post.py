@@ -4,7 +4,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    pageId = db.Column(db.Integer, nullable=False)
+    pageId = db.Column(db.Integer, db.ForeignKey('pages.id'), nullable=False)
     imageUrl = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text(), nullable=True)
@@ -12,10 +12,7 @@ class Post(db.Model):
     linkText = db.Column(db.String(255), nullable=True)
     linkUrl = db.Column(db.String(2048), nullable=True)
     date = db.Column(db.String(255), nullable=True)
-
-    # A user has many messages, a message belongs to a user
-    # user = db.relationship('User', back_populates='messages')
-    # messages = db.relationship('Message', back_populates='creator')
+    page = db.relationship('Page', back_populates='posts')
 
     def to_dict(self):
         return {
