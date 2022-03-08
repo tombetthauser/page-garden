@@ -23,6 +23,13 @@ def pages():
   return {'pages': [page.to_dict() for page in pages]}
 
 
+# ~~~~~~~~~~~ Get One by Url ~~~~~~~~~~~ 
+@page_routes.route('/urls/<string:pageUrl>')
+def page_byUrl(pageUrl):
+  page = Page.query.filter_by(url=pageUrl).one()
+  return page.to_dict()
+
+
 # ~~~~~~~~~~~ Get One ~~~~~~~~~~~ 
 @page_routes.route('/<int:id>')
 def page(id):

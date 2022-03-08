@@ -5,7 +5,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 function Page() {
   const [page, setPage] = useState({});
   const [posts, setPosts] = useState([]);
-  const { pageId } = useParams();
+  const { pageId, pageUrl } = useParams();
   
   const history = useHistory();
   
@@ -16,17 +16,29 @@ function Page() {
   })
 
   useEffect(() => {
-    if (!pageId) return;
-    (async () => {
-      const response = await fetch(`/api/pages/${pageId}`);
-      const page = await response.json();
-      setPage(page);
+    if (!pageId && !pageUrl) return;
+    if (pageUrl) {
+      (async () => {
+        const response = await fetch(`/api/pages/urls/${pageUrl}`);
+        const page = await response.json();
+        setPage(page);
 
-      const response2 = await fetch(`/api/pages/${pageId}/posts`);
-      const response2Data = await response2.json();
-      setPosts(response2Data.posts)
-    })();
-  }, [pageId]);
+        const response2 = await fetch(`/api/pages/${page.id}/posts`);
+        const response2Data = await response2.json();
+        setPosts(response2Data.posts)
+      })();
+    } else {
+      (async () => {
+        const response = await fetch(`/api/pages/${pageId}`);
+        const page = await response.json();
+        setPage(page);
+  
+        const response2 = await fetch(`/api/pages/${pageId}/posts`);
+        const response2Data = await response2.json();
+        setPosts(response2Data.posts)
+      })();
+    }
+  }, [pageId, pageUrl]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -41,7 +53,8 @@ function Page() {
   const postComponents = posts.map((post) => {
     return (
       <li key={post.id}>
-        <NavLink to={`/pages/${pageId}/posts/${post.id}`}>
+        {/* This post link will need to change to a /pageUrl/postId url structure when viewing through minstagram/pageUrl */}
+        <NavLink to={`/pages/${pageId || page.id}/posts/${post.id}`}> 
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
           {post.title ? <h3>{post.title}</h3> : null}
           {post.text ? <p>{post.text}</p> : null}
