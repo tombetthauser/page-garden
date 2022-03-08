@@ -73,7 +73,13 @@ function App() {
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
         <ProtectedRoute path='/users' exact={true} ><UsersList/></ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} ><User /></ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} ><p>Welcome to Minstagram. No likes, no follows, no snitches. Good luck finding anything!</p></ProtectedRoute>
+        <Route path='/' exact={true}>
+          <p>
+            Welcome to Minstagram.<br/>
+            No likes, no follows, no snitches.<br/>
+            Good luck finding anything!
+          </p>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

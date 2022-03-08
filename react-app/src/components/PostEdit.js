@@ -4,7 +4,7 @@ import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostEdit = () => {
   const [post, setPost] = useState({});
-  const { postId } = useParams();
+  const { postId, pageId } = useParams();
 
   const [errors, setErrors] = useState([]);
   // const [userId, setUserId] = useState(page.userId);
@@ -20,7 +20,7 @@ const PostEdit = () => {
   // const [link3Url, setLink3Url] = useState(page.link3Url);
   // const [contact, setContact] = useState(page.contact);
 
-  const [pageId, setPageId] = useState(post.pageId);
+  // const [pageId, setPageId] = useState(post.pageId);
   const [imageUrl, setImageUrl] = useState(post.imageUrl);
   const [title, setTitle] = useState(post.title);
   const [text, setText] = useState(post.text);
@@ -52,7 +52,7 @@ const PostEdit = () => {
       // setLink3Url(page.link3Url);
       // setContact(page.contact);
 
-        setPageId(page.pageId);
+        // setPageId(page.pageId);
         setImageUrl(page.imageUrl);
         setTitle(page.title);
         setText(page.text);
@@ -98,7 +98,7 @@ const PostEdit = () => {
     });
 
     if (response.ok) {
-      history.push("/posts")
+      history.push(`/pages/${pageId}/posts/${postId}`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -153,7 +153,7 @@ const PostEdit = () => {
   // const updateLink3Url = (e) => {setLink3Url(e.target.value)};
   // const updateContact = (e) => {setContact(e.target.value)};
 
-  const updatePageId = (e) => { setPageId(e.target.value) };
+  // const updatePageId = (e) => { setPageId(e.target.value) };
   const updateImageUrl = (e) => { setImageUrl(e.target.value) };
   const updateTitle = (e) => { setTitle(e.target.value) };
   const updateText = (e) => { setText(e.target.value) };
@@ -182,7 +182,7 @@ const PostEdit = () => {
       <div><label>Link 3 Text</label><input type='text' name='link3Text' onChange={updateLink3Text} value={link3Text}></input></div>
       <div><label>Contact</label><input type='text' name='contact' onChange={updateContact} value={contact}></input></div> */}
 
-      <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div>
+      {/* <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div> */}
       <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
       <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
       <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>

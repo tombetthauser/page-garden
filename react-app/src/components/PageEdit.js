@@ -68,7 +68,7 @@ const PageEdit = () => {
     });
 
     if (response.ok) {
-      history.push("/pages")
+      history.push(`/pages/${pageId}`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
@@ -101,7 +101,7 @@ const PageEdit = () => {
     }
   };
 
-  const updateUserId = (e) => {setUserId(e.target.value)};
+  // const updateUserId = (e) => {setUserId(e.target.value)};
   const updateUrl = (e) => {setUrl(e.target.value)};
   const updateTitle = (e) => {setTitle(e.target.value)};
   const updateText = (e) => {setText(e.target.value)};
@@ -122,7 +122,7 @@ const PageEdit = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div>
+      {/* <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div> */}
       <div><label>Url</label><input type='text' name='url' onChange={updateUrl} value={url}></input></div>
       <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
       <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>

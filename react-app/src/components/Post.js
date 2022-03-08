@@ -63,7 +63,7 @@ function Post() {
       {/* this might not be a normal thing in sqlalchemy? */}
       {/* just add a user_id column to posts and rebuild db... */}
       {currUserId == page.userId ? <button onClick={handleDelete}>delete post</button> : null}
-      {currUserId == page.userId ? <NavLink to={`/posts/${post.id}/edit`}>edit post</NavLink> : null}
+      {currUserId == page.userId ? <NavLink to={`/pages/${pageId}/posts/${post.id}/edit`}>edit post</NavLink> : null}
     </>
   )
 }
