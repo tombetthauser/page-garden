@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
+from app.api.page_routes import page
 from flask_login import login_required
-from app.models import User
+from app.models import User, Page
 
 user_routes = Blueprint('users', __name__)
 
@@ -12,16 +13,16 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
-@user_routes.route('/test', methods=['GET'])
-def users_test():
-  # pages = Page.query.all()
-  print("USERS TEST ROUTE HIT <--------------------------------")
-  # return {'pages': [page.to_dict() for page in pages]}
-  return {"foo": "bar"}
-
-
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>/pages')
+@login_required
+def user_pages(id):
+    # pages = Page.query.get(userId)
+    pages = Page.query.filter_by(userId=id).all()
+    return { 'pages': [ page.to_dict() for page in pages ] }
