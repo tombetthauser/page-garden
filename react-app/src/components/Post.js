@@ -28,19 +28,23 @@ function Post() {
         const page = await response2.json();
         setPage(page);
       }
-      
+
+
+
       if (pageUrl) {
         const urlPage = await fetch(`/api/pages/urls/${pageUrl}`);
         const page2 = await urlPage.json();
-        setPage(page);
-  
+        setPage(page2);
+
         console.log({
           "post-title": post.title,
           "post-page-id": post.pageId,
-          "page-title": page2.title,
-          "page-id": page2.id,
+          "page-title": page.title,
+          "page-id": page.id,
+          "page-usrId": page.userId,
+          "currUserId": currUserId,
         })
-  
+
         if (parseInt(post.pageId) != parseInt(page2.id)) history.push("/404");
       }
     })();
@@ -58,23 +62,6 @@ function Post() {
   
   if (!post) return null;
 
-  const checkPostPage = async () => {
-    if (pageUrl) {
-      const urlPage = await fetch(`/api/pages/urls/${pageUrl}`);
-      const page2 = await urlPage.json();
-      setPage(page);
-  
-      console.log({
-        "post-title": post.title,
-        "post-page-id": post.pageId,
-        "page-title": page2.title,
-        "page-id": page2.id,
-      })
-  
-      if (parseInt(post.pageId) != parseInt(page2.id)) history.push("/404");
-    }
-  }
-
   return (
     <>
       <img src={post.imageUrl} />
@@ -91,10 +78,11 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
-      { !pageUrl ? <NavLink to={`/pages/${pageId}`}>back to {page.title} page</NavLink> : null }
+      {/* { !pageUrl ? <NavLink to={`/pages/${pageId}`}>back to {page.title} page</NavLink> : null } */}
       { pageUrl ? <NavLink to={`/${pageUrl}`}>back to {page.title} page</NavLink> : null }
-      {currUserId == page.userId ? <button onClick={handleDelete}>delete post</button> : null}
-      {currUserId == page.userId ? <NavLink to={`/pages/${pageId}/posts/${post.id}/edit`}>edit post</NavLink> : null}
+      { currUserId == page.userId ? <button onClick={handleDelete}>delete post</button> : null }
+      {/* { currUserId == page.userId ? <NavLink to={`/pages/${pageId}/posts/${post.id}/edit`}>edit post</NavLink> : null } */}
+      { currUserId == page.userId ? <NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink> : null }
     </>
   )
 }

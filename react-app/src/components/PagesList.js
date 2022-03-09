@@ -16,7 +16,7 @@ function PagesList() {
   const pageComponents = pages.map((page) => {
     return (
       <li key={page.id}>
-        <NavLink to={`/${page.url}`}>{"> "}{page.title}</NavLink>
+        <NavLink to={`/${page.url}`}>{page.url}</NavLink>
       </li>
     );
   });

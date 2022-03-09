@@ -87,7 +87,9 @@ function App() {
           </>
         </Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
+        <Route path='/:pageUrl/new' exact={true}><PostCreate /></Route>
         <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
+        <Route path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></Route>
       </Switch>
     </BrowserRouter>
   );

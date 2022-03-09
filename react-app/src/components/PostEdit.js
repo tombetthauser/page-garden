@@ -4,7 +4,7 @@ import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostEdit = () => {
   const [post, setPost] = useState({});
-  const { postId, pageId } = useParams();
+  const { postId } = useParams();
 
   const [errors, setErrors] = useState([]);
   // const [userId, setUserId] = useState(page.userId);
@@ -20,7 +20,7 @@ const PostEdit = () => {
   // const [link3Url, setLink3Url] = useState(page.link3Url);
   // const [contact, setContact] = useState(page.contact);
 
-  // const [pageId, setPageId] = useState(post.pageId);
+  const [pageId, setPageId] = useState(post.pageId);
   const [imageUrl, setImageUrl] = useState(post.imageUrl);
   const [title, setTitle] = useState(post.title);
   const [text, setText] = useState(post.text);
@@ -36,8 +36,9 @@ const PostEdit = () => {
     if (!postId) return;
     (async () => {
       const response = await fetch(`/api/posts/${postId}`);
-      const page = await response.json();
-      setPost(page);
+      const post = await response.json();
+      setPost(post);
+      // setPageId(post.pageId);
 
       // setUserId(page.userId);
       // setUrl(page.url);
@@ -52,14 +53,14 @@ const PostEdit = () => {
       // setLink3Url(page.link3Url);
       // setContact(page.contact);
 
-        // setPageId(page.pageId);
-        setImageUrl(page.imageUrl);
-        setTitle(page.title);
-        setText(page.text);
-        setLocation(page.location);
-        setLinkText(page.linkText);
-        setLinkUrl(page.linkUrl);
-        setDate(page.date);
+        setPageId(post.pageId);
+        setImageUrl(post.imageUrl);
+        setTitle(post.title);
+        setText(post.text);
+        setLocation(post.location);
+        setLinkText(post.linkText);
+        setLinkUrl(post.linkUrl);
+        setDate(post.date);
     })();
   }, [postId]);
 
@@ -98,7 +99,8 @@ const PostEdit = () => {
     });
 
     if (response.ok) {
-      history.push(`/pages/${pageId}/posts/${postId}`)
+      history.goBack();
+      // history.push(`/pages/${pageId}/posts/${postId}`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();

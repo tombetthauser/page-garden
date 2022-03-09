@@ -68,7 +68,8 @@ const PageEdit = () => {
     });
 
     if (response.ok) {
-      history.push(`/pages/${pageId}`)
+      // history.push(`/pages/${pageId}`)
+      history.push(`/${url}`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();

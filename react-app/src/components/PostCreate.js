@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostCreate = () => {
   const [errors, setErrors] = useState([]);
+  const { pageUrl } = useParams();
 
-  // const [pageId, setPageId] = useState('');
+  const [pageId, setPageId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
@@ -13,11 +14,23 @@ const PostCreate = () => {
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [date, setDate] = useState('');
+  
+  // const [page, setPage] = useState({});
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const { pageId } = useParams()
+  // const { pageId } = useParams()
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`/api/pages/urls/${pageUrl}`);
+      const responsePage = await response.json();
+      // setPage(responsePage);
+      setPageId(responsePage.id);
+      }
+    )();
+  })
 
   const createPost = ( pageId, imageUrl, title, text, location, linkText, linkUrl, date ) => async (dispatch) => {
     const response = await fetch('/api/posts/new', {

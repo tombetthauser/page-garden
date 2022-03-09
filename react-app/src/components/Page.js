@@ -90,7 +90,8 @@ function Page() {
       { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null }
       { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
       <hr/>
-      { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/posts/new`}>add post</NavLink> : null }
+      {/* { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/posts/new`}>add post</NavLink> : null } */}
+      { currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/new`}>add post</NavLink> : null }
       <hr/>
       <h2>{page.title ? page.title : 'Page'} Posts:</h2>
       <ul>
