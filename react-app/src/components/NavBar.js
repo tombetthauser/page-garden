@@ -11,7 +11,7 @@ const NavBar = () => {
     <nav>
       { currUser ? <h3>Welcome back {currUser.username}!</h3> : null }
       <ul>
-        { currUser ? <li><NavLink to='/' exact={true} activeClassName='active'>Home</NavLink></li> : null }
+        { currUser ? <li><NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink></li> : null }
         { !currUser ? <li><NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink></li> : null }
         { !currUser ? <li><NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink></li> : null }
         <li><NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink></li>

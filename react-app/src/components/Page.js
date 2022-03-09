@@ -54,7 +54,8 @@ function Page() {
     return (
       <li key={post.id}>
         {/* This post link will need to change to a /pageUrl/postId url structure when viewing through minstagram/pageUrl */}
-        <NavLink to={`/pages/${pageId || page.id}/posts/${post.id}`}> 
+        {/* <NavLink to={`/pages/${pageId || page.id}/posts/${post.id}`}>  */}
+        <NavLink to={`/${page.url}/${post.id}`}> 
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
           {post.title ? <h3>{post.title}</h3> : null}
           {post.text ? <p>{post.text}</p> : null}

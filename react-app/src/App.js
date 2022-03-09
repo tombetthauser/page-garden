@@ -80,6 +80,12 @@ function App() {
             Good luck finding anything!
           </p>
         </Route>
+        <Route path='/404' exact={true}>
+          <>
+            <h2>404 🦆</h2>
+            <p>The page or post you seek does not exist...</p>
+          </>
+        </Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
         <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
       </Switch>

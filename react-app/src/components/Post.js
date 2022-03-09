@@ -5,7 +5,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 function Post() {
   const [post, setPost] = useState({});
   const [page, setPage] = useState({});
-  const { postId, pageId } = useParams();
+  const { postId, pageId, pageUrl } = useParams();
   const history = useHistory();
 
   const currUserId = useSelector((state) => {
@@ -22,10 +22,27 @@ function Post() {
       const response = await fetch(`/api/posts/${postId}`);
       const post = await response.json();
       setPost(post);
+
+      if (!pageUrl) {  
+        const response2 = await fetch(`/api/pages/${pageId}`);
+        const page = await response2.json();
+        setPage(page);
+      }
       
-      const response2 = await fetch(`/api/pages/${pageId}`);
-      const page = await response2.json();
-      setPage(page);
+      if (pageUrl) {
+        const urlPage = await fetch(`/api/pages/urls/${pageUrl}`);
+        const page2 = await urlPage.json();
+        setPage(page);
+  
+        console.log({
+          "post-title": post.title,
+          "post-page-id": post.pageId,
+          "page-title": page2.title,
+          "page-id": page2.id,
+        })
+  
+        if (parseInt(post.pageId) != parseInt(page2.id)) history.push("/404");
+      }
     })();
   }, [postId]);
 
@@ -40,6 +57,23 @@ function Post() {
   };
   
   if (!post) return null;
+
+  const checkPostPage = async () => {
+    if (pageUrl) {
+      const urlPage = await fetch(`/api/pages/urls/${pageUrl}`);
+      const page2 = await urlPage.json();
+      setPage(page);
+  
+      console.log({
+        "post-title": post.title,
+        "post-page-id": post.pageId,
+        "page-title": page2.title,
+        "page-id": page2.id,
+      })
+  
+      if (parseInt(post.pageId) != parseInt(page2.id)) history.push("/404");
+    }
+  }
 
   return (
     <>
@@ -57,11 +91,8 @@ function Post() {
         <li><strong>linkUrl</strong>: {post.linkUrl}</li>
         <li><strong>date</strong>: {post.date}</li>
       </ul>
-      <NavLink to={`/pages/${pageId}`}>back to {page.title} page</NavLink>
-      {/* these need to get the userId from the page associated with the pageId */}
-      {/* this is going to be easiest to do with an association on the model */}
-      {/* this might not be a normal thing in sqlalchemy? */}
-      {/* just add a user_id column to posts and rebuild db... */}
+      { !pageUrl ? <NavLink to={`/pages/${pageId}`}>back to {page.title} page</NavLink> : null }
+      { pageUrl ? <NavLink to={`/${pageUrl}`}>back to {page.title} page</NavLink> : null }
       {currUserId == page.userId ? <button onClick={handleDelete}>delete post</button> : null}
       {currUserId == page.userId ? <NavLink to={`/pages/${pageId}/posts/${post.id}/edit`}>edit post</NavLink> : null}
     </>
