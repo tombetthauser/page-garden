@@ -57,7 +57,7 @@ function Post() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ post_id: post.id }),
     });
-    if (res.ok) history.push(`/posts`);
+    if (res.ok) history.push(`/${page.url}`);
   };
   
   if (!post) return null;
