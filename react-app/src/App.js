@@ -51,15 +51,15 @@ function App() {
         <Route path='/login' exact={true}><LoginForm/></Route>
         <Route path='/sign-up' exact={true}><SignUpForm/></Route>
         <Route path='/pages' exact={true}><PagesList/></Route>
-        <Route path='/pages/new' exact={true}><PageCreate/></Route>
+        <ProtectedRoute path='/pages/new' exact={true}><PageCreate/></ProtectedRoute>
         <Route path='/pages/:pageId' exact={true}><Page/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
         <Route path='/pages/:pageId/posts/new' exact={true}><PostCreate/></Route>
         <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route>
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
-        <ProtectedRoute path='/users' exact={true} ><UsersList/></ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} ><User /></ProtectedRoute>
-        <Route path='/home' exact={true}><Home /></Route>
+        <Route path='/users' exact={true} ><UsersList/></Route>
+        <Route path='/users/:userId' exact={true} ><User /></Route>
+        {/* <Route path='/home' exact={true}><Home /></Route> */}
         <Route path='/404' exact={true}>
           <>
             <h2>404 🦆</h2>
@@ -67,9 +67,10 @@ function App() {
           </>
         </Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
-        <Route path='/:pageUrl/new' exact={true}><PostCreate /></Route>
+        <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreate /></ProtectedRoute>
         <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
-        <Route path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></Route>
+        <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
+        <Route path='/' exact={true}><Home /></Route>
       </Switch>
     </BrowserRouter>
   );

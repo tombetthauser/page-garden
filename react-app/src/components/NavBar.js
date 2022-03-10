@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -8,21 +7,15 @@ const NavBar = () => {
   const currUser = useSelector(state => state.session.user);
 
   return (
-    <details>
-      <summary>menu</summary>
-      <p>
-        {currUser ? <p>Currently logged in as {currUser.username}</p> : null }
-        <ul>
-          { currUser ? <li><NavLink to='/home' exact={true} activeClassName='active'>Home</NavLink></li> : null }
-          { !currUser ? <li><NavLink to='/login' exact={true} activeClassName='active'>Login</NavLink></li> : null }
-          { !currUser ? <li><NavLink to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink></li> : null }
-          <li><NavLink to='/users' exact={true} activeClassName='active'>Users</NavLink></li>
-          <li><NavLink to='/pages' exact={true} activeClassName='active'>Pages</NavLink></li>
-          { currUser ? <li><NavLink to='/pages/new' exact={true} activeClassName='acti{ve'>New Page</NavLink></li> : null}
-          { currUser ? <li><LogoutButton /></li> : null }
-        </ul>
-      </p>
-    </details>
+    <navbar>
+      {currUser ? <NavLink to="/" exact={true} activeClassName='active'>{currUser.username}</NavLink> : null }
+      { !currUser ? <NavLink to='/login' exact={true} activeClassName='active'>login</NavLink> : null }
+      { !currUser ? <NavLink to='/sign-up' exact={true} activeClassName='active'>sign up</NavLink> : null }
+      <NavLink to='/users' exact={true} activeClassName='active'>users</NavLink>
+      <NavLink to='/pages' exact={true} activeClassName='active'>pages</NavLink>
+      { currUser ? <NavLink to='/pages/new' exact={true} activeClassName='acti{ve'>new page</NavLink> : null}
+      { currUser ? <LogoutButton /> : null }
+    </navbar>
   );
 }
 
