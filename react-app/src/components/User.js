@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import NavBar from './NavBar';
+
 
 function User() {
   const [user, setUser] = useState({});
   const [pages, setPages] = useState([]);
-  const { userId }  = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -14,7 +16,7 @@ function User() {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
-      
+
       const response2 = await fetch(`/api/users/${userId}/pages`);
       const data = await response2.json();
       console.log(data.pages.map(page => page.url))
@@ -35,15 +37,16 @@ function User() {
   })
 
   return (
-    <>
+    <user>
+      <NavBar />
       <ul>
         <li><strong>User Id: </strong>{userId}</li>
         <li><strong>Username: </strong>{user.username}</li>
         <li><strong>Email: </strong>{user.email}</li>
       </ul>
-      <hr/>
+      <hr />
       <ul>{pageComponents}</ul>
-    </>
+    </user>
   );
 }
 export default User;

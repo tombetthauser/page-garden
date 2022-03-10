@@ -20,20 +20,32 @@ summary {
   transition: 2s;
 }
 
-home {
+splash {
   text-align: center;
 }
 
-home p {
+splash p {
   line-height: 20px;
+  margin-bottom: 27. f5px;
 }
 
-home h1 {
-  margin-top: 70px;
+splash h1 {
+  margin-top: 30%;
+  font-family: serif;
+  font-size: 50px;
+  font-weight: 100;
 }
 
 navbar {
   margin-bottom: 70px;
+}
+
+splash a {
+  color: dodgerblue;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  font-size: 15px;
+  text-transform: lowercase;
 }
 
 navbar a {
@@ -50,4 +62,78 @@ navbar button {
   font-family: serif;
   text-decoration: underline;
   padding: 0;
+  cursor: pointer;
+}
+
+splash button {
+  background: none;
+  border: none;
+  color: dodgerblue;
+  font-family: serif;
+  text-decoration: underline;
+  padding: 0;
+  cursor: pointer;
+  font-size: 15px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+}
+
+home h1 {
+  font-weight: 100;
+  text-transform: lowercase;
+  font-size: 45px;
+  margin-bottom: 0px;
+}
+
+home h2 {
+  font-weight: 100;
+  text-transform: lowercase;
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+home h3 {
+  font-weight: 100;
+  font-size: 17.5px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 12.5px;
+  border-bottom: 1px solid black;
+}
+
+home ul {
+  margin-top: 12.5px;
+  padding-left: 0;
+}
+
+home ul li {
+  list-style: none;
+  margin-bottom: 3px;
+}
+
+home ul li a {
+  color: cornflowerblue;
+}
+
+home .new-page {
+  border: 1.5px solid cornflowerblue;
+  border-radius: 3px;
+  padding: 7px 25px;
+  color: cornflowerblue;
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  margin-top: 40px;
+}
+
+home .bottom-links, home button {
+  border: none;
+  padding: 0;
+  color: cornflowerblue;
+  text-decoration: none;
+  width: fit-content;
+  margin-top: 20px;
+  background-color: #00000000;
+  font-family: serif;
+  font-size: 14px;
 }
