@@ -70,7 +70,6 @@ def create_page():
 def edit_message(page_id):
   page = Page.query.filter_by(id=page_id).one()
   page_data = request.json
-  # page.example_field = page_data['example_field']
   page.userId = page_data['userId']
   page.url = page_data['url']
   page.title = page_data['title']
@@ -95,26 +94,6 @@ def all_page_posts(page_id):
   return {'posts': [post.to_dict() for post in posts]}
 
 
-# ~~~~~~~~~~~ Limited / Filtered / Sorted Page Posts ~~~~~~~~~~~ 
-# https://www.merixstudio.com/blog/best-practices-rest-api-development/
-
-# Filtering:
-# GET /users?country=USA
-# GET /users?creation_date=2019-11-11
-# GET /users?creation_date=2019-11-11
-
-# Sorting:
-# GET /users?sort=birthdate_date:asc
-# GET /users?sort=birthdate_date:desc
-
-# Paging:
-# GET /users?limit=100
-# GET /users?offset=2
-
-# All together:
-# GET /users?country=USA&creation_date=2019-11-11&sort=birthdate_date:desc&limit=100&offset=2
-
-
 # ~~~~~~~~~~~ Delete ~~~~~~~~~~~ 
 @page_routes.route('/<page_id>', methods=['DELETE'])
 @login_required
@@ -123,22 +102,3 @@ def delete_page(page_id):
     db.session.delete(page)
     db.session.commit()
     return page_id
-
-
-# ~~~~~~~~~~~ New Page Post ~~~~~~~~~~~ 
-"""
-  This will give RESTful access to the parent page for a post.
-  This means we can access the the user.
-  Why do we need the user?
-  We needed to know if we had edit access for a post.
-  This was a problem with rendering an individual post view.
-  This is a frontend problem not an api problem.
-  So we dont need this?
-"""
-# @page_routes.route('</page_id>/posts/<post_id>/new', methods=['POST'])
-# @login_required
-
-
-# # ~~~~~~~~~~~ Edit Page Post ~~~~~~~~~~~ 
-# @page_routes.route('</page_id>/posts/<post_id>', methods=['PUT'])
-# @login_required

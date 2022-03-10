@@ -5,7 +5,21 @@
 input {color: white; background-color: black; border: 1px solid white;}
 a {color: white;} */
 
+body {
+  width: 500px;
+  display: block;
+  margin: 50px auto;
+}
+
 img {
   width: 500px;
   display: block;
+}
+
+summary {
+  transition: 2s;
+}
+
+.center-text {
+  text-align: center;
 }

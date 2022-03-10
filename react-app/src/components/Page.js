@@ -53,8 +53,6 @@ function Page() {
   const postComponents = posts.map((post) => {
     return (
       <li key={post.id}>
-        {/* This post link will need to change to a /pageUrl/postId url structure when viewing through minstagram/pageUrl */}
-        {/* <NavLink to={`/pages/${pageId || page.id}/posts/${post.id}`}>  */}
         <NavLink to={`/${page.url}/${post.id}`}> 
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
           {post.title ? <h3>{post.title}</h3> : null}
@@ -84,14 +82,10 @@ function Page() {
           <li><strong>link3Url</strong>: {page.link3Url}</li>
           <li><strong>contact</strong>: {page.contact}</li>
       </ul>
+      { currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/new`}>add post</NavLink> : null }
       { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null }
-      {/* <button onClick={handleDelete}>delete page</button> */}
-      {/* <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> */}
       { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null }
       { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
-      <hr/>
-      {/* { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/posts/new`}>add post</NavLink> : null } */}
-      { currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/new`}>add post</NavLink> : null }
       <hr/>
       <h2>{page.title ? page.title : 'Page'} Posts:</h2>
       <ul>

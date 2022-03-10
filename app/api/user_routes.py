@@ -23,6 +23,5 @@ def user(id):
 @user_routes.route('/<int:id>/pages')
 @login_required
 def user_pages(id):
-    # pages = Page.query.get(userId)
     pages = Page.query.filter_by(userId=id).all()
     return { 'pages': [ page.to_dict() for page in pages ] }
