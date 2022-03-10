@@ -18,6 +18,7 @@ import PageEdit from './components/PageEdit';
 import PostEdit from './components/PostEdit';
 import Splash from './components/Splash';
 import Home from './components/Home';
+import UserEdit from './components/UserEdit';
 // import PostsList from './components/PostsList';
 
 
@@ -58,6 +59,7 @@ function App() {
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
         <Route path='/users' exact={true} ><UsersList/></Route>
         <Route path='/users/:userId' exact={true} ><User /></Route>
+        <Route path='/users/:userId/edit' exact={true} ><UserEdit /></Route>
         {/* <Route path='/home' exact={true}><Home /></Route> */}
         <Route path='/404' exact={true}>
           <>
