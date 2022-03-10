@@ -17,7 +17,7 @@ const Splash = () => {
       <p>
         {!currUser ? <NavLink to='/login' exact={true} activeClassName='active'>login</NavLink> : null}
         {!currUser ? <NavLink to='/sign-up' exact={true} activeClassName='active'>sign up</NavLink> : null}
-        {currUser ? <NavLink to={`/users/${currUser.id}`} exact={true} activeClassName='active'>home</NavLink> : null}
+        {currUser ? <NavLink to={`/home`} exact={true} activeClassName='active'>home</NavLink> : null}
         {currUser ? <LogoutButton /> : null}
       </p>
     </splash>

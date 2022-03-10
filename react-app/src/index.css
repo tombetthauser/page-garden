@@ -113,6 +113,7 @@ home ul li {
 
 home ul li a {
   color: cornflowerblue;
+  text-decoration: none;
 }
 
 home .new-page {
@@ -135,5 +136,19 @@ home .bottom-links, home button {
   margin-top: 20px;
   background-color: #00000000;
   font-family: serif;
-  font-size: 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+home vr {
+  width: 6.5px;
+  margin-right: 6.5px;
+  height: 15px;
+  display: inline-block;
+  border-right: 1.5px solid cornflowerblue;
+  transform: translateY(4px);
+}
+
+home .bottom-links:hover, home button:hover, home ul li a:hover {
+  text-decoration: underline;
 }

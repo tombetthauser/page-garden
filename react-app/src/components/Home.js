@@ -45,8 +45,9 @@ function Home() {
       <h3>your pages:</h3>
       <ul>{pageComponents}</ul>
       <NavLink class="new-page" to="/pages/new">create new page</NavLink>
-      <NavLink class="bottom-links" to="/pages/new">edit profile</NavLink>
       {currUser ? <LogoutButton class="bottom-links" /> : null}
+      <vr/>
+      <NavLink class="bottom-links" to="/pages/new">edit profile</NavLink>
     </home>
   );
 }
