@@ -7,6 +7,8 @@ a {color: white;} */
 
 body {
   width: 500px;
+  max-width: 80%;
+  min-width: 375px;
   display: block;
   margin: 20px auto;
 }
@@ -83,6 +85,7 @@ home h1 {
   text-transform: lowercase;
   font-size: 45px;
   margin-bottom: 0px;
+  margin-top: 75px;
 }
 
 home h2 {
@@ -151,4 +154,108 @@ home vr {
 
 home .bottom-link:hover, home button:hover, home ul li a:hover {
   text-decoration: underline;
+}
+
+splash p.instagram-link {
+  margin-top: 75px;
+  font-size: 12px;
+}
+
+splash .instagram-link a {
+  font-size: 12px;
+}
+
+page h1 {
+  font-size: 40px;
+  font-weight: 100;
+  margin-top: 50px;
+  margin-bottom: 0px;
+}
+
+page .links-ul {
+  padding-left: 0;
+  margin-top: 0px;
+  margin-bottom: 17.5px;
+}
+
+page .links-ul li {
+  list-style-type: none;
+}
+
+page .links-ul li a {
+  color: cornflowerblue;
+  /* text-decoration: none; */
+  font-size: 15px;
+}
+
+page .page-contact {
+  font-size: 15px;
+}
+
+page .page-text {
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+
+page .page-location {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 17.5px;
+}
+
+page .user-links-ul {
+  padding-left: 0;
+}
+
+page .user-links-ul li {
+  list-style: none;
+  display: inline-block;;
+}
+
+page .user-links-ul button {
+  list-style: none;
+  display: inline-block;;
+  border: none;
+  background-color: #00000000;
+  color: cornflowerblue;
+  font-size: 12px;
+  font-family: serif;
+  padding: 0;
+  text-decoration: underline;
+}
+
+page .user-links-ul li a {
+  color: cornflowerblue;
+  font-size: 12px;
+}
+
+page vr {
+  width: 0px;
+  margin-right: 5px;
+  height: 15px;
+  display: inline-block;
+  border-right: 1px solid cornflowerblue;
+  transform: translateY(4px);
+}
+
+page .posts-ul {
+  margin-top: 50px;
+  padding-left: 0;
+}
+
+page .posts-ul li {
+  list-style: none;
+}
+
+post .post-li {
+  color: cornflowerblue;
+}
+
+post .post-li img {
+  max-width: 100%;
+}
+
+post li.post-li a h3 {
+  text-decoration: none;
+  color: black;
 }

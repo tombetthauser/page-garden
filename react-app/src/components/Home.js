@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <home>
-      <NavBar />
+      {/* <NavBar /> */}
       <h1>{user.username}</h1>
       <h2>{user.email}</h2>
       <h3>your pages:</h3>

@@ -17,6 +17,11 @@ function Page() {
 
   useEffect(() => {
     if (!pageId && !pageUrl) return;
+
+    if (page && page.title) {
+      document.querySelector("title").innerHTML = page.title
+    }
+
     if (pageUrl) {
       (async () => {
         const response = await fetch(`/api/pages/urls/${pageUrl}`);
@@ -38,7 +43,7 @@ function Page() {
         setPosts(response2Data.posts)
       })();
     }
-  }, [pageId, pageUrl]);
+  }, [page, pageId, pageUrl]);
 
   const handleDelete = async (e) => {
     e.preventDefault();
@@ -47,12 +52,12 @@ function Page() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ page_id: page.id }),
     });
-    if (res.ok) history.push(`/pages`);
+    if (res.ok) history.push(`/home`);
   };
 
   const postComponents = posts.map((post) => {
     return (
-      <li key={post.id}>
+      <li class="post-li" key={post.id}>
         <NavLink to={`/${page.url}/${post.id}`}> 
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
           {post.title ? <h3>{post.title}</h3> : null}
@@ -66,8 +71,17 @@ function Page() {
   console.log(page)
 
   return (
-    <>
-      <ul>
+    <page>
+      { page.title ? <h1>{page.title}</h1> : null }
+      { page.text ? <p class="page-text">{page.text}</p> : null }
+      { page.location ? <p class="page-location">📍 {page.location}</p> : null }
+      <ul class="links-ul">
+        { page.link1Url ? <li><a href={page.link1Url} target="new">{page.link1Text || page.link1Url}</a></li> : null }
+        { page.link2Url ? <li><a href={page.link2Url} target="new">{page.link2Text || page.link2Url}</a></li> : null }
+        { page.link3Url ? <li><a href={page.link3Url} target="new">{page.link3Text || page.link3Url}</a></li> : null }
+      </ul>
+      { page.contact ? <p class="page-contact">{page.contact}</p> : null }
+      {/* <ul>
           <li><strong>id</strong>: {page.id}</li>
           <li><strong>userId</strong>: {page.userId}</li>
           <li><strong>url</strong>: {page.url}</li>
@@ -81,17 +95,20 @@ function Page() {
           <li><strong>link3Text</strong>: {page.link3Text}</li>
           <li><strong>link3Url</strong>: {page.link3Url}</li>
           <li><strong>contact</strong>: {page.contact}</li>
+      </ul> */}
+      <ul class="user-links-ul">
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li> : null } <vr/>
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/home`}>home</NavLink></li> : null } <vr/>
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li> : null } <vr/>
+        {currUserId && currUserId == page.userId ? <li><button onClick={handleDelete}>delete page</button></li> : null }
       </ul>
-      { currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/new`}>add post</NavLink> : null }
-      { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null }
-      { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null }
-      { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
-      <hr/>
-      <h2>{page.title ? page.title : 'Page'} Posts:</h2>
-      <ul>
+      {/* { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null } */}
+      {/* { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
+      { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null } */}
+      <ul class="posts-ul">
         {postComponents}
       </ul>
-    </>
+    </page>
   )
 }
 

@@ -9,6 +9,9 @@ class Page(db.Model):
     url = db.Column(db.String(255), nullable=False, unique=True)
     title = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text(), nullable=True)
+    # favicon = db.Column(db.Text(), nullable=True) # <------------- needs to be added
+    # font = db.Column(db.Text(), nullable=True) # <------------- needs to be added
+    # linkColor = db.Column(db.Text(), nullable=True) # <------------- needs to be added
     location = db.Column(db.String(255), nullable=True)
     link1Text = db.Column(db.String(255), nullable=True)
     link1Url = db.Column(db.String(2048), nullable=True)

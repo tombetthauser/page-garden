@@ -47,7 +47,7 @@ const PageCreate = () => {
     });
 
     if (response.ok) {
-      history.push(`/pages`)
+      history.push(`/home`)
       return null;
     } else if (response.status < 500) {
       const data = await response.json();
