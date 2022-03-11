@@ -127,7 +127,7 @@ home .new-page {
   margin-top: 40px;
 }
 
-home .bottom-links, home button {
+home .bottom-link, home button {
   border: none;
   padding: 0;
   color: cornflowerblue;
@@ -149,6 +149,6 @@ home vr {
   transform: translateY(4px);
 }
 
-home .bottom-links:hover, home button:hover, home ul li a:hover {
+home .bottom-link:hover, home button:hover, home ul li a:hover {
   text-decoration: underline;
 }
