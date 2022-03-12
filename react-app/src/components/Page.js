@@ -100,9 +100,12 @@ function Page() {
           <li><strong>contact</strong>: {page.contact}</li>
       </ul> */}
       <ul class="user-links-ul">
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li> : null } <vr/>
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/home`}>home</NavLink></li> : null } <vr/>
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li> : null } <vr/>
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li> : null }
+        {currUserId && currUserId == page.userId ? <vr/> : null}
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/home`}>home</NavLink></li> : null }
+        {currUserId && currUserId == page.userId ? <vr/> : null}
+        {currUserId && currUserId == page.userId ? <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li> : null } 
+        {currUserId && currUserId == page.userId ? <vr/> : null}
         {currUserId && currUserId == page.userId ? <li><button onClick={handleDelete}>delete page</button></li> : null }
       </ul>
       {/* { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null } */}
