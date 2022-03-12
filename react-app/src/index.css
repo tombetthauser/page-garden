@@ -38,16 +38,26 @@ splash h1 {
   font-weight: 100;
 }
 
+splash vr {
+  width: 5px;
+  margin-right: 5px;
+  height: 15px;
+  display: inline-block;
+  border-right: 1px solid cornflowerblue;
+  transform: translateY(4px);
+}
+
 navbar {
   margin-bottom: 70px;
 }
 
-splash a {
-  color: dodgerblue;
+splash a, splash .logout-button {
+  color: cornflowerblue;
   margin-right: 2.5px;
   margin-left: 2.5px;
   font-size: 15px;
   text-transform: lowercase;
+  text-decoration: none;
 }
 
 navbar a {
@@ -188,12 +198,16 @@ page .links-ul li a {
   font-size: 15px;
 }
 
+page .post-li a p {
+  font-size: 14px;
+}
+
 page .page-contact {
   font-size: 15px;
 }
 
 page .page-text {
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 0px;
 }
 
@@ -209,7 +223,7 @@ page .user-links-ul {
 
 page .user-links-ul li {
   list-style: none;
-  display: inline-block;;
+  display: inline-block;
 }
 
 page .user-links-ul button {
@@ -221,12 +235,13 @@ page .user-links-ul button {
   font-size: 12px;
   font-family: serif;
   padding: 0;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 page .user-links-ul li a {
   color: cornflowerblue;
   font-size: 12px;
+  text-decoration: none;
 }
 
 page vr {
@@ -245,6 +260,17 @@ page .posts-ul {
 
 page .posts-ul li {
   list-style: none;
+  margin-bottom: 50px;
+}
+
+page .posts-ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+page .posts-ul li h2 {
+  font-weight: 100;
+  margin-top: 0;
 }
 
 post .post-li {
@@ -258,4 +284,85 @@ post .post-li img {
 post li.post-li a h3 {
   text-decoration: none;
   color: black;
+}
+
+signup, login, postcreate, postedit {
+  width: 325px;
+  display: block;
+  margin: auto;
+}
+
+login form, signup form, postcreate form, postedit form, pagecreate form, pageedit form {
+  border: 0.5px solid black;
+  border-radius: 5px;
+  padding: 35px 50px;
+  margin-bottom: 20px;
+}
+
+login h1, signup h1, postcreate h1, postedit h1, pagecreate h1, pageedit h1 {
+  font-weight: 100;
+  margin-top: 75px;
+}
+
+login label, signup label, postcreate label, postedit label, pagecreate label, pageedit label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+login input, signup input, postcreate input, postedit input, pagecreate input, pageedit input {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 12px;
+  width: 200px;
+  font-family: serif;
+  padding: 4px 7px;
+}
+
+login button:hover, signup button:hover, postcreate button:hover, postedit button:hover, pagecreate button:hover, pageedit button:hover {
+  cursor: pointer;
+}
+
+login button, signup button, postcreate button, postedit button, pagecreate button, pageedit button {
+  display: block;
+  font-size: 14px;
+  margin-top: 25px;
+  width: 100px;
+  color: cornflowerblue;
+  font-family: serif;
+  padding: 5px 12px;
+  background-color: #00000000;
+  border: 1px solid cornflowerblue;
+  border-radius: 5px;
+}
+
+
+login a, signup a, postcreate a, postedit a, pagecreate a, pageedit a {
+  border: none;
+  padding: 0;
+  color: cornflowerblue;
+  text-decoration: none;
+  width: fit-content;
+  background-color: #00000000;
+  font-family: serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+login vr, signup vr, postcreate vr, postedit vr, pagecreate vr, pageedit vr {
+  width: 5px;
+  margin-right: 5px;
+  height: 15px;
+  display: inline-block;
+  border-right: 1px solid cornflowerblue;
+  transform: translateY(4px);
+}
+
+signup breakline {
+  display: block;
+  width: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background-color: rebeccapurple;
+  /* border-bottom: 0.5px solid black; */
 }

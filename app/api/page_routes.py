@@ -90,7 +90,8 @@ def edit_message(page_id):
 # ~~~~~~~~~~~ All Page Posts ~~~~~~~~~~~ 
 @page_routes.route('/<page_id>/posts', methods=['GET'])
 def all_page_posts(page_id):
-  posts = Post.query.filter_by(pageId=page_id).all()
+  posts = Post.query.filter_by(pageId=page_id).order_by(Post.id.desc()).all()
+        # User.query.order_by(User.popularity.desc(),User.date_created.desc()).limit(10).all()
   return {'posts': [post.to_dict() for post in posts]}
 
 

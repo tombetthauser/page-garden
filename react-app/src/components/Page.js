@@ -59,8 +59,11 @@ function Page() {
     return (
       <li class="post-li" key={post.id}>
         <NavLink to={`/${page.url}/${post.id}`}> 
-          {post.imageUrl ? <img src={post.imageUrl} /> : null}
-          {post.title ? <h3>{post.title}</h3> : null}
+          {post.title ? <h2>{post.title}</h2> : null}
+          {post.imageUrl ? (<div style={{ display: "block", height: '333px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null}
+          {/* {post.imageUrl ? (<div style={{ display: "block", height: '500px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
+          {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
+          {/* {post.imageUrl ? <img src={post.imageUrl} /> : null} */}
           {post.text ? <p>{post.text}</p> : null}
         </NavLink>
       </li>

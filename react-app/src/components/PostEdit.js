@@ -79,21 +79,23 @@ const PostEdit = () => {
   const updateDate = (e) => { setDate(e.target.value) };
 
   return (
-    <form onSubmit={onSubmit}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
-      <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
-      <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
-      <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location}></input></div>
-      <div><label>LinkText</label><input type='text' name='linkText' onChange={updateLinkText} value={linkText}></input></div>
-      <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={updateLinkUrl} value={linkUrl}></input></div>
-      <div><label>Date</label><input type='text' name='date' onChange={updateDate} value={date}></input></div>
-      <button type='submit'>Update Post!</button>
-    </form>
+    <postedit>
+      <form onSubmit={onSubmit}>
+        <div>
+          {errors.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
+        <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
+        <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
+        <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location}></input></div>
+        <div><label>LinkText</label><input type='text' name='linkText' onChange={updateLinkText} value={linkText}></input></div>
+        <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={updateLinkUrl} value={linkUrl}></input></div>
+        <div><label>Date</label><input type='text' name='date' onChange={updateDate} value={date}></input></div>
+        <button type='submit'>Update Post!</button>
+      </form>
+    </postedit>
   );
 };
 
