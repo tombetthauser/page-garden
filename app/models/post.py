@@ -5,7 +5,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     pageId = db.Column(db.Integer, db.ForeignKey('pages.id'), nullable=False)
-    imageUrl = db.Column(db.String(255), nullable=False)
+    imageUrl = db.Column(db.String(255), nullable=False) # <----------------- have to remove unique constraint for blank inputs
     # aspectRatio = db.Column(db.String(255), nullable=False) # <----------------- consider adding, regulated with a dropdown [unchanged, square, 3/4]
     title = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text(), nullable=True)

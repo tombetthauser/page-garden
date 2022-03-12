@@ -349,7 +349,7 @@ login a, signup a, postcreate a, postedit a, pagecreate a, pageedit a {
   cursor: pointer;
 }
 
-login vr, signup vr, postcreate vr, postedit vr, pagecreate vr, pageedit vr {
+login vr, signup vr, page vr, postcreate vr, postedit vr, pagecreate vr, pageedit vr {
   width: 5px;
   margin-right: 5px;
   height: 15px;

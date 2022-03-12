@@ -19,6 +19,10 @@ class Page(db.Model):
     link2Url = db.Column(db.String(2048), nullable=True)
     link3Text = db.Column(db.String(255), nullable=True)
     link3Url = db.Column(db.String(2048), nullable=True)
+    # link4Text = db.Column(db.String(255), nullable=True) <------------- consider adding more links
+    # link4Url = db.Column(db.String(2048), nullable=True)
+    # link5Text = db.Column(db.String(255), nullable=True)
+    # link5Url = db.Column(db.String(2048), nullable=True)
     contact = db.Column(db.String(255), nullable=True)
     posts = db.relationship('Post', back_populates='page', cascade="all, delete")
 
