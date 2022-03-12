@@ -56,47 +56,63 @@ function Page() {
   };
   
   const handleMoveToTop = (movePost) => {
-    (async () => {
-      // delete old version of post
-      await await fetch(`/api/posts/${movePost.id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ page_id: movePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
-      });
-      
-      // create new duplicate post
-      await await fetch(`/api/posts/new`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ 
-          pageId: movePost.pageId,
-          imageUrl: movePost.imageUrl,
-          title: movePost.title,
-          text: movePost.text,
-          location: movePost.location,
-          linkText: movePost.linkText,
-          linkUrl: movePost.linkUrl,
-          date: movePost.date,
-        }),
-      });
-      
-      // redirect back to page
-      history.push(`/pages/${movePost.pageId}`)
-    })();
+    const isConfirmed = window.confirm("This can't be undone, are you sure?")
+    if (isConfirmed) {
+      (async () => {
+        // delete old version of post
+        await await fetch(`/api/posts/${movePost.id}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ page_id: movePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
+        });
+        
+        // create new duplicate post
+        await await fetch(`/api/posts/new`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ 
+            pageId: movePost.pageId,
+            imageUrl: movePost.imageUrl,
+            title: movePost.title,
+            text: movePost.text,
+            location: movePost.location,
+            linkText: movePost.linkText,
+            linkUrl: movePost.linkUrl,
+            date: movePost.date,
+          }),
+        });
+        
+        // redirect back to page
+        // history.push(`/pages/${movePost.pageId}`)
+      })();
+    }
+  }
+  
+  const handlePostDelete = (deletePost) => {
+    const isConfirmed = window.confirm("This can't be undone, are you sure?")
+    if (isConfirmed) {
+      (async () => {
+        await await fetch(`/api/posts/${deletePost.id}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ page_id: deletePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
+        });
+      })();
+    }
   }
 
   const postComponents = posts.map((post) => {
     return (
       <li class="post-li" key={post.id}>
-        <NavLink to={`/${page.url}/${post.id}`}> 
           {post.title ? <h2>{post.title}</h2> : null}
           {post.imageUrl ? (<div style={{ display: "block", height: '333px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null}
           {/* {post.imageUrl ? (<div style={{ display: "block", height: '500px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
           {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
           {/* {post.imageUrl ? <img src={post.imageUrl} /> : null} */}
           {post.text ? <p>{post.text}</p> : null}
-          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>(move to top)</button></li> : null}
-        </NavLink>
+          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li> : null}
+          {currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink> : null}
+          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handlePostDelete(post)}>delete post</button></li> : null}
       </li>
     );
   })
