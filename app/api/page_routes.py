@@ -96,7 +96,7 @@ def all_page_posts(page_id):
 
 
 # ~~~~~~~~~~~ Delete ~~~~~~~~~~~ 
-@page_routes.route('/<page_id>', methods=['DELETE'])
+@page_routes.route('/<page_id>', methods=['DELETE']) # <------- this might be super unsafe since any logged in user could delete any post just from the api route?
 @login_required
 def delete_page(page_id):
     page = Page.query.filter_by(id=page_id).one()

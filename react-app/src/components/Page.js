@@ -54,6 +54,36 @@ function Page() {
     });
     if (res.ok) history.push(`/home`);
   };
+  
+  const handleMoveToTop = (movePost) => {
+    (async () => {
+      // delete old version of post
+      await await fetch(`/api/posts/${movePost.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ page_id: movePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
+      });
+      
+      // create new duplicate post
+      await await fetch(`/api/posts/new`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          pageId: movePost.pageId,
+          imageUrl: movePost.imageUrl,
+          title: movePost.title,
+          text: movePost.text,
+          location: movePost.location,
+          linkText: movePost.linkText,
+          linkUrl: movePost.linkUrl,
+          date: movePost.date,
+        }),
+      });
+      
+      // redirect back to page
+      history.push(`/pages/${movePost.pageId}`)
+    })();
+  }
 
   const postComponents = posts.map((post) => {
     return (
@@ -65,6 +95,7 @@ function Page() {
           {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
           {/* {post.imageUrl ? <img src={post.imageUrl} /> : null} */}
           {post.text ? <p>{post.text}</p> : null}
+          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>(move to top)</button></li> : null}
         </NavLink>
       </li>
     );
