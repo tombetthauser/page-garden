@@ -3,8 +3,30 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
+const randomName = () => {
+  const randomNames = [
+    "Minstagram",
+    "Nullstagram",
+    `${"hello"/2}stagram`,
+    "Nonestagram",
+    "Unstagram",
+    "Uninstagram",
+    "Notstagram",
+    "Notinstagram",
+    "Studiogram",
+    "tomstagram",
+    "Deltagram",
+  ]
+
+  const randomIdx = Math.floor(Math.random() * randomNames.length);
+
+  return randomNames[randomIdx];
+}
+
 const Splash = () => {
   const currUser = useSelector(state => state.session.user)
+  
+  const name = randomName();
 
   return (
     <splash>
@@ -14,9 +36,10 @@ const Splash = () => {
         No likes, no follows, no snitches.<br />
         Good luck finding anything!
       </p> */}
-      <h1 class="center-text">tomstagram</h1>
+      {/* <h1 class="center-text">Notinstagram</h1> */}
+      <h1 class="center-text">{name}</h1>
       <p class="center-text">
-        Welcome to tomstgram.<br />
+        Welcome to {name}.<br />
         It's mine, make your own website.<br />
         Or go back to <a href="https://instagram.com">Instagram</a> maybe.<br />
         It's ok if you stay too.

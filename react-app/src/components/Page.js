@@ -101,18 +101,33 @@ function Page() {
     }
   }
 
+  const handleLogout = () => {
+    (async () => {
+      await fetch('/api/auth/logout');
+      history.go(0);
+    })();
+  }
+
   const postComponents = posts.map((post) => {
     return (
       <li class="post-li" key={post.id}>
           {post.title ? <h2>{post.title}</h2> : null}
-          {post.imageUrl ? (<div style={{ display: "block", height: '333px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null}
+
+          {post.imageUrl ? (<div class="postimg-div" style={{ backgroundImage: `url(${post.imageUrl}`}}></div>) : null}
           {/* {post.imageUrl ? (<div style={{ display: "block", height: '500px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
           {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
           {/* {post.imageUrl ? <img src={post.imageUrl} /> : null} */}
+
           {post.text ? <p>{post.text}</p> : null}
-          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li> : null}
-          {currUserId && currUserId == page.userId ? <NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink> : null}
-          {currUserId && currUserId == page.userId ? <li><button class="movetop-button" onClick={() => handlePostDelete(post)}>delete post</button></li> : null}
+        { currUserId && currUserId == page.userId ? (
+          <ul class="user-links-ul">
+            <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li>
+            <vr/>
+            <li><NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink></li>
+            <vr/>
+            <li><button class="movetop-button" onClick={() => handlePostDelete(post)}>delete post</button></li>
+          </ul>
+        ) : null }
       </li>
     );
   })
@@ -131,33 +146,19 @@ function Page() {
         { page.link3Url ? <li><a href={page.link3Url} target="new">{page.link3Text || page.link3Url}</a></li> : null }
       </ul>
       { page.contact ? <p class="page-contact">{page.contact}</p> : null }
-      {/* <ul>
-          <li><strong>id</strong>: {page.id}</li>
-          <li><strong>userId</strong>: {page.userId}</li>
-          <li><strong>url</strong>: {page.url}</li>
-          <li><strong>title</strong>: {page.title}</li>
-          <li><strong>text</strong>: {page.text}</li>
-          <li><strong>location</strong>: {page.location}</li>
-          <li><strong>link1Text</strong>: {page.link1Text}</li>
-          <li><strong>link1Url</strong>: {page.link1Url}</li>
-          <li><strong>link2Text</strong>: {page.link2Text}</li>
-          <li><strong>link2Url</strong>: {page.link2Url}</li>
-          <li><strong>link3Text</strong>: {page.link3Text}</li>
-          <li><strong>link3Url</strong>: {page.link3Url}</li>
-          <li><strong>contact</strong>: {page.contact}</li>
-      </ul> */}
-      <ul class="user-links-ul">
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li> : null }
-        {currUserId && currUserId == page.userId ? <vr/> : null}
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/home`}>home</NavLink></li> : null }
-        {currUserId && currUserId == page.userId ? <vr/> : null}
-        {currUserId && currUserId == page.userId ? <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li> : null } 
-        {currUserId && currUserId == page.userId ? <vr/> : null}
-        {currUserId && currUserId == page.userId ? <li><button onClick={handleDelete}>delete page</button></li> : null }
-      </ul>
-      {/* { currUserId && page.userId == currUserId ? <li><NavLink to={`/pages/${pageId}/posts/new`} exact={true} activeClassName='acti{ve'>New Post</NavLink></li> : null } */}
-      {/* { currUserId && currUserId == page.userId ? <NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink> : null }
-      { currUserId && currUserId == page.userId ? <button onClick={handleDelete}>delete page</button> : null } */}
+      { currUserId && currUserId == page.userId ? (
+        <ul class="user-links-ul">
+          <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li>
+          <vr/>
+          <li><NavLink to={`/home`}>home</NavLink></li>
+          <vr/>
+          <li><button onClick={handleLogout}>logout</button></li>
+          <vr/>
+          <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li>
+          <vr/>
+          <li><button onClick={handleDelete}>delete page</button></li>
+        </ul>
+      ) : null }
       <ul class="posts-ul">
         {postComponents}
       </ul>
