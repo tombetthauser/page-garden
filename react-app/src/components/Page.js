@@ -113,10 +113,10 @@ function Page() {
       <li class="post-li" key={post.id}>
           {post.title ? <h2>{post.title}</h2> : null}
 
-          {post.imageUrl ? (<div class="postimg-div" style={{ backgroundImage: `url(${post.imageUrl}`}}></div>) : null}
+          {/* {post.imageUrl ? (<div class="postimg-div" style={{ backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
           {/* {post.imageUrl ? (<div style={{ display: "block", height: '500px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
           {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
-          {/* {post.imageUrl ? <img src={post.imageUrl} /> : null} */}
+          {post.imageUrl ? <img src={post.imageUrl} /> : null}
 
           {post.text ? <p>{post.text}</p> : null}
         { currUserId && currUserId == page.userId ? (
