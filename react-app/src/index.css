@@ -10,7 +10,7 @@ body {
   max-width: 80%;
   min-width: 375px;
   display: block;
-  margin: 20px auto;
+  margin: 20px auto 150px auto;
 }
 
 img {
@@ -191,8 +191,8 @@ page h1 {
 
 page .links-ul {
   padding-left: 0;
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 page .links-ul li {
@@ -211,6 +211,9 @@ page .post-li a p {
 
 page .page-contact {
   font-size: 15px;
+  color: black;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 page .page-text {
@@ -220,7 +223,7 @@ page .page-text {
 
 page .page-location {
   font-size: 15px;
-  margin-top: 10px;
+  margin-top: 17.5px;
   margin-bottom: 17.5px;
 }
 
@@ -231,6 +234,10 @@ page .user-links-ul {
   margin-top: 10px;
   height: 22px;
   border-top: .5px solid cornflowerblue;
+}
+
+page .pageheader .user-links-ul {
+  margin-top: 25px;
 }
 
 page .user-links-ul li {
@@ -288,7 +295,13 @@ page .posts-ul li h2 {
 
 page .posts-ul p {
   font-weight: 100;
+  font-size: 15px;
+  margin-top: 10px;
   margin-bottom: 3px;
+}
+
+page .pageheader {
+  margin-bottom: 100px;
 }
 
 post .post-li {

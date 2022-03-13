@@ -3,11 +3,12 @@ import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
+
 const randomName = () => {
   const randomNames = [
     "Minstagram",
     "Nullstagram",
-    `${"hello"/2}stagram`,
+    `${0/0}stagram`,
     "Nonestagram",
     "Unstagram",
     "Uninstagram",
@@ -16,6 +17,26 @@ const randomName = () => {
     "Studiogram",
     "tomstagram",
     "Deltagram",
+    "Fosstagram",
+    "Freestagram",
+    "Libragram",
+    "Funkstagram",
+    "Whatstagram",
+    "Winstagram",
+    "Nutstagram",
+    "Buttstagram",
+    "Bugstagram",
+    "Bustagram",
+    "Flipstagram",
+    "Smellstagram",
+    "Stinkstagram",
+    "Outstagram",
+    "Catstagram",
+    "Dogstagram",
+    "Mingram",
+    "Bugstagram",
+    "Margatsni",
+    "Zillagram",
   ]
 
   const randomIdx = Math.floor(Math.random() * randomNames.length);

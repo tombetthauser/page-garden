@@ -5,6 +5,7 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 function Page() {
   const [page, setPage] = useState({});
   const [posts, setPosts] = useState([]);
+  const [secretClick, setSecretClick] = useState(false);
   const { pageId, pageUrl } = useParams();
   
   const history = useHistory();
@@ -109,6 +110,10 @@ function Page() {
   }
 
   const postComponents = posts.map((post) => {
+    if (secretClick) {
+      setSecretClick(false);
+    }
+
     return (
       <li class="post-li" key={post.id}>
           {post.title ? <h2>{post.title}</h2> : null}
@@ -135,30 +140,40 @@ function Page() {
   if (!page) return null;
   console.log(page)
 
+  window.addEventListener('click', function (evt) {
+    if (evt.detail === 5) {
+      // alert("hello")
+      history.push('/');
+      history.go(0);
+    }
+  });
+
   return (
     <page>
-      { page.title ? <h1>{page.title}</h1> : null }
-      { page.text ? <p class="page-text">{page.text}</p> : null }
-      { page.location ? <p class="page-location">📍 {page.location}</p> : null }
-      <ul class="links-ul">
-        { page.link1Url ? <li><a href={page.link1Url} target="new">{page.link1Text || page.link1Url}</a></li> : null }
-        { page.link2Url ? <li><a href={page.link2Url} target="new">{page.link2Text || page.link2Url}</a></li> : null }
-        { page.link3Url ? <li><a href={page.link3Url} target="new">{page.link3Text || page.link3Url}</a></li> : null }
-      </ul>
-      { page.contact ? <p class="page-contact">{page.contact}</p> : null }
-      { currUserId && currUserId == page.userId ? (
-        <ul class="user-links-ul">
-          <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li>
-          <vr/>
-          <li><NavLink to={`/home`}>home</NavLink></li>
-          <vr/>
-          <li><button onClick={handleLogout}>logout</button></li>
-          <vr/>
-          <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li>
-          <vr/>
-          <li><button onClick={handleDelete}>delete page</button></li>
+      <div class="pageheader">
+        { page.title ? <h1>{page.title}</h1> : null }
+        { page.text ? <p class="page-text">{page.text}</p> : null }
+        { page.location ? <p class="page-location">📍 {page.location}</p> : null }
+        <ul class="links-ul">
+          { page.link1Url ? <li><a href={page.link1Url} target="new">{page.link1Text || page.link1Url}</a></li> : null }
+          { page.link2Url ? <li><a href={page.link2Url} target="new">{page.link2Text || page.link2Url}</a></li> : null }
+          { page.link3Url ? <li><a href={page.link3Url} target="new">{page.link3Text || page.link3Url}</a></li> : null }
         </ul>
-      ) : null }
+        { page.contact ? <p class="page-contact">{page.contact}</p> : null }
+        { currUserId && currUserId == page.userId ? (
+          <ul class="user-links-ul">
+            <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li>
+            <vr/>
+            <li><NavLink to={`/home`}>home</NavLink></li>
+            <vr/>
+            <li><button onClick={handleLogout}>logout</button></li>
+            <vr/>
+            <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li>
+            <vr/>
+            <li><button onClick={handleDelete}>delete page</button></li>
+          </ul>
+        ) : null }
+      </div>
       <ul class="posts-ul">
         {postComponents}
       </ul>
