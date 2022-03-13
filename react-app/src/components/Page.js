@@ -47,13 +47,16 @@ function Page() {
   }, [page, pageId, pageUrl]);
 
   const handleDelete = async (e) => {
-    e.preventDefault();
-    const res = await fetch(`/api/pages/${page.id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ page_id: page.id }),
-    });
-    if (res.ok) history.push(`/home`);
+    const isConfirmed = window.confirm("This can't be undone, are you sure?")
+    if (isConfirmed) {
+      e.preventDefault();
+      const res = await fetch(`/api/pages/${page.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ page_id: page.id }),
+      });
+      if (res.ok) history.push(`/home`);
+    }
   };
   
   const handleMoveToTop = (movePost) => {
