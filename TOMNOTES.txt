@@ -27,8 +27,20 @@ $ npm start
 
 pl[$ touch app/models/foo.py
 import Foo model into app/models/__init__.py
+Note - you have to drop and recreate the db before migrations can be re-generated
 $ pipenv run flask db migrate -m "Meaningless message"
 $ pipenv run flask db upgrade
 
+
+deploying:
+$ pipenv lock -r > requirements.txt
+$ heroku container:push web -a minstagram-beta
+$ heroku container:release web -a minstagram-beta
+
+for problems like 500 server error in browser
+$ heroku logs -a minstagram-beta
+
+Heroku will set a DATABASE_URL for you in Config Vars (section in heroku browser interface)
+But you will need to set a SECRET_KEY there too
 
 https://github.com/appacademy-starters/python-project-starter

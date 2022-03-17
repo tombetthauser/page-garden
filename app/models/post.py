@@ -6,7 +6,8 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     pageId = db.Column(db.Integer, db.ForeignKey('pages.id'), nullable=False)
     imageUrl = db.Column(db.String(255), nullable=False) # <----------------- have to remove unique constraint for blank inputs
-    # aspectRatio = db.Column(db.String(255), nullable=False) # <----------------- consider adding, regulated with a dropdown [unchanged, square, 3/4]
+    aspectRatio = db.Column(db.String(255), nullable=True) # <----------------- consider adding, regulated with a dropdown [unchanged, square, 3/4]
+    imageRotation = db.Column(db.Integer, nullable=True) # 
     title = db.Column(db.String(255), nullable=True)
     text = db.Column(db.Text(), nullable=True)
     location = db.Column(db.String(255), nullable=True)
@@ -20,6 +21,8 @@ class Post(db.Model):
           'id': self.id,
           'pageId': self.pageId,
           'imageUrl': self.imageUrl,
+          'aspectRatio': self.aspectRatio,
+          'imageRotation': self.imageRotation,
           'title': self.title,
           'text': self.text,
           'location': self.location,
