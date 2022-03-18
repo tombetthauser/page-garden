@@ -97,6 +97,14 @@ splash button {
   margin-left: 2.5px;
 }
 
+#root home {
+  max-width: 85%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* display: ; */
+}
+
 home h1 {
   font-weight: 100;
   text-transform: lowercase;
