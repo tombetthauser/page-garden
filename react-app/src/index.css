@@ -397,3 +397,9 @@ signup breakline {
   background-color: rebeccapurple;
   /* border-bottom: 0.5px solid black; */
 }
+
+/* @media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+} */
