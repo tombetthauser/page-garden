@@ -19,8 +19,9 @@ import PostEdit from './components/PostEdit';
 import Splash from './components/Splash';
 import Home from './components/Home';
 import UserEdit from './components/UserEdit';
-// import PostsList from './components/PostsList';
+import PostsList from './components/PostsList';
 
+import UploadPicture from './components/UploadPicture';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,9 +49,11 @@ function App() {
           Catstagram Duckstagram Kushtagram
       */}
       <Switch>
+        <Route path='/test' exact={true}><UploadPicture/></Route>
         <Route path='/login' exact={true}><LoginForm/></Route>
         <Route path='/sign-up' exact={true}><SignUpForm/></Route>
         <Route path='/pages' exact={true}><PagesList/></Route>
+        <Route path='/posts' exact={true}><PostsList/></Route>
         <ProtectedRoute path='/pages/new' exact={true}><PageCreate/></ProtectedRoute>
         <Route path='/pages/:pageId' exact={true}><Page/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
