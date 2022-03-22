@@ -19,7 +19,8 @@ def image_url_used(form, field):
 
 class NewPostForm(FlaskForm):
   pageId = StringField('pageId', validators=[DataRequired(), bad_page_id])
-  imageUrl = StringField('imageUrl', validators=[image_url_used])
+  # imageUrl = StringField('imageUrl', validators=[image_url_used])
+  imageUrl = StringField('imageUrl')
   title = StringField('title')
   text = StringField('text')
   location = StringField('location')
