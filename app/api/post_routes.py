@@ -3,6 +3,9 @@ from app.models import Post, db
 from flask_login import login_required
 from app.forms import NewPostForm
 
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
 post_routes = Blueprint('posts', __name__)
 
 
@@ -50,6 +53,51 @@ def create_post():
     return post.to_dict()
   else:
     return {'errors': error_messages(form.errors)}, 401
+
+
+
+# ~~~~~~~~~~~ Dummy Create Image Working! ~~~~~~~~~~~ 
+@post_routes.route("test", methods=["POST"])
+@login_required
+def upload_image():
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+    
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    # new_image = Image(user=current_user, url=url)
+    # db.session.add(new_image)
+    # db.session.commit()
+
+    post = Post(
+      pageId = 1,
+      imageUrl = url,
+      title = "from the image_routes!",
+      text = "",
+      location = "",
+      linkText = "",
+      linkUrl = "",
+      date = "",
+    )
+    db.session.add(post)
+    db.session.commit()
+    return post.to_dict()
+
 
 
 # ~~~~~~~~~~~ Edit ~~~~~~~~~~~ 

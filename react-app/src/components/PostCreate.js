@@ -100,6 +100,7 @@ const PostCreate = () => {
 
         {/* <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div> */}
         <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
+
         <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
         <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
         <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location}></input></div>
@@ -114,3 +115,64 @@ const PostCreate = () => {
 };
 
 export default PostCreate;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // // from test image upload form component
+
+    // // const history = useHistory(); // so that we can redirect after the image upload is successful
+    // const [image, setImage] = useState(null);
+    // const [imageLoading, setImageLoading] = useState(false);
+
+    // const handleImageSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     formData.append("image", image);
+        
+    //     setImageLoading(true); 
+    //     const res = await fetch('/api/posts/test', {
+    //         method: "POST",
+    //         body: formData,
+    //     });
+    //     if (res.ok) {
+    //         await res.json();
+    //         setImageLoading(false);
+    //         history.push("/success!");
+    //     }
+    //     else {
+    //         setImageLoading(false);
+    //         console.log("error")
+    //     }
+    // }
+    
+    // const updateImage = (e) => {
+    //     const file = e.target.files[0];
+    //     setImage(file);
+    // }
+
+
+    // <form onSubmit={handleImageSubmit}>
+    //     <input
+    //       type="file"
+    //       accept="image/*"
+    //       onChange={updateImage}
+    //     />
+    //     <button type="submit">Submit</button>
+    //     { imageLoading ? <p>Loading...</p> : null }
+    // </form>
+

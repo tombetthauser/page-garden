@@ -6,16 +6,14 @@ const UploadPicture = () => {
     const history = useHistory(); // so that we can redirect after the image upload is successful
     const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         formData.append("image", image);
         
-        // aws uploads can be a bit slow—displaying
-        // some sort of loading message is a good idea
-        
         setImageLoading(true); 
-        const res = await fetch('/api/images', {
+        const res = await fetch('/api/posts/test', {
             method: "POST",
             body: formData,
         });

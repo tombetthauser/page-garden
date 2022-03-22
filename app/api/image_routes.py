@@ -37,7 +37,7 @@ def upload_image():
     post = Post(
       pageId = 1,
       imageUrl = url,
-      title = "",
+      title = "from the image_routes!",
       text = "",
       location = "",
       linkText = "",
