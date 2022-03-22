@@ -44,3 +44,17 @@ Heroku will set a DATABASE_URL for you in Config Vars (section in heroku browser
 But you will need to set a SECRET_KEY there too
 
 https://github.com/appacademy-starters/python-project-starter
+
+
+
+
+AWS Issues
+
+* had to find acl access option and switch it on
+* it was buried in the bucket settings but it was also a switch on the first page of making a new bucket
+* also had to run $ pipenv lock -r > requirements.txt to update requirements
+* then had to manually update the docker file with...
+    $ heroku container:push web -a minstagram-beta
+    $ heroku container:release web -a minstagram-beta
+* then had to manually add the environment variables on heroku
+* that was it!
