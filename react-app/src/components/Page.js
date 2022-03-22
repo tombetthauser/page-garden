@@ -18,17 +18,17 @@ function Page() {
 
   useEffect(() => {
     if (!pageId && !pageUrl) return;
-
+  
     if (page && page.title) {
       document.querySelector("title").innerHTML = page.title
     }
-
+  
     if (pageUrl) {
       (async () => {
         const response = await fetch(`/api/pages/urls/${pageUrl}`);
         const page = await response.json();
         setPage(page);
-
+  
         const response2 = await fetch(`/api/pages/${page.id}/posts`);
         const response2Data = await response2.json();
         setPosts(response2Data.posts)
@@ -88,6 +88,7 @@ function Page() {
         
         // redirect back to page
         // history.push(`/pages/${movePost.pageId}`)
+        history.go(0);
       })();
     }
   }
@@ -101,6 +102,7 @@ function Page() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ page_id: deletePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
         });
+        history.go(0);
       })();
     }
   }
