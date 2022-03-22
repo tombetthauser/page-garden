@@ -44,7 +44,7 @@ function Page() {
         setPosts(response2Data.posts)
       })();
     }
-  }, [page, pageId, pageUrl]);
+  }, [pageId, pageUrl]);
 
   const handleDelete = async (e) => {
     const isConfirmed = window.confirm("This can't be undone, are you sure?")
