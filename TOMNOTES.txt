@@ -50,8 +50,12 @@ https://github.com/appacademy-starters/python-project-starter
 
 AWS Issues
 
+* followed a/A instructions but there were a couple critical gaps
+* https://hackmd.io/@app-academy/SyaRvp23d
+* confirmed with mod 7 team that the gaps were common issues - should be added to instructions
 * had to find acl access option and switch it on
 * it was buried in the bucket settings but it was also a switch on the first page of making a new bucket
+* https://stackoverflow.com/questions/70333681/for-an-amazon-s3-bucket-deplolyent-from-guithub-how-do-i-fix-the-error-accesscon
 * also had to run $ pipenv lock -r > requirements.txt to update requirements
 * then had to manually update the docker file with...
     $ heroku container:push web -a minstagram-beta
