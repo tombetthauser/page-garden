@@ -64,6 +64,8 @@ def upload_image():
         return {"errors": "image required"}, 400
 
     image = request.files["image"]
+    form = NewPostForm()
+    print("\n\n", {"form.data":form.data}, "<--------------------------------------------------\n\n")
 
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
@@ -87,7 +89,7 @@ def upload_image():
     post = Post(
       pageId = 1,
       imageUrl = url,
-      title = "from the image_routes!",
+      title = "NEW from the image_routes!",
       text = "",
       location = "",
       linkText = "",

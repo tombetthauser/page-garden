@@ -65,6 +65,9 @@ const PostCreate = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    // const imageUrl = await uploadImage(e)
+
     const data = await dispatch(createPost(
       pageId,
       imageUrl,
@@ -100,6 +103,9 @@ const PostCreate = () => {
       e.preventDefault();
       const formData = new FormData();
       formData.append("image", image);
+      // formData.append("title", title);
+      // console.log(formData["image"])
+      // // formData.append("test", "TEST from upload Image formData append!");
       
       setImageLoading(true); 
       const res = await fetch('/api/posts/test', {
@@ -109,7 +115,8 @@ const PostCreate = () => {
       if (res.ok) {
           await res.json();
           setImageLoading(false);
-          history.push("/success!");
+          console.log(`\n\n\n${{res: res}}\n\n\n`)
+          history.push("/posts");
       }
       else {
           setImageLoading(false);
@@ -124,25 +131,35 @@ const PostCreate = () => {
 
   return (
     <postcreate>
+      {/* old image form  */}
       <form onSubmit={handleImageSubmit}>
         <input
           type="file"
           accept="image/*"
           onChange={updateImage}
         />
+        <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
+
         <button type="submit">Submit</button>
         {imageLoading ? <p>Loading...</p> : null}
       </form>
 
 
       <form onSubmit={onSubmit}>
-        <div>
+        {/* <div>
           {errors.map((error, ind) => (
             <div key={ind}>{error}</div>
           ))}
-        </div>
+        </div> */}
+        
+        <input
+          type="file"
+          accept="image/*"
+          onChange={updateImage}
+        />
 
-        {/* <div><label>PageId</label><input type='text' name='pageId' onChange={updatePageId} value={pageId}></input></div> */}
+        {imageLoading ? <p>Loading...</p> : null}
+
         <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
 
         <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
