@@ -82,6 +82,8 @@ const randomName = () => {
     "Frogstagram",
     "Slugstagram",
     "Bugstagram",
+    "Simplegram",
+    "Dullstagram",
     // "Xinstagram = Xin = emotion / feeling / new / toilsome?",
   ]
 

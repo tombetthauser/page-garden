@@ -132,7 +132,7 @@ const PostCreate = () => {
   return (
     <postcreate>
       {/* old image form  */}
-      {/* <form onSubmit={handleImageSubmit}>
+      <form onSubmit={handleImageSubmit}>
         <input
           type="file"
           accept="image/*"
@@ -142,7 +142,7 @@ const PostCreate = () => {
 
         <button type="submit">Submit</button>
         {imageLoading ? <p>Loading...</p> : null}
-      </form> */}
+      </form>
 
 
       <form onSubmit={onSubmit}>
@@ -152,13 +152,13 @@ const PostCreate = () => {
           ))}
         </div> */}
         
-        {/* <input
+        <input
           type="file"
           accept="image/*"
           onChange={updateImage}
         />
 
-        {imageLoading ? <p>Loading...</p> : null} */}
+        {imageLoading ? <p>Loading...</p> : null}
 
         <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={updateImageUrl} value={imageUrl}></input></div>
 

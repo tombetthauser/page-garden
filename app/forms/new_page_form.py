@@ -18,7 +18,7 @@ def bad_user_id(form, field):
 
 class NewPageForm(FlaskForm):
     userId = StringField('userId', validators=[DataRequired(), bad_user_id])
-    url = StringField('url', validators=[DataRequired(), page_exists])
+    # url = StringField('url', validators=[DataRequired(), page_exists])
     title = StringField('title')
     text = StringField('text')
     location = StringField('location')

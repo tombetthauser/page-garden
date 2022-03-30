@@ -1,6 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, Post
 from flask_login import current_user, login_required
+from app.forms import NewPageForm
 from app.s3_helpers import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
@@ -10,6 +11,8 @@ image_routes = Blueprint("images", __name__)
 @image_routes.route("", methods=["POST"])
 @login_required
 def upload_image():
+    form = NewPageForm()
+
     if "image" not in request.files:
         return {"errors": "image required"}, 400
 

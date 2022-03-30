@@ -20,8 +20,10 @@ import Splash from './components/Splash';
 import Home from './components/Home';
 import UserEdit from './components/UserEdit';
 import PostsList from './components/PostsList';
+// import NewPostCreate from './components/NewPostCreate';
+import PostCreateAWS from './components/PostCreateAWS';
 
-import UploadPicture from './components/UploadPicture';
+// import UploadPicture from './components/UploadPicture';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,7 +51,8 @@ function App() {
           Catstagram Duckstagram Kushtagram
       */}
       <Switch>
-        <Route path='/test' exact={true}><UploadPicture/></Route>
+        {/* <Route path='/test' exact={true}><NewPostCreate/></Route> */}
+        {/* <Route path='/test' exact={true}><UploadPicture/></Route> */}
         <Route path='/login' exact={true}><LoginForm/></Route>
         <Route path='/sign-up' exact={true}><SignUpForm/></Route>
         <Route path='/pages' exact={true}><PagesList/></Route>
@@ -73,6 +76,7 @@ function App() {
         <Route path='/home' exact={true}><Home /></Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
         <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreate /></ProtectedRoute>
+        <ProtectedRoute path='/:pageUrl/newaws' exact={true}><PostCreateAWS /></ProtectedRoute>
         <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
         <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
         <Route path='/' exact={true}><Splash /></Route>
