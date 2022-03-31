@@ -14,6 +14,8 @@ function Home() {
 
   useEffect(() => {
     (async () => {
+      document.body.style.zoom = "100%";
+      alert("zoom?")
       const response = await fetch(`/api/users/${currUser.id}`);
       const user = await response.json();
       setUser(user);
