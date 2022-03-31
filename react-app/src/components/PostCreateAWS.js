@@ -4,8 +4,9 @@ import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostCreateAWS = () => {
   // ~~~~~~~~~~~~~~ General Setup ~~~~~~~~~~~~~~
-  const { pageId } = useParams();
+  const { pageUrl } = useParams();
   const history = useHistory();
+  const [pageId, setPageId] = useState([]);
   
   const [errors, setErrors] = useState([]);
   const [image, setImage] = useState(null);
@@ -39,12 +40,12 @@ const PostCreateAWS = () => {
 
   // ~~~~~~~~~~~~~~ Handle Submit ~~~~~~~~~~~~~~
   useEffect(() => {
-    // (async () => {
-      // const response = await fetch(`/api/pages/urls/${pageUrl}`);
-      // const responsePage = await response.json();
-      // setPageId(responsePage.id);
-    // }
-    // )();
+    (async () => {
+      const response = await fetch(`/api/pages/urls/${pageUrl}`);
+      const responsePage = await response.json();
+      setPageId(responsePage.id);
+    }
+    )();
   })
 
   // ~~~~~~~~~~~~~~ Handle Submit ~~~~~~~~~~~~~~
