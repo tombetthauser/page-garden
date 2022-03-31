@@ -116,29 +116,56 @@ def create_post():
 # ~~~~~~~~~~~ AWS Create Route ~~~~~~~~~~~ 
 @post_routes.route('/aws', methods=['POST'])
 def create_aws_post():
-  # form = NewPostForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
+  form = NewPostForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  url = "https://www.aboutmanchester.co.uk/wp-content/uploads/2020/04/DFA6B3F3-EBD2-48C4-A4C7-9BB23067CE01.jpeg"
 
-  # url = "https://www.aboutmanchester.co.uk/wp-content/uploads/2020/04/DFA6B3F3-EBD2-48C4-A4C7-9BB23067CE01.jpeg"
+  if "image" not in request.files:
+    if form.validate_on_submit():
+      post = Post(
+        pageId = form.data["pageId"],
+        imageUrl = form.data["imageUrl"],
+        title = form.data["title"],
+        text = form.data["text"],
+        location = form.data["location"],
+        linkText = form.data["linkText"],
+        linkUrl = form.data["linkUrl"],
+        date = form.data["date"],
+      )
+      db.session.add(post)
+      db.session.commit()
+      return post.to_dict()
 
-  # if form.validate_on_submit():
-    # post = Post(
-    #   pageId = form.data["pageId"],
-    #   imageUrl = url,
-    #   title = form.data["title"],
-    #   text = form.data["text"],
-    #   location = form.data["location"],
-    #   linkText = form.data["linkText"],
-    #   linkUrl = form.data["linkUrl"],
-    #   date = form.data["date"],
-    # )
-    # db.session.add(post)
-    # db.session.commit()
-    # return post.to_dict()
-  #   return {'dummy': 'placeholder'}
-  # else:
-  #   return {'errors': error_messages(form.errors)}, 401
-  return {'dummy': 'placeholder'}
+  else:
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+      return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+      return upload, 400
+
+    url = upload["url"]
+
+    if form.validate_on_submit():
+      post = Post(
+        pageId = form.data["pageId"],
+        imageUrl = url,
+        title = form.data["title"],
+        text = form.data["text"],
+        location = form.data["location"],
+        linkText = form.data["linkText"],
+        linkUrl = form.data["linkUrl"],
+        date = form.data["date"],
+      )
+      db.session.add(post)
+      db.session.commit()
+      return post.to_dict()
+
+  return {'errors': error_messages(form.errors)}, 401
 
 
 

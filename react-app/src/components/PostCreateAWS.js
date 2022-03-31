@@ -106,7 +106,7 @@ const PostCreateAWS = () => {
         <input type="file" accept="image/*" onChange={updateImage} />
         
         <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
-        <div><label>Description</label><input type='text' name='description' onChange={controlDescription} value={description}></input></div>
+        {/* <div><label>Description</label><input type='text' name='description' onChange={controlDescription} value={description}></input></div> */}
         <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div>
         <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div>
         <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div>
