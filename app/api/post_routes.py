@@ -32,63 +32,6 @@ def post(id):
   return post.to_dict()
 
 
-# ~~~~~~~~~~~ Broken Almost Working New Create with Image ~~~~~~~~~~~ 
-# @post_routes.route('/new', methods=['POST'])
-# def create_post():
-#   form = NewPostForm()
-#   form['csrf_token'].data = request.cookies['csrf_token']
-
-#   if "image" in request.files:
-#     image = request.files["image"]
-#     # print("\n\n\n", {
-#     #   "image": image
-#     # }, "\n\n\n")
-#     if not allowed_file(image.filename):
-#       return {"errors": ["File type not permitted"]}, 400
-
-#     image.filename = get_unique_filename(image.filename)
-#     upload = upload_file_to_s3(image)
-
-#     if "url" not in upload:
-#       return upload, 400
-
-#     newImageUrl = upload["url"]
-
-#     if form.validate_on_submit():
-#       post = Post(
-#         url = newImageUrl,
-#         pageId = form.data["pageId"],
-#         title = form.data["title"],
-#         text = form.data["text"],
-#         location = form.data["location"],
-#         linkText = form.data["linkText"],
-#         linkUrl = form.data["linkUrl"],
-#         date = form.data["date"],
-#       )
-#       db.session.add(post)
-#       db.session.commit()
-#       return post.to_dict()
-#     else:
-#       return {'errors': error_messages(form.errors)}, 401
-#   else:
-#     if form.validate_on_submit():
-#       post = Post(
-#         pageId = form.data["pageId"],
-#         title = form.data["title"],
-#         text = form.data["text"],
-#         location = form.data["location"],
-#         linkText = form.data["linkText"],
-#         linkUrl = form.data["linkUrl"],
-#         date = form.data["date"],
-#       )
-#       db.session.add(post)
-#       db.session.commit()
-#       return post.to_dict()
-#     else:
-#       return {'errors': error_messages(form.errors)}, 401
-
-
-
 # ~~~~~~~~~~~ Old Working Create ~~~~~~~~~~~ 
 @post_routes.route('/new', methods=['POST'])
 def create_post():
@@ -112,13 +55,11 @@ def create_post():
     return {'errors': error_messages(form.errors)}, 401
 
 
-
 # ~~~~~~~~~~~ AWS Create Route ~~~~~~~~~~~ 
 @post_routes.route('/aws', methods=['POST'])
 def create_aws_post():
   form = NewPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  url = "https://www.aboutmanchester.co.uk/wp-content/uploads/2020/04/DFA6B3F3-EBD2-48C4-A4C7-9BB23067CE01.jpeg"
 
   if "image" not in request.files:
     if form.validate_on_submit():
@@ -168,54 +109,7 @@ def create_aws_post():
   return {'errors': error_messages(form.errors)}, 401
 
 
-
-# # ~~~~~~~~~~~ Dummy Create Image Working! ~~~~~~~~~~~ 
-# @post_routes.route("test", methods=["POST"])
-# @login_required
-# def upload_image():
-#     if "image" not in request.files:
-#         return {"errors": "image required"}, 400
-
-#     image = request.files["image"]
-#     form = NewPostForm()
-#     print("\n\n", {"form.data":form.data}, "<--------------------------------------------------\n\n")
-
-#     if not allowed_file(image.filename):
-#         return {"errors": "file type not permitted"}, 400
-    
-#     image.filename = get_unique_filename(image.filename)
-
-#     upload = upload_file_to_s3(image)
-
-#     if "url" not in upload:
-#         # if the dictionary doesn't have a url key
-#         # it means that there was an error when we tried to upload
-#         # so we send back that error message
-#         return upload, 400
-
-#     url = upload["url"]
-#     # flask_login allows us to get the current user from the request
-#     # new_image = Image(user=current_user, url=url)
-#     # db.session.add(new_image)
-#     # db.session.commit()
-
-#     post = Post(
-#       pageId = 1,
-#       imageUrl = url,
-#       title = "NEW from the image_routes!",
-#       text = "",
-#       location = "",
-#       linkText = "",
-#       linkUrl = "",
-#       date = "",
-#     )
-#     db.session.add(post)
-#     db.session.commit()
-#     return post.to_dict()
-
-
-
-# ~~~~~~~~~~~ Edit ~~~~~~~~~~~ 
+# ~~~~~~~~~~~ No AWS Edit ~~~~~~~~~~~ 
 @post_routes.route('/<post_id>', methods=['PUT'])
 @login_required
 def edit_message(post_id):
