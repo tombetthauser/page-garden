@@ -362,7 +362,7 @@ login button:hover, signup button:hover, postcreate button:hover, postedit butto
   cursor: pointer;
 }
 
-login button, signup button, postcreate button, postedit button, pagecreate button, pageedit button {
+login .submit-button, signup .submit-button, postcreate .submit-button, postedit .submit-button, pagecreate .submit-button, pageedit .submit-button {
   display: block;
   font-size: 14px;
   margin-top: 25px;
@@ -411,3 +411,11 @@ signup breakline {
     background-color: lightblue;
   }
 } */
+
+.image-input {
+  border: 1px solid #888;
+  /* width: 216px; */
+  border-radius: 3px;
+  padding-top: 6.5px;
+  padding-bottom: 6.5px;
+}

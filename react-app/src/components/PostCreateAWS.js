@@ -14,11 +14,11 @@ const PostCreateAWS = () => {
   const [imageLoading, setImageLoading] = useState(false);
 
   // ~~~~~~~~~~~~~~ Controlled Inputs ~~~~~~~~~~~~~~
-  const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [aspectRatio, setAspectRatio] = useState('');
   const [imageRotation, setImageRotation] = useState('');
+  const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [location, setLocation] = useState('');
   const [linkText, setLinkText] = useState('');
@@ -26,10 +26,10 @@ const PostCreateAWS = () => {
   const [date, setDate] = useState('');
   
   const controlImageUrl = (e) => { setImageUrl(e.target.value) };
-  const controlTitle = (e) => { setTitle(e.target.value) };
   const controlDescription = (e) => { setDescription(e.target.value) };
   const controlAspectRatio = (e) => { setAspectRatio(e.target.value) };
   const controlImageRotation = (e) => { setImageRotation(e.target.value) };
+  const controlTitle = (e) => { setTitle(e.target.value) };
   const controlText = (e) => { setText(e.target.value) };
   const controlLocation = (e) => { setLocation(e.target.value) };
   const controlLinkText = (e) => { setLinkText(e.target.value) };
@@ -52,11 +52,11 @@ const PostCreateAWS = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
+    // formData.append("imageUrl", imageUrl)
     formData.append("image", image);
     formData.append("title", title)
     formData.append("description", description)
     formData.append("pageId", pageId)
-    // formData.append("imageUrl", imageUrl)
     formData.append("aspectRatio", aspectRatio)
     formData.append("imageRotation", imageRotation)
     formData.append("text", text)
@@ -101,23 +101,24 @@ const PostCreateAWS = () => {
           ))}
       </div>
       <form onSubmit={onSubmit}>
-        <label>Image</label>
+        {imagePreview === "#" ? <label>Image</label> : null }
         { imagePreview === "#" ? null : <img src={imagePreview} alt="image preview"/> }
-        { imagePreview === "#" ? <input type="file" accept="image/*" onChange={updateImage} /> : null }
-        { imagePreview === "#" ? null : <button class="remove-image-button" onClick={() => setImagePreview("#")}>remove image</button> }
+        { imagePreview === "#" ? <input class="image-input" type="file" accept="image/*" onChange={updateImage} /> : null }
+        { imagePreview === "#" ? null : <button onClick={() => setImagePreview("#")}>remove image</button> }
+        {imagePreview === "#" ? null : <><br /><br /></> }
         
-        <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
         {/* <div><label>Description</label><input type='text' name='description' onChange={controlDescription} value={description}></input></div> */}
         {/* <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div> */}
         {/* <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div> */}
         {/* <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div> */}
+        <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
         <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text}></input></div>
         <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location}></input></div>
         <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText}></input></div>
         <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl}></input></div>
         <div><label>Date</label><input type='text' name='date' onChange={controlDate} value={date}></input></div>
 
-        <button type="submit">Submit</button>
+        <button class="submit-button" type="submit">Submit</button>
         { imageLoading ? <p>Loading...</p> : null }
       </form>
     </postcreate>
