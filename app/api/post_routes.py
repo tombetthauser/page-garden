@@ -33,30 +33,30 @@ def post(id):
 
 
 # ~~~~~~~~~~~ Old Working Create ~~~~~~~~~~~ 
-@post_routes.route('/new', methods=['POST'])
-def create_post():
-  form = NewPostForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
-  if form.validate_on_submit():
-    post = Post(
-      pageId = form.data["pageId"],
-      imageUrl = form.data["imageUrl"],
-      title = form.data["title"],
-      text = form.data["text"],
-      location = form.data["location"],
-      linkText = form.data["linkText"],
-      linkUrl = form.data["linkUrl"],
-      date = form.data["date"],
-    )
-    db.session.add(post)
-    db.session.commit()
-    return post.to_dict()
-  else:
-    return {'errors': error_messages(form.errors)}, 401
+# @post_routes.route('/new', methods=['POST'])
+# def create_post():
+#   form = NewPostForm()
+#   form['csrf_token'].data = request.cookies['csrf_token']
+#   if form.validate_on_submit():
+#     post = Post(
+#       pageId = form.data["pageId"],
+#       imageUrl = form.data["imageUrl"],
+#       title = form.data["title"],
+#       text = form.data["text"],
+#       location = form.data["location"],
+#       linkText = form.data["linkText"],
+#       linkUrl = form.data["linkUrl"],
+#       date = form.data["date"],
+#     )
+#     db.session.add(post)
+#     db.session.commit()
+#     return post.to_dict()
+#   else:
+#     return {'errors': error_messages(form.errors)}, 401
 
 
 # ~~~~~~~~~~~ AWS Create Route ~~~~~~~~~~~ 
-@post_routes.route('/aws', methods=['POST'])
+@post_routes.route('/new', methods=['POST'])
 def create_aws_post():
   form = NewPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']

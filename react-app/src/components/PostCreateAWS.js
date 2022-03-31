@@ -67,7 +67,7 @@ const PostCreateAWS = () => {
 
 
     setImageLoading(true);
-    const res = await fetch('/api/posts/aws', {
+    const res = await fetch('/api/posts/new', {
       method: "POST",
       body: formData,
     });
@@ -94,22 +94,23 @@ const PostCreateAWS = () => {
   
   // ~~~~~~~~~~~~~~ The Component ~~~~~~~~~~~~~~
   return (
-    <post-create-aws>
+    <postcreate>
       <div>
           {errors?.map((error, ind) => (
             <div key={ind}>&gt; {error}</div>
           ))}
       </div>
       <form onSubmit={onSubmit}>
-        { imagePreview ? <img src={imagePreview} alt="image preview"/> : null }
-
-        <input type="file" accept="image/*" onChange={updateImage} />
+        <label>Image</label>
+        { imagePreview === "#" ? null : <img src={imagePreview} alt="image preview"/> }
+        { imagePreview === "#" ? <input type="file" accept="image/*" onChange={updateImage} /> : null }
+        { imagePreview === "#" ? null : <button class="remove-image-button" onClick={() => setImagePreview("#")}>remove image</button> }
         
         <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
         {/* <div><label>Description</label><input type='text' name='description' onChange={controlDescription} value={description}></input></div> */}
-        <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div>
-        <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div>
-        <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div>
+        {/* <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div> */}
+        {/* <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div> */}
+        {/* <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div> */}
         <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text}></input></div>
         <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location}></input></div>
         <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText}></input></div>
@@ -119,7 +120,7 @@ const PostCreateAWS = () => {
         <button type="submit">Submit</button>
         { imageLoading ? <p>Loading...</p> : null }
       </form>
-    </post-create-aws>
+    </postcreate>
   );
 };
 
