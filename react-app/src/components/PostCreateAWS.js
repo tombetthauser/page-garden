@@ -3,16 +3,18 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
 
 const PostCreateAWS = () => {
-  // const [errors, setErrors] = useState([]);
-  // const { pageUrl } = useParams();
+  // ~~~~~~~~~~~~~~ General Setup ~~~~~~~~~~~~~~
+  const { pageId } = useParams();
+  const history = useHistory();
   
+  const [errors, setErrors] = useState([]);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState('#');
   const [imageLoading, setImageLoading] = useState(false);
+
+  // ~~~~~~~~~~~~~~ Controlled Inputs ~~~~~~~~~~~~~~
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [id, setId] = useState('');
-  const [pageId, setPageId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [aspectRatio, setAspectRatio] = useState('');
   const [imageRotation, setImageRotation] = useState('');
@@ -21,9 +23,21 @@ const PostCreateAWS = () => {
   const [linkText, setLinkText] = useState('');
   const [linkUrl, setLinkUrl] = useState('');
   const [date, setDate] = useState('');
+  
+  const controlImageUrl = (e) => { setImageUrl(e.target.value) };
+  const controlTitle = (e) => { setTitle(e.target.value) };
+  const controlDescription = (e) => { setDescription(e.target.value) };
+  const controlAspectRatio = (e) => { setAspectRatio(e.target.value) };
+  const controlImageRotation = (e) => { setImageRotation(e.target.value) };
+  const controlText = (e) => { setText(e.target.value) };
+  const controlLocation = (e) => { setLocation(e.target.value) };
+  const controlLinkText = (e) => { setLinkText(e.target.value) };
+  const controlLinkUrl = (e) => { setLinkUrl(e.target.value) };
+  const controlDate = (e) => { setDate(e.target.value) };
 
-  const history = useHistory();
 
+
+  // ~~~~~~~~~~~~~~ Handle Submit ~~~~~~~~~~~~~~
   useEffect(() => {
     // (async () => {
       // const response = await fetch(`/api/pages/urls/${pageUrl}`);
@@ -33,37 +47,73 @@ const PostCreateAWS = () => {
     // )();
   })
 
+  // ~~~~~~~~~~~~~~ Handle Submit ~~~~~~~~~~~~~~
   const onSubmit = async (e) => {
     e.preventDefault();
-    alert("Hello!");
-  };
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("title", title)
+    formData.append("description", description)
+    formData.append("pageId", pageId)
+    // formData.append("imageUrl", imageUrl)
+    formData.append("aspectRatio", aspectRatio)
+    formData.append("imageRotation", imageRotation)
+    formData.append("text", text)
+    formData.append("location", location)
+    formData.append("linkText", linkText)
+    formData.append("linkUrl", linkUrl)
+    formData.append("date", date)
 
+
+    setImageLoading(true);
+    const res = await fetch('/api/posts/aws', {
+      method: "POST",
+      body: formData,
+    });
+    if (res.ok) {
+      await res.json();
+      setImageLoading(false);
+      history.push(`/pages/${pageId}`);
+    }
+    else {
+      setImageLoading(false);
+      const data = await res.json()
+      setErrors(data.errors);
+      console.log("ERROR");
+    }
+  };
+  
+  // ~~~~~~~~~~~~~~ Image Update ~~~~~~~~~~~~~~
   const updateImage = (e) => {
+    // This needs a multiline function so it's not in component...
     const file = e.target.files[0];
     setImage(file);
     if (file) setImagePreview(URL.createObjectURL(file));
   };
-
+  
+  // ~~~~~~~~~~~~~~ The Component ~~~~~~~~~~~~~~
   return (
     <post-create-aws>
+      <div>
+          {errors?.map((error, ind) => (
+            <div key={ind}>&gt; {error}</div>
+          ))}
+      </div>
       <form onSubmit={onSubmit}>
         { imagePreview ? <img src={imagePreview} alt="image preview"/> : null }
 
         <input type="file" accept="image/*" onChange={updateImage} />
         
-        <div><label>Title</label><input type='text' name='title' onChange={setTitle} value={title}></input></div>
-        <div><label>Description</label><input type='text' name='title' onChange={setDescription} value={description}></input></div>
-        <div><label>Id</label><input type='text' name='title' onChange={setId} value={id}></input></div>
-        <div><label>PageId</label><input type='text' name='title' onChange={setPageId} value={pageId}></input></div>
-        <div><label>ImageUrl</label><input type='text' name='title' onChange={setImageUrl} value={imageUrl}></input></div>
-        <div><label>AspectRatio</label><input type='text' name='title' onChange={setAspectRatio} value={aspectRatio}></input></div>
-        <div><label>ImageRotation</label><input type='text' name='title' onChange={setImageRotation} value={imageRotation}></input></div>
-        <div><label>Text</label><input type='text' name='title' onChange={setText} value={text}></input></div>
-        <div><label>Location</label><input type='text' name='title' onChange={setLocation} value={location}></input></div>
-        <div><label>LinkText</label><input type='text' name='title' onChange={setLinkText} value={linkText}></input></div>
-        <div><label>LinkUrl</label><input type='text' name='title' onChange={setLinkUrl} value={linkUrl}></input></div>
-        <div><label>Date</label><input type='text' name='title' onChange={setDate} value={date}></input></div>
-
+        <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
+        <div><label>Description</label><input type='text' name='description' onChange={controlDescription} value={description}></input></div>
+        <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div>
+        <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div>
+        <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div>
+        <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text}></input></div>
+        <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location}></input></div>
+        <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText}></input></div>
+        <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl}></input></div>
+        <div><label>Date</label><input type='text' name='date' onChange={controlDate} value={date}></input></div>
 
         <button type="submit">Submit</button>
         { imageLoading ? <p>Loading...</p> : null }

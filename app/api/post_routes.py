@@ -113,13 +113,13 @@ def create_post():
 
 
 
-# ~~~~~~~~~~~ New Create Route ~~~~~~~~~~~ 
-@post_routes.route('/awspost', methods=['POST'])
+# ~~~~~~~~~~~ AWS Create Route ~~~~~~~~~~~ 
+@post_routes.route('/aws', methods=['POST'])
 def create_aws_post():
   form = NewPostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
 
-  url = "https://thishorsedoesnotexist.com/"
+  url = "https://www.aboutmanchester.co.uk/wp-content/uploads/2020/04/DFA6B3F3-EBD2-48C4-A4C7-9BB23067CE01.jpeg"
 
   if form.validate_on_submit():
     post = Post(
