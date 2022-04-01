@@ -163,7 +163,7 @@ function Page() {
       <div class="pageheader">
         { page.title ? <h1>{page.title}</h1> : null }
         { page.text ? <p class="page-text">{page.text}</p> : null }
-        { page.location ? <p class="page-location">📍 {page.location}</p> : null }
+        { page.location ? <p class="page-location">{page.location}</p> : null }
         <ul class="links-ul">
           { page.link1Url ? <li><a href={page.link1Url} target="new">{page.link1Text || page.link1Url}</a></li> : null }
           { page.link2Url ? <li><a href={page.link2Url} target="new">{page.link2Text || page.link2Url}</a></li> : null }

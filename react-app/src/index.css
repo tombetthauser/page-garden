@@ -199,7 +199,7 @@ page h1 {
 
 page .links-ul {
   padding-left: 0;
-  margin-top: 0px;
+  margin-top: 7.5px;
   margin-bottom: 15px;
 }
 
@@ -220,7 +220,7 @@ page .post-li a p {
 page .page-contact {
   font-size: 15px;
   color: black;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-bottom: 25px;
 }
 

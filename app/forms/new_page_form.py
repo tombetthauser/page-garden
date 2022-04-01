@@ -16,9 +16,15 @@ def bad_user_id(form, field):
     if not user:
         raise ValidationError('User Id does not exist.')
 
+def bad_string(form, field):
+    good_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
+    for char in field.data:
+        if char not in good_chars:
+            raise ValidationError('Url cannot contain spaces or special characters.')
+
 class NewPageForm(FlaskForm):
     userId = StringField('userId', validators=[DataRequired(), bad_user_id])
-    url = StringField('url', validators=[DataRequired(), page_exists])
+    url = StringField('url', validators=[DataRequired(), page_exists, bad_string])
     title = StringField('title')
     text = StringField('text')
     location = StringField('location')
