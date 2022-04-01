@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useParams, useLocation, useHistory, NavLink } from 'react-router-dom';
 
 function Page() {
   const [page, setPage] = useState({});
   const [posts, setPosts] = useState([]);
   const [secretClick, setSecretClick] = useState(false);
   const { pageId, pageUrl } = useParams();
+
+
+  const search = useLocation().search; 
+  const view = new URLSearchParams(search).get('view');
   
   const history = useHistory();
   
@@ -129,7 +133,8 @@ function Page() {
           {post.imageUrl ? <img src={post.imageUrl} /> : null}
 
           {post.text ? <p>{post.text}</p> : null}
-        { currUserId && currUserId == page.userId ? (
+
+        {currUserId && currUserId == page.userId && view !== 'preview' ? (
           <ul class="user-links-ul">
             <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li>
             <vr/>
@@ -165,7 +170,7 @@ function Page() {
           { page.link3Url ? <li><a href={page.link3Url} target="new">{page.link3Text || page.link3Url}</a></li> : null }
         </ul>
         { page.contact ? <p class="page-contact">{page.contact}</p> : null }
-        { currUserId && currUserId == page.userId ? (
+        { currUserId && currUserId == page.userId && view !== 'preview' ? (
           <ul class="user-links-ul">
             <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li>
             <vr/>
