@@ -180,7 +180,7 @@ function Page() {
             <vr/>
             <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li>
             <vr/>
-            <li><a target='new' href={`/${page.url}?view=preview`}>preview</a></li>
+            <li><a href={`/${page.url}?view=preview`}>preview</a></li>
             <vr/>
             <li><button onClick={handleDelete}>delete page</button></li>
           </ul>

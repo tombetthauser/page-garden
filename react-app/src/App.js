@@ -44,17 +44,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <h1>Minstagram 🏄‍♂️</h1> */}
-      {/* 
-        Other Fantastic Name:
-          Shoestagram Kickstagram Footstagram Spacetagram Altstagram Fosstagram 
-          Nonstagram Whatstagram Notstagram Unstagram Dogstagram Grimstagram 
-          Spinstagram Winstagram Betagram Deltagram Minstagram Xstagram Breadstagram 
-          Catstagram Duckstagram Kushtagram
-      */}
       <Switch>
-        {/* <Route path='/test' exact={true}><NewPostCreate/></Route> */}
-        {/* <Route path='/test' exact={true}><UploadPicture/></Route> */}
         <Route path='/login' exact={true}><LoginForm/></Route>
         <Route path='/sign-up' exact={true}><SignUpForm/></Route>
         <Route path='/pages' exact={true}><PagesList/></Route>
@@ -62,23 +52,18 @@ function App() {
         <ProtectedRoute path='/pages/new' exact={true}><PageCreate/></ProtectedRoute>
         <Route path='/pages/:pageId' exact={true}><PageRedirect/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
-        {/* <Route path='/pages/:pageId/posts/new' exact={true}><PostCreate/></Route> */}
         <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route>
         <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
         <Route path='/users' exact={true} ><UsersList/></Route>
         <Route path='/users/:userId' exact={true} ><User /></Route>
         <Route path='/users/:userId/edit' exact={true} ><UserEdit /></Route>
-        {/* <Route path='/home' exact={true}><Home /></Route> */}
-        <Route path='/404' exact={true}>
-          <>
-            <h2>404 🦆</h2>
-            <p>The page or post you seek does not exist...</p>
-          </>
-        </Route>
+        <Route path='/404' exact={true}><>
+          <h2>404 🦆</h2>
+          <p>The page or post you seek does not exist...</p>
+        </></Route>
         <Route path='/home' exact={true}><Home /></Route>
         <Route path='/:pageUrl' exact={true}><Page /></Route>
         <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreateAWS /></ProtectedRoute>
-        {/* <ProtectedRoute path='/:pageUrl/newaws' exact={true}><PostCreateAWS /></ProtectedRoute> */}
         <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
         <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
         <Route path='/' exact={true}><Splash /></Route>
