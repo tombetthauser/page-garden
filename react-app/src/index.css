@@ -199,7 +199,7 @@ page h1 {
 
 page .links-ul {
   padding-left: 0;
-  margin-top: 15px;
+  margin-top: 0px;
   margin-bottom: 15px;
 }
 
@@ -226,7 +226,7 @@ page .page-contact {
 
 page .page-text {
   font-size: 16px;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
 }
 
 page .page-location {
