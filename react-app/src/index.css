@@ -309,7 +309,8 @@ page .posts-ul p {
 }
 
 page .pageheader {
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
+  margin-bottom: 65px;
 }
 
 post .post-li {
