@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, Link, useHistory, useParams } from 'react-router-dom';
+import { Redirect, Link, useHistory, useParams, NavLink } from 'react-router-dom';
 
 const PostCreateAWS = () => {
   // ~~~~~~~~~~~~~~ General Setup ~~~~~~~~~~~~~~
@@ -94,12 +94,13 @@ const PostCreateAWS = () => {
   
   // ~~~~~~~~~~~~~~ The Component ~~~~~~~~~~~~~~
   return (
-    <postcreate>
+    <div class='styled-form'>
       <div>
           {errors?.map((error, ind) => (
             <div key={ind}>&gt; {error}</div>
           ))}
       </div>
+      <h1>New Post</h1>
       <form onSubmit={onSubmit}>
         {imagePreview === "#" ? <label>Image</label> : null }
         { imagePreview === "#" ? null : <img src={imagePreview} alt="image preview"/> }
@@ -111,17 +112,19 @@ const PostCreateAWS = () => {
         {/* <div><label>ImageUrl</label><input type='text' name='imageUrl' onChange={controlImageUrl} value={imageUrl}></input></div> */}
         {/* <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div> */}
         {/* <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div> */}
-        <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title}></input></div>
-        <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text}></input></div>
-        <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location}></input></div>
-        <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText}></input></div>
-        <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl}></input></div>
-        <div><label>Date</label><input type='text' name='date' onChange={controlDate} value={date}></input></div>
+        <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title} placeholder='optional'></input></div>
+        <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text} placeholder='optional'></input></div>
+        <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location} placeholder='optional'></input></div>
+        <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText} placeholder='optional'></input></div>
+        <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl} placeholder='optional'></input></div>
+        <div><label>Date</label><input type='text' name='date' onChange={controlDate} value={date} placeholder='optional'></input></div>
 
-        <button class="submit-button" type="submit">Submit</button>
+        <button class="blue-button" type="submit">Create New Post!</button>
         { imageLoading ? <p>Loading...</p> : null }
       </form>
-    </postcreate>
+      <NavLink to={`/pages/${pageId}`}>cancel new post</NavLink>
+      {/* <vr /><NavLink to="/home">home</NavLink> */}
+    </div>
   );
 };
 

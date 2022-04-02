@@ -341,7 +341,7 @@ login form, .styled-form form, postcreate form, postedit form, pagecreate form, 
 
 login h1, .styled-form h1, postcreate h1, postedit h1, pagecreate h1, pageedit h1 {
   font-weight: 100;
-  margin-top: 75px;
+  margin-top: 50px;
 }
 
 login label, .styled-form label, postcreate label, postedit label, pagecreate label, pageedit label {
@@ -427,9 +427,13 @@ login vr, .styled-form vr, page vr, postcreate vr, postedit vr, pagecreate vr, p
   inline-size: 50px;
   width: 50px;
   height: 50px; */
-  width: 210px;
+  width: 97.5%;
   height: 80px;
   resize: none;
+  padding: 5px 7px;
+  box-sizing: border-box;
+  font-family: serif;
+  font-size: 14px;
 }
 
 details {
@@ -439,4 +443,30 @@ details {
 
 details summary {
   margin-bottom: 15px;
+}
+
+.post-edit-image {
+  margin-bottom: 15px;
+  width: 97.5%;
+}
+
+ ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ddd;
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 50;
+  opacity: 1; /* Firefox */
+}
+
+.blue-button {
+  display: block;
+  font-size: 14px;
+  margin-top: 25px;
+  /* width: 100px; */
+  color: cornflowerblue;
+  font-family: serif;
+  padding: 5px 30px;
+  background-color: #00000000;
+  border: 1px solid cornflowerblue;
+  border-radius: 5px;
 }
