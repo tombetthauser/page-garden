@@ -137,8 +137,18 @@ def edit_message(post_id):
 @login_required
 def delete_post(post_id):
     post = Post.query.filter_by(id=post_id).one()
-    filename = post.imageUrl.split("/")[-1].lower()
-    deleteRes = delete_file_from_s3(filename)
-    db.session.delete(post)
-    db.session.commit()
+
+    # print('\n\n\n', {
+    #   'post': post
+    # }, '\n\n\n')
+
+    try:
+      filename = post.imageUrl.split("/")[-1].lower()
+      delete_file_from_s3(filename)
+      db.session.delete(post)
+      db.session.commit()
+    except:
+      db.session.delete(post)
+      db.session.commit()
+    
     return post_id

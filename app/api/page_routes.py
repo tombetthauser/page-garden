@@ -173,10 +173,11 @@ def delete_page(page_id):
     }, '\n\n\n')
 
     for post in posts:
+      try:
         filename = post.imageUrl.split("/")[-1].lower()
         delete_file_from_s3(filename)
-        db.session.delete(post)
-        db.session.commit()
+      except:
+        pass
 
     db.session.delete(page)
     db.session.commit()
