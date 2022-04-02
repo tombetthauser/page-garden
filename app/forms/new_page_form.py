@@ -8,19 +8,19 @@ def page_exists(form, field):
     url = field.data
     page = Page.query.filter(Page.url == url).first()
     if page:
-        raise ValidationError('Page url is address is already in use.')
+        raise ValidationError('already in use')
 
 def bad_user_id(form, field):
     userId = int(field.data)
     user = User.query.filter(User.id == userId).first()
     if not user:
-        raise ValidationError('User Id does not exist.')
+        raise ValidationError('user id does not exist')
 
 def bad_string(form, field):
     good_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
     for char in field.data:
         if char not in good_chars:
-            raise ValidationError('Url cannot contain spaces or special characters.')
+            raise ValidationError('cannot contain spaces or special characters')
 
 class NewPageForm(FlaskForm):
     userId = StringField('userId', validators=[DataRequired(), bad_user_id])

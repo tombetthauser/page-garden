@@ -4,20 +4,22 @@ from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import User
 
 
-def user_exists(form, field):
+def email_exists(form, field):
     # Checking if user exists
     email = field.data
+    currUserId = int(form.data['id'])
     user = User.query.filter(User.email == email).first()
-    if user:
-        raise ValidationError('Email address is already in use.')
+    if user and user.id != currUserId:
+        raise ValidationError('email address is already in use')
 
 
 def username_exists(form, field):
     # Checking if username is already in use
     username = field.data
+    currUserId = int(form.data['id'])
     user = User.query.filter(User.username == username).first()
-    if user:
-        raise ValidationError('Username is already in use.')
+    if user and user.id != currUserId:
+        raise ValidationError('username is already in use')
 
 def bad_string(form, field):
     good_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_."
@@ -30,9 +32,20 @@ def spaces(form, field):
         if char == ' ':
             raise ValidationError('cannot contain spaces')
 
+def password_matches(form, field):
+    # Checking if password matches
+    password = field.data
+    email = form.data['email']
+    user = User.query.filter(User.email == email).first()
+    if not user:
+        raise ValidationError('no such user exists')
+    if not user.check_password(password):
+        raise ValidationError('password incorrect')
 
-class SignUpForm(FlaskForm):
+
+class UserUpdateForm(FlaskForm):
+    id = StringField('id')
     username = StringField(
         'username', validators=[DataRequired(), username_exists, bad_string])
-    email = StringField('email', validators=[DataRequired(), user_exists, spaces])
-    password = StringField('password', validators=[DataRequired(), spaces])
+    email = StringField('email', validators=[DataRequired(), email_exists, spaces])
+    password = StringField('password', validators=[DataRequired(), password_matches])

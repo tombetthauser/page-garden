@@ -1,33 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
+import { login } from '../store/session';
 
 const UserEdit = () => {
-  const [user, setUser] = useState({});
-  const { userId } = useParams();
+  const user = useSelector(state => state.session.user);
 
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [passwordHash, setPasswordHash] = useState("");
-  // const [confirmPassword, setConfirmPassword] = useState("");
+  const [password, setPassword] = useState("");
+  // const [passwordHash, setPasswordHash] = useState("");
 
   const history = useHistory();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (!userId) return;
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const userData = await response.json();
-      setUser(userData);
-      setUsername(userData.username);
-      setEmail(userData.email);
-      setPasswordHash(userData.hashed_password);
-    })();
-  }, [userId]);
+  const onLogin = async () => {
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    }
+  };
 
-  const createUser = ( userId, username, email ) => async (dispatch) => {
+  useEffect(() => {
+    if (!user) return;
+    (async () => {
+      setUsername(user.username);
+      setEmail(user.email);
+      setPassword(user.hashed_password);
+    })();
+  }, [user]);
+
+  const createUser = ( userId, username, email, password ) => async (dispatch) => {
     const response = await fetch(`/api/users/${userId}`, {
       method: 'PUT',
       headers: {
@@ -36,11 +40,13 @@ const UserEdit = () => {
       body: JSON.stringify({
         id: userId,
         username: username,
-        email: email
+        email: email,
+        password: password
       }),
     });
 
     if (response.ok) {
+      onLogin()
       history.push(`/home`)
       return null;
     } else if (response.status < 500) {
@@ -56,9 +62,10 @@ const UserEdit = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(createUser(
-      userId,
+      user.id,
       username,
       email,
+      password,
     ));
     if (data) {
       setErrors(data)
@@ -67,55 +74,27 @@ const UserEdit = () => {
 
   const updateUsername = (e) => {setUsername(e.target.value)};
   const updateEmail = (e) => {setEmail(e.target.value)};
-  // const updateUrl = (e) => {setUrl(e.target.value)};
-  // const updateTitle = (e) => {setTitle(e.target.value)};
-  // const updateText = (e) => {setText(e.target.value)};
-  // const updateLocation = (e) => {setLocation(e.target.value)};
-  // const updateLink1Text = (e) => {setLink1Text(e.target.value)};
-  // const updateLink1Url = (e) => {setLink1Url(e.target.value)};
-  // const updateLink2Text = (e) => {setLink2Text(e.target.value)};
-  // const updateLink2Url = (e) => {setLink2Url(e.target.value)};
-  // const updateLink3Text = (e) => {setLink3Text(e.target.value)};
-  // const updateLink3Url = (e) => {setLink3Url(e.target.value)};
-  // const updateContact = (e) => {setContact(e.target.value)};
-  // ...
+  const updatePassword = (e) => {setPassword(e.target.value)};
 
   return (
     <useredit>
       <h1>User Edit</h1>
-      {/* { user ? <div>{user.username}</div> : null } */}
-      {/* { user ? <div>{user.email}</div> : null } */}
+
+      <div>
+        {errors.map((error, ind) => (
+          <div key={ind}>{error}</div>
+        ))}
+      </div>
+
 
       <form onSubmit={onSubmit}>
-        <div><label>username: </label><input type='text' name='username' onChange={updateUsername} value={username}></input></div>
-        <div><label>email: </label><input type='text' name='email' onChange={updateEmail} value={email}></input></div>
+        <div><label>Username</label><input type='text' name='username' onChange={updateUsername} value={username}></input></div>
+        <div><input type='hidden' name='email' onChange={updateEmail} value={email}></input></div>
+        <div><label>Confirm Password</label><input type='password' name='password' onChange={updatePassword} value={password}></input></div>
 
-        <button type='submit'>submit update</button>
+        <button type='submit'>update user</button>
       </form> 
 
-
-      {/* 
-      <form onSubmit={onSubmit}>
-        <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
-        </div>
-        <div><label>Url</label><input type='text' name='url' onChange={updateUrl} value={url}></input></div>
-        <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title}></input></div>
-        <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text}></input></div>
-        <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location}></input></div>
-        <div><label>Link 1 Url</label><input type='text' name='link1Url' onChange={updateLink1Url} value={link1Url}></input></div>
-        <div><label>Link 1 Text</label><input type='text' name='link1Text' onChange={updateLink1Text} value={link1Text}></input></div>
-        <div><label>Link 2 Url</label><input type='text' name='link2Url' onChange={updateLink2Url} value={link2Url}></input></div>
-        <div><label>Link 2 Text</label><input type='text' name='link2Text' onChange={updateLink2Text} value={link2Text}></input></div>
-        <div><label>Link 3 Url</label><input type='text' name='link3Url' onChange={updateLink3Url} value={link3Url}></input></div>
-        <div><label>Link 3 Text</label><input type='text' name='link3Text' onChange={updateLink3Text} value={link3Text}></input></div>
-        <div><label>Contact</label><input type='text' name='contact' onChange={updateContact} value={contact}></input></div>
-
-        <button type='submit'>Update Page!</button>
-      </form> 
-      */}
     </useredit>
   );
 };
