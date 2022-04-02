@@ -4,7 +4,7 @@ from app.models import Page, Post, db
 from flask_login import login_required
 from app.forms import NewPageForm
 
-from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename)
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
 
 page_routes = Blueprint('pages', __name__)
 
@@ -166,6 +166,18 @@ def all_page_posts(page_id):
 @login_required
 def delete_page(page_id):
     page = Page.query.filter_by(id=page_id).one()
+    posts = Post.query.filter_by(pageId=page_id)
+
+    print('\n\n\n', {
+      'posts': posts
+    }, '\n\n\n')
+
+    for post in posts:
+        filename = post.imageUrl.split("/")[-1].lower()
+        delete_file_from_s3(filename)
+        db.session.delete(post)
+        db.session.commit()
+
     db.session.delete(page)
     db.session.commit()
     return page_id
