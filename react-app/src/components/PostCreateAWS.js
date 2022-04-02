@@ -113,7 +113,8 @@ const PostCreateAWS = () => {
         {/* <div><label>AspectRatio</label><input type='text' name='aspectRatio' onChange={controlAspectRatio} value={aspectRatio}></input></div> */}
         {/* <div><label>ImageRotation</label><input type='text' name='imageRotation' onChange={controlImageRotation} value={imageRotation}></input></div> */}
         <div><label>Title</label><input type='text' name='title' onChange={controlTitle} value={title} placeholder='optional'></input></div>
-        <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text} placeholder='optional'></input></div>
+        {/* <div><label>Text</label><input type='text' name='text' onChange={controlText} value={text} placeholder='optional'></input></div> */}
+        <div><label>Text</label><textarea class="textbox-input" type='text' name='text' onChange={controlText} value={text} placeholder="optional"></textarea></div>
         <div><label>Location</label><input type='text' name='location' onChange={controlLocation} value={location} placeholder='optional'></input></div>
         <div><label>LinkText</label><input type='text' name='linkText' onChange={controlLinkText} value={linkText} placeholder='optional'></input></div>
         <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl} placeholder='optional'></input></div>

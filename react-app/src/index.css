@@ -433,6 +433,7 @@ login vr, .styled-form vr, page vr, postcreate vr, postedit vr, pagecreate vr, p
   box-sizing: border-box;
   font-family: serif;
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 details {

@@ -106,7 +106,9 @@ const PageCreate = () => {
         {/* <div><label>User Id</label><input type='text' name='userId' onChange={updateUserId} value={userId}></input></div> */}
         <div><label>Url</label><input type='text' name='url' onChange={updateUrl} value={url} placeholder='required'></input></div>
         <div><label>Title</label><input type='text' name='title' onChange={updateTitle} value={title} placeholder='optional'></input></div>
-        <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text} placeholder='optional'></input></div>
+        {/* <div><label>Text</label><input type='text' name='text' onChange={updateText} value={text} placeholder='optional'></input></div> */}
+        <div><label>Text</label><textarea class="textbox-input" type='text' name='text' onChange={updateText} value={text} placeholder="optional"></textarea></div>
+
         <details>
           <summary>more...</summary>
           <div><label>Location</label><input type='text' name='location' onChange={updateLocation} value={location} placeholder='optional'></input></div>
