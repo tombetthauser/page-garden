@@ -44,7 +44,7 @@ function Home() {
       <h2>{user.email}</h2>
       <h3>your pages:</h3>
       <ul>{pageComponents}</ul>
-      <NavLink class="new-page" to="/pages/new">create new page</NavLink>
+      <NavLink class="blue-button" to="/pages/new">Create New Page!</NavLink>
       {currUser ? <LogoutButton class="bottom-link" /> : null}
       <vr/>
       <NavLink class="bottom-link" to={`/users/edit`}>edit profile</NavLink>

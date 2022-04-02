@@ -39,7 +39,7 @@ const SignUpForm = () => {
         <breakline></breakline>
         <div><label>Password</label><input type='pas sword'name='password'onChange={updatePassword}value={password}></input></div>
         <div><label>Repeat Password</label> <input type='password' name='repeat_password' onChange={updateRepeatPassword} value={repeatPassword} required={true} ></input> </div>
-        <button type='submit'>Sign Up</button>
+        <button class="blue-button" type='submit'>Sign Up</button>
       </form>
       <NavLink to="/">back</NavLink><vr/><NavLink to="/login">login</NavLink>
     </div>

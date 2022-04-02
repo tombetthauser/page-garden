@@ -119,7 +119,7 @@ const PostCreateAWS = () => {
         <div><label>LinkUrl</label><input type='text' name='linkUrl' onChange={controlLinkUrl} value={linkUrl} placeholder='optional'></input></div>
         <div><label>Date</label><input type='text' name='date' onChange={controlDate} value={date} placeholder='optional'></input></div>
 
-        <button class="blue-button" type="submit">Create New Post!</button>
+        <button class="blue-button" type="submit">Create Post!</button>
         { imageLoading ? <p>Loading...</p> : null }
       </form>
       <NavLink to={`/pages/${pageId}`}>cancel new post</NavLink>

@@ -4,7 +4,11 @@ from flask_login import login_required
 from app.forms import NewPostForm
 
 from app.s3_helpers import (
-    upload_file_to_s3, allowed_file, get_unique_filename)
+    upload_file_to_s3, 
+    allowed_file, 
+    get_unique_filename,
+    delete_file_from_s3
+  )
 
 post_routes = Blueprint('posts', __name__)
 
@@ -133,6 +137,8 @@ def edit_message(post_id):
 @login_required
 def delete_post(post_id):
     post = Post.query.filter_by(id=post_id).one()
+    filename = post.imageUrl.split("/")[-1].lower()
+    deleteRes = delete_file_from_s3(filename)
     db.session.delete(post)
     db.session.commit()
     return post_id

@@ -107,7 +107,6 @@ splash button {
 
 home h1 {
   font-weight: 100;
-  text-transform: lowercase;
   font-size: 45px;
   margin-bottom: 0px;
   margin-top: 50px;
@@ -462,11 +461,12 @@ details summary {
   display: block;
   font-size: 14px;
   margin-top: 25px;
-  /* width: 100px; */
+  width: fit-content;
   color: cornflowerblue;
   font-family: serif;
   padding: 5px 30px;
   background-color: #00000000;
   border: 1px solid cornflowerblue;
   border-radius: 5px;
+  text-decoration: none;
 }
