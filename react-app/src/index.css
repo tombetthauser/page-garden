@@ -326,31 +326,31 @@ post li.post-li a h3 {
   color: black;
 }
 
-signup, login, postcreate, postedit {
+.styled-form, login, postcreate, postedit {
   width: 325px;
   display: block;
   margin: auto;
 }
 
-login form, signup form, postcreate form, postedit form, pagecreate form, pageedit form {
+login form, .styled-form form, postcreate form, postedit form, pagecreate form, pageedit form {
   border: 0.5px solid black;
   border-radius: 5px;
   padding: 35px 50px;
   margin-bottom: 20px;
 }
 
-login h1, signup h1, postcreate h1, postedit h1, pagecreate h1, pageedit h1 {
+login h1, .styled-form h1, postcreate h1, postedit h1, pagecreate h1, pageedit h1 {
   font-weight: 100;
   margin-top: 75px;
 }
 
-login label, signup label, postcreate label, postedit label, pagecreate label, pageedit label {
+login label, .styled-form label, postcreate label, postedit label, pagecreate label, pageedit label {
   display: block;
   font-size: 14px;
   margin-bottom: 3px;
 }
 
-login input, signup input, postcreate input, postedit input, pagecreate input, pageedit input {
+login input, .styled-form input, postcreate input, postedit input, pagecreate input, pageedit input {
   display: block;
   font-size: 14px;
   margin-bottom: 12px;
@@ -359,11 +359,11 @@ login input, signup input, postcreate input, postedit input, pagecreate input, p
   padding: 4px 7px;
 }
 
-login button:hover, signup button:hover, postcreate button:hover, postedit button:hover, pagecreate button:hover, pageedit button:hover {
+login button:hover, .styled-form button:hover, postcreate button:hover, postedit button:hover, pagecreate button:hover, pageedit button:hover {
   cursor: pointer;
 }
 
-login .submit-button, signup .submit-button, postcreate .submit-button, postedit .submit-button, pagecreate .submit-button, pageedit .submit-button {
+login .submit-button, .styled-form .submit-button, postcreate .submit-button, postedit .submit-button, pagecreate .submit-button, pageedit .submit-button {
   display: block;
   font-size: 14px;
   margin-top: 25px;
@@ -377,7 +377,7 @@ login .submit-button, signup .submit-button, postcreate .submit-button, postedit
 }
 
 
-login a, signup a, postcreate a, postedit a, pagecreate a, pageedit a {
+login a, .styled-form a, postcreate a, postedit a, pagecreate a, pageedit a {
   border: none;
   padding: 0;
   color: cornflowerblue;
@@ -389,7 +389,7 @@ login a, signup a, postcreate a, postedit a, pagecreate a, pageedit a {
   cursor: pointer;
 }
 
-login vr, signup vr, page vr, postcreate vr, postedit vr, pagecreate vr, pageedit vr {
+login vr, .styled-form vr, page vr, postcreate vr, postedit vr, pagecreate vr, pageedit vr {
   width: 5px;
   margin-right: 5px;
   height: 15px;
@@ -398,7 +398,7 @@ login vr, signup vr, page vr, postcreate vr, postedit vr, pagecreate vr, pageedi
   transform: translateY(4px);
 }
 
-signup breakline {
+.styled-form breakline {
   display: block;
   width: 150px;
   margin-top: 30px;

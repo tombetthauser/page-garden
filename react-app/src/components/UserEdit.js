@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, NavLink } from 'react-router-dom';
 import { login } from '../store/session';
 
 const UserEdit = () => {
@@ -83,26 +83,19 @@ const UserEdit = () => {
   const updateConfirmPassword = (e) => {setConfirmPassword(e.target.value)};
 
   return (
-    <useredit>
+    <div class="styled-form">
       <h1>User Edit</h1>
-
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-
-
       <form onSubmit={onSubmit}>
+        <div>{errors.map((error, ind) => (<div key={ind}>{error}</div>))}</div>
         <div><label>Username</label><input type='text' name='username' onChange={updateUsername} value={username}></input></div>
         <div><input type='hidden' name='email' onChange={updateEmail} value={email}></input></div>
         {/* <div><label>Password</label><input type='password' name='password' onChange={updatePassword} value={password}></input></div> */}
         <div><label>Confirm Password</label><input type="password" name="password" onChange={updateConfirmPassword} value={confirmPassword}></input></div>
-
         <button type='submit'>update user</button>
       </form> 
-
-    </useredit>
+      <NavLink to="/home">cancel edit</NavLink>
+      {/* <vr /><NavLink to="/login">login</NavLink> */}
+    </div>
   );
 };
 
