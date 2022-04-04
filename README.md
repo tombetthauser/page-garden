@@ -1,6 +1,10 @@
+<!-- ![poem](https://www.beatbooks.com/pictures/medium/39110.jpg) -->
+
 # 🌱 Page Garden
 
 A minimal page building site in the spirit of geocities or angelfire maybe. Primarily a place to share images of projects without the bloat of social media features. Built with React, Flask and AWS, hosted on Heroku.
+
+---
 
 ## Development Notes
 
@@ -22,7 +26,7 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
       npm start
       ```
 
-## Starter Notes
+## Starting a Local Version
 
 1. Clone this repository (only this branch)
 

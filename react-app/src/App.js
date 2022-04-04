@@ -45,30 +45,27 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/' exact={true}><Splash /></Route>
+        <Route path='/home' exact={true}><Home /></Route>
         <Route path='/login' exact={true}><LoginForm/></Route>
         <Route path='/sign-up' exact={true}><SignUpForm/></Route>
+        <ProtectedRoute path='/users/edit' exact={true} ><UserEdit /></ProtectedRoute>
 
-        <Route path='/dev/pages' exact={true}><PagesList/></Route>
-        <Route path='/dev/posts' exact={true}><PostsList/></Route>
+        <ProtectedRoute path='/dev/pages' exact={true}><PagesList /></ProtectedRoute>
+        <ProtectedRoute path='/dev/posts' exact={true}><PostsList /></ProtectedRoute>
+        <ProtectedRoute path='/dev/pages/:pageId/posts/:postId' exact={true}><Post/></ProtectedRoute>
+        <ProtectedRoute path='/dev/users' exact={true} ><UsersList/></ProtectedRoute>
+        <ProtectedRoute path='/dev/users/:userId' exact={true} ><User /></ProtectedRoute>
+        <ProtectedRoute path='/dev/:pageUrl/:postId' exact={true}><Post /></ProtectedRoute>
 
         <ProtectedRoute path='/pages/new' exact={true}><PageCreate/></ProtectedRoute>
         <Route path='/pages/:pageId' exact={true}><PageRedirect/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
-        {/* <Route path='/pages/:pageId/posts/:postId' exact={true}><Post/></Route> */}
-        <Route path='/pages/:pageId/posts/:postId/edit' exact={true}><PostEdit/></Route>
 
-        <Route path='/dev/users' exact={true} ><UsersList/></Route>
-        <Route path='/dev/users/:userId' exact={true} ><User /></Route>
-
-        <Route path='/users/edit' exact={true} ><UserEdit /></Route>
-        
-        <Route path='/404' exact={true}><><h2>404 🦆</h2><p>The page or post you seek does not exist...</p></></Route>
-        <Route path='/home' exact={true}><Home /></Route>
-        <Route path='/:pageUrl' exact={true}><Page /></Route>
         <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreateAWS /></ProtectedRoute>
-        <Route path='/:pageUrl/:postId' exact={true}><Post /></Route>
         <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
-        <Route path='/' exact={true}><Splash /></Route>
+        
+        <Route path='/:pageUrl' exact={true}><Page /></Route>
       </Switch>
     </BrowserRouter>
   );

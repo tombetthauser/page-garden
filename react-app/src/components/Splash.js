@@ -68,6 +68,7 @@ const Splash = () => {
         {currUser ? <NavLink to={`/home`} exact={true} activeClassName='active'>home</NavLink> : null}
         {currUser ? <vr /> : null}
         {currUser ? <LogoutButton /> : null}
+        {/* <vr /><a href="https://github.com/tombetthauser/page-garden" >github</a> */}
       </p>
       {/* <p class="instagram-link">
         miss the bs? head back to<a href="http://instagram.com">Instagram</a>
