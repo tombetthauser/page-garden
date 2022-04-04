@@ -6,85 +6,86 @@ import LogoutButton from './auth/LogoutButton';
 
 const randomName = () => {
   const randomNames = [
-    "Minstagram",
-    "Nullstagram",
-    `${0/0}stagram`,
-    "Nonestagram",
-    "Unstagram",
-    "Uninstagram",
-    "Notstagram",
-    "Notinstagram",
-    "Studiogram",
-    "tomstagram",
-    "Deltagram",
-    "Fosstagram",
-    "Freestagram",
-    "Libragram",
-    "Funkstagram",
-    "Whatstagram",
-    "Winstagram",
-    "Nutstagram",
-    "Buttstagram",
-    "Bugstagram",
-    "Bustagram",
-    "Flipstagram",
-    "Smellstagram",
-    "Stinkstagram",
-    "Outstagram",
-    "Catstagram",
-    "Dogstagram",
-    "Mingram",
-    "Bugstagram",
-    "Margatsni",
-    "Zillagram",
-    "Funstagram",
-    "Lamestagram",
-    "Gnustagram",
-    "Newstagram",
-    "Leavestagram",
-    "Offstagram",
-    "Nonstagram",
-    "Othergram",
-    "Neogram",
-    "Xenogram",
-    "Nostagram",
-    "Xinstagram",
-    "Finstagram",
-    "Lauragram",
-    "Coatstagram",
-    "Isntstagram",
-    "Isntgram",
-    "Famstagram",
-    "Frendstagram",
-    "Friendstagram",
-    "Brostagram",
-    "Yologram",
-    "Sacstagram",
-    "Danstagram",
-    "Tedstagram",
-    "XFAgram",
-    "FArtstagram",
-    "SotAgram",
-    "Hackstagram",
-    "Upstagram",
-    "Plustagram",
-    "Minusgram",
-    "Weakstagram",
-    "Bizzarogram",
-    "Oppositstagram",
-    "Panopstogram",
-    "Xanopstogram",
-    "Basicgram",
-    "Basestagram",
-    "Antigram",
-    "Weakstagram",
-    "Lamestagram",
-    "Frogstagram",
-    "Slugstagram",
-    "Bugstagram",
-    "Simplegram",
-    "Dullstagram",
-    "Freakstagram",
+    "Page Garden"
+    // "Minstagram",
+    // "Nullstagram",
+    // `${0/0}stagram`,
+    // "Nonestagram",
+    // "Unstagram",
+    // "Uninstagram",
+    // "Notstagram",
+    // "Notinstagram",
+    // "Studiogram",
+    // "tomstagram",
+    // "Deltagram",
+    // "Fosstagram",
+    // "Freestagram",
+    // "Libragram",
+    // "Funkstagram",
+    // "Whatstagram",
+    // "Winstagram",
+    // "Nutstagram",
+    // "Buttstagram",
+    // "Bugstagram",
+    // "Bustagram",
+    // "Flipstagram",
+    // "Smellstagram",
+    // "Stinkstagram",
+    // "Outstagram",
+    // "Catstagram",
+    // "Dogstagram",
+    // "Mingram",
+    // "Bugstagram",
+    // "Margatsni",
+    // "Zillagram",
+    // "Funstagram",
+    // "Lamestagram",
+    // "Gnustagram",
+    // "Newstagram",
+    // "Leavestagram",
+    // "Offstagram",
+    // "Nonstagram",
+    // "Othergram",
+    // "Neogram",
+    // "Xenogram",
+    // "Nostagram",
+    // "Xinstagram",
+    // "Finstagram",
+    // "Lauragram",
+    // "Coatstagram",
+    // "Isntstagram",
+    // "Isntgram",
+    // "Famstagram",
+    // "Frendstagram",
+    // "Friendstagram",
+    // "Brostagram",
+    // "Yologram",
+    // "Sacstagram",
+    // "Danstagram",
+    // "Tedstagram",
+    // "XFAgram",
+    // "FArtstagram",
+    // "SotAgram",
+    // "Hackstagram",
+    // "Upstagram",
+    // "Plustagram",
+    // "Minusgram",
+    // "Weakstagram",
+    // "Bizzarogram",
+    // "Oppositstagram",
+    // "Panopstogram",
+    // "Xanopstogram",
+    // "Basicgram",
+    // "Basestagram",
+    // "Antigram",
+    // "Weakstagram",
+    // "Lamestagram",
+    // "Frogstagram",
+    // "Slugstagram",
+    // "Bugstagram",
+    // "Simplegram",
+    // "Dullstagram",
+    // "Freakstagram",
     // "Xinstagram = Xin = emotion / feeling / new / toilsome?",
   ]
 
@@ -100,6 +101,7 @@ const Splash = () => {
 
   return (
     <splash>
+      <h1 class="splash-title">{name}</h1>
       {/* <h1 class="center-text">Minstagram</h1>
       <p class="center-text">
         Welcome to Minstagram.<br />
@@ -107,13 +109,30 @@ const Splash = () => {
         Good luck finding anything!
       </p> */}
       {/* <h1 class="center-text">Notinstagram</h1> */}
-      <h1 class="center-text">{name}</h1>
+      {/* <p class="center-text">
+        Welcome to {name}.<br />
+        Make pages, post images, share links.<br />
+        No likes, no follows, no searches.<br />
+        Pretending it's the nineties.
+      </p> */}
       <p class="center-text">
+        A cybernetic meadow<br />
+        Where mammals and computers<br />
+        Make useless web pages in harmony<br />
+        As if they were flowers<br />
+      </p>
+      {/* <p class="center-text">
+        A cybernetic ecology<br/>
+        Where we are free of our labors<br/>
+        And joined back to nature<br/>
+        Through web pages<br/>
+      </p> */}
+      {/* <p class="center-text">
         Welcome to {name}.<br />
         It's mine, make your own website.<br />
         Or go back to <a href="https://instagram.com">Instagram</a> maybe.<br />
         It's ok if you stay too.
-      </p>
+      </p> */}
       <p>
         {!currUser ? <NavLink to='/login' exact={true} activeClassName='active'>login</NavLink> : null}
         {!currUser ? <vr /> : null}

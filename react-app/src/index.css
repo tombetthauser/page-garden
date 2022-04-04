@@ -471,3 +471,10 @@ details summary {
   border-radius: 5px;
   text-decoration: none;
 }
+
+.splash-title {
+  /* font-family: 'Merriweather', serif; */
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
