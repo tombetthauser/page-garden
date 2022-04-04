@@ -119,7 +119,8 @@ const Splash = () => {
         a cybernetic meadow<br />
         where mammals and computers<br />
         make random web pages in harmony<br />
-        for no particular reason<br />
+        with no likes, follows or ads<br />
+        {/* for no particular reason<br /> */}
       </p>
       {/* <p class="center-text">
         a cybernetic meadow<br />
