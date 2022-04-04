@@ -118,10 +118,16 @@ const Splash = () => {
       <p class="center-text">
         a cybernetic meadow<br />
         where mammals and computers<br />
+        make random web pages in harmony<br />
+        for no particular reason<br />
+      </p>
+      {/* <p class="center-text">
+        a cybernetic meadow<br />
+        where mammals and computers<br />
         make useless web pages in harmony<br />
         as if they were flowers<br />
         or something<br />
-      </p>
+      </p> */}
       {/* <p class="center-text">
         A cybernetic ecology<br/>
         Where we are free of our labors<br/>
