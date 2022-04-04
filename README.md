@@ -1,4 +1,4 @@
-# Page Garden
+# 🌱 Page Garden
 
 A minimal page building site in the spirit of geocities or angelfire maybe. Primarily a place to share images of projects without the bloat of social media features. Built with React, Flask and AWS, hosted on Heroku.
 
