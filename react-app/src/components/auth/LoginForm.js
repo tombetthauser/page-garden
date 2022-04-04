@@ -61,7 +61,7 @@ const LoginForm = () => {
       </form>
       <NavLink to="/">back</NavLink>
       <vr />
-      <NavLink to="/sign-up">create account</NavLink>
+      <NavLink to="/sign-up">sign up</NavLink>
     </login>
   );
 };
