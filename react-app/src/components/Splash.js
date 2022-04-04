@@ -6,87 +6,8 @@ import LogoutButton from './auth/LogoutButton';
 
 const randomName = () => {
   const randomNames = [
-    "Page Garden"
-    // "Minstagram",
-    // "Nullstagram",
-    // `${0/0}stagram`,
-    // "Nonestagram",
-    // "Unstagram",
-    // "Uninstagram",
-    // "Notstagram",
-    // "Notinstagram",
-    // "Studiogram",
-    // "tomstagram",
-    // "Deltagram",
-    // "Fosstagram",
-    // "Freestagram",
-    // "Libragram",
-    // "Funkstagram",
-    // "Whatstagram",
-    // "Winstagram",
-    // "Nutstagram",
-    // "Buttstagram",
-    // "Bugstagram",
-    // "Bustagram",
-    // "Flipstagram",
-    // "Smellstagram",
-    // "Stinkstagram",
-    // "Outstagram",
-    // "Catstagram",
-    // "Dogstagram",
-    // "Mingram",
-    // "Bugstagram",
-    // "Margatsni",
-    // "Zillagram",
-    // "Funstagram",
-    // "Lamestagram",
-    // "Gnustagram",
-    // "Newstagram",
-    // "Leavestagram",
-    // "Offstagram",
-    // "Nonstagram",
-    // "Othergram",
-    // "Neogram",
-    // "Xenogram",
-    // "Nostagram",
-    // "Xinstagram",
-    // "Finstagram",
-    // "Lauragram",
-    // "Coatstagram",
-    // "Isntstagram",
-    // "Isntgram",
-    // "Famstagram",
-    // "Frendstagram",
-    // "Friendstagram",
-    // "Brostagram",
-    // "Yologram",
-    // "Sacstagram",
-    // "Danstagram",
-    // "Tedstagram",
-    // "XFAgram",
-    // "FArtstagram",
-    // "SotAgram",
-    // "Hackstagram",
-    // "Upstagram",
-    // "Plustagram",
-    // "Minusgram",
-    // "Weakstagram",
-    // "Bizzarogram",
-    // "Oppositstagram",
-    // "Panopstogram",
-    // "Xanopstogram",
-    // "Basicgram",
-    // "Basestagram",
-    // "Antigram",
-    // "Weakstagram",
-    // "Lamestagram",
-    // "Frogstagram",
-    // "Slugstagram",
-    // "Bugstagram",
-    // "Simplegram",
-    // "Dullstagram",
-    // "Freakstagram",
-    // "Xinstagram = Xin = emotion / feeling / new / toilsome?",
+    "Page Garden" 
+    // "Minstagram", "Nullstagram", `${0/0}stagram`, "Nonestagram", "Unstagram", "Uninstagram", "Notstagram", "Notinstagram", "Studiogram", "tomstagram", "Deltagram", "Fosstagram", "Freestagram", "Libragram", "Funkstagram", "Whatstagram", "Winstagram", "Nutstagram", "Buttstagram", "Bugstagram", "Bustagram", "Flipstagram", "Smellstagram", "Stinkstagram", "Outstagram", "Catstagram", "Dogstagram", "Mingram", "Bugstagram", "Margatsni", "Zillagram", "Funstagram", "Lamestagram", "Gnustagram", "Newstagram", "Leavestagram", "Offstagram", "Nonstagram", "Othergram", "Neogram", "Xenogram", "Nostagram", "Xinstagram", "Finstagram", "Lauragram", "Coatstagram", "Isntstagram", "Isntgram", "Famstagram", "Frendstagram", "Friendstagram", "Brostagram", "Yologram", "Sacstagram", "Danstagram", "Tedstagram", "XFAgram", "FArtstagram", "SotAgram", "Hackstagram", "Upstagram", "Plustagram", "Minusgram", "Weakstagram", "Bizzarogram", "Oppositstagram", "Panopstogram", "Xanopstogram", "Basicgram", "Basestagram", "Antigram", "Weakstagram", "Lamestagram", "Frogstagram", "Slugstagram", "Bugstagram", "Simplegram", "Dullstagram", "Freakstagram", "Xinstagram = Xin = emotion / feeling / new / toilsome?",
   ]
 
   const randomIdx = Math.floor(Math.random() * randomNames.length);
@@ -102,6 +23,12 @@ const Splash = () => {
   return (
     <splash>
       <h1 class="splash-title">{name}</h1>
+      <p class="center-text">
+        a cybernetic meadow<br />
+        where mammals and computers<br />
+        make random web pages in harmony<br />
+        with no likes or follows<br />
+      </p>
       {/* <h1 class="center-text">Minstagram</h1>
       <p class="center-text">
         Welcome to Minstagram.<br />
@@ -115,13 +42,6 @@ const Splash = () => {
         No likes, no follows, no searches.<br />
         Pretending it's the nineties.
       </p> */}
-      <p class="center-text">
-        a cybernetic meadow<br />
-        where mammals and computers<br />
-        make random web pages in harmony<br />
-        with no likes, follows or ads<br />
-        {/* for no particular reason<br /> */}
-      </p>
       {/* <p class="center-text">
         a cybernetic meadow<br />
         where mammals and computers<br />
