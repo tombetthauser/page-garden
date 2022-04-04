@@ -116,10 +116,11 @@ const Splash = () => {
         Pretending it's the nineties.
       </p> */}
       <p class="center-text">
-        A cybernetic meadow<br />
-        Where mammals and computers<br />
-        Make useless web pages in harmony<br />
-        As if they were flowers<br />
+        a cybernetic meadow<br />
+        where mammals and computers<br />
+        make useless web pages in harmony<br />
+        as if they were flowers<br />
+        or something<br />
       </p>
       {/* <p class="center-text">
         A cybernetic ecology<br/>
