@@ -23,10 +23,6 @@ function Page() {
   useEffect(() => {
     if (!pageId && !pageUrl) return;
   
-    if (page && page.title) {
-      document.querySelector("title").innerHTML = page.title
-    }
-  
     if (pageUrl) {
       (async () => {
         const response = await fetch(`/api/pages/urls/${pageUrl}`);
@@ -36,6 +32,8 @@ function Page() {
         const response2 = await fetch(`/api/pages/${page.id}/posts`);
         const response2Data = await response2.json();
         setPosts(response2Data.posts)
+
+        if (page && page.title) { document.querySelector("title").innerHTML = page.title }
       })();
     } else {
       (async () => {
@@ -46,6 +44,8 @@ function Page() {
         const response2 = await fetch(`/api/pages/${pageId}/posts`);
         const response2Data = await response2.json();
         setPosts(response2Data.posts)
+
+        if (page && page.title) { document.querySelector("title").innerHTML = page.title }
       })();
     }
   }, [pageId, pageUrl]);
