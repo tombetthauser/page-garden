@@ -39,70 +39,6 @@ def page(id):
   return page.to_dict()
 
 
-# ~~~~~~~~~~~ Stupid Form Mistake Post not Pages Create ~~~~~~~~~~~ 
-# @page_routes.route('/new', methods=['POST'])
-# def create_page():
-#   form = NewPageForm()
-#   form['csrf_token'].data = request.cookies['csrf_token']
-
-#   if "image" in request.files:
-#     image = request.files["image"]
-#     print("\n\n\n", {
-#       "image": image
-#     }, "\n\n\n")
-#     if not allowed_file(image.filename):
-#       return {"errors": ["File type not permitted"]}, 400
-
-#     image.filename = get_unique_filename(image.filename)
-#     upload = upload_file_to_s3(image)
-
-#     if "url" not in upload:
-#       return upload, 400
-
-#     newImageUrl = upload["url"]
-
-#     if form.validate_on_submit():
-#       page = Page(
-#         userId = form.data["userId"],
-#         url = newImageUrl,
-#         title = form.data["title"],
-#         text = form.data["text"],
-#         location = form.data["location"],
-#         link1Text = form.data["link1Text"],
-#         link1Url = form.data["link1Url"],
-#         link2Text = form.data["link2Text"],
-#         link2Url = form.data["link2Url"],
-#         link3Text = form.data["link3Text"],
-#         link3Url = form.data["link3Url"],
-#         contact = form.data["contact"]
-#       )
-#       db.session.add(page)
-#       db.session.commit()
-#       return page.to_dict()
-#     else:
-#       return {'errors': error_messages(form.errors)}, 401
-#   else:
-#     if form.validate_on_submit():
-#       page = Page(
-#         userId = form.data["userId"],
-#         title = form.data["title"],
-#         text = form.data["text"],
-#         location = form.data["location"],
-#         link1Text = form.data["link1Text"],
-#         link1Url = form.data["link1Url"],
-#         link2Text = form.data["link2Text"],
-#         link2Url = form.data["link2Url"],
-#         link3Text = form.data["link3Text"],
-#         link3Url = form.data["link3Url"],
-#         contact = form.data["contact"]
-#       )
-#       db.session.add(page)
-#       db.session.commit()
-#       return page.to_dict()
-#     else:
-#       return {'errors': error_messages(form.errors)}, 401
-
-
 # ~~~~~~~~~~~ Working Create ~~~~~~~~~~~ 
 @page_routes.route('/new', methods=['POST'])
 def create_page():
@@ -157,7 +93,6 @@ def edit_message(page_id):
 @page_routes.route('/<page_id>/posts', methods=['GET'])
 def all_page_posts(page_id):
   posts = Post.query.filter_by(pageId=page_id).order_by(Post.id.desc()).all()
-        # User.query.order_by(User.popularity.desc(),User.date_created.desc()).limit(10).all()
   return {'posts': [post.to_dict() for post in posts]}
 
 
@@ -167,10 +102,6 @@ def all_page_posts(page_id):
 def delete_page(page_id):
     page = Page.query.filter_by(id=page_id).one()
     posts = Post.query.filter_by(pageId=page_id)
-
-    print('\n\n\n', {
-      'posts': posts
-    }, '\n\n\n')
 
     for post in posts:
       try:

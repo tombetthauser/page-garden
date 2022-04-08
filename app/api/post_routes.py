@@ -34,30 +34,7 @@ def posts():
 def post(id):
   post = Post.query.get(id)
   return post.to_dict()
-
-
-# ~~~~~~~~~~~ Old Working Create ~~~~~~~~~~~ 
-# @post_routes.route('/new', methods=['POST'])
-# def create_post():
-#   form = NewPostForm()
-#   form['csrf_token'].data = request.cookies['csrf_token']
-#   if form.validate_on_submit():
-#     post = Post(
-#       pageId = form.data["pageId"],
-#       imageUrl = form.data["imageUrl"],
-#       title = form.data["title"],
-#       text = form.data["text"],
-#       location = form.data["location"],
-#       linkText = form.data["linkText"],
-#       linkUrl = form.data["linkUrl"],
-#       date = form.data["date"],
-#     )
-#     db.session.add(post)
-#     db.session.commit()
-#     return post.to_dict()
-#   else:
-#     return {'errors': error_messages(form.errors)}, 401
-
+  
 
 # ~~~~~~~~~~~ AWS Create Route ~~~~~~~~~~~ 
 @post_routes.route('/new', methods=['POST'])
@@ -136,11 +113,12 @@ def edit_message(post_id):
 @post_routes.route('/<post_id>', methods=['DELETE'])
 @login_required
 def delete_post(post_id):
-    post = Post.query.filter_by(id=post_id).one()
+    if "clobber" in request:
+      print("\n\n\n", {
+        "request": request
+      }, "\n\n\n")
 
-    # print('\n\n\n', {
-    #   'post': post
-    # }, '\n\n\n')
+    post = Post.query.filter_by(id=post_id).one()
 
     try:
       filename = post.imageUrl.split("/")[-1].lower()
