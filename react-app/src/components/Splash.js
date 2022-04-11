@@ -23,12 +23,27 @@ const Splash = () => {
   return (
     <splash>
       <h1 class="splash-title">{name}</h1>
-      <p class="center-text">
+      <p class="splash-text">
+        a minimal instagram alternative<br />
+        built mainly for personal use<br />
+        open to anyone though if you want<br />
+        make pages and post images<br />
+        thats it for now<br />
+      </p>
+      {/* <p class="splash-text">
+        a minimal image sharing app<br />
+        primarily for personal use<br />
+        because I can't deal with instagram<br />
+        usable by anyone though if you want<br />
+        make pages and post images<br />
+        thats it for now<br />
+      </p> */}
+      {/* <p class="center-text">
         a cybernetic meadow<br />
         where mammals and computers<br />
         make random web pages in harmony<br />
         with no likes or follows<br />
-      </p>
+      </p> */}
       {/* <h1 class="center-text">Minstagram</h1>
       <p class="center-text">
         Welcome to Minstagram.<br />

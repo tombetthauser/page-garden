@@ -33,6 +33,20 @@ splash {
   text-align: center;
 }
 
+.splash-text {
+  text-align: left;
+  width: 265px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* border: 1px solid red; */
+  border-bottom: .5px solid black;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
 splash p {
   line-height: 20px;
   margin-bottom: 27. f5px;
