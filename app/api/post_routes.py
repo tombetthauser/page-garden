@@ -113,10 +113,10 @@ def edit_message(post_id):
 @post_routes.route('/<post_id>', methods=['DELETE'])
 @login_required
 def delete_post(post_id):
-    if "clobber" in request:
-      print("\n\n\n", {
-        "request": request
-      }, "\n\n\n")
+    # if "clobber" in request:
+      # print("\n\n\n", {
+      #   "request": request
+      # }, "\n\n\n")
 
     post = Post.query.filter_by(id=post_id).one()
 
