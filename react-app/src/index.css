@@ -541,3 +541,7 @@ details summary {
   font-weight: 400;
   margin-bottom: 15px;
 }
+
+.url-part1 {
+  font-weight: 50;
+}

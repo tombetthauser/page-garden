@@ -153,6 +153,21 @@ function Page() {
     }
   });
 
+  const handleShareClick = event => {
+    if (navigator.share) {
+      alert("HELLO")
+      navigator.share({
+        title: 'WebShare API Demo',
+        url: 'google.com'
+      }).then(() => {
+        alert('Thanks for sharing!');
+      })
+        .catch(console.error);
+    } else {
+      // fallback
+    }
+  };
+
   return (
     <page>
       <div class="pageheader">
@@ -174,6 +189,7 @@ function Page() {
               <li><NavLink class="hover-underline" to={`/pages/${page.id}/edit`}>edit page</NavLink></li><vr/>
               <li><a class="hover-underline" href={`/${page.url}?view=preview`}>preview</a></li><vr/>
               <li><button class="hover-underline" onClick={handleDelete}>delete page</button></li>
+              {navigator.share ? <><vr/><li><button class="hover-underline" onClick={handleShareClick}>share</button></li></> : null}
             </ul>
             {/* <NavLink class="blue-button" to={`/${page.url}/new`}>add post</NavLink> */}
           </div>

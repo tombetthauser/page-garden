@@ -29,7 +29,7 @@ function Home() {
     return <Redirect to="/"></Redirect>
   }
 
-  const pageComponents = pages.map(currentPage => {
+  const pageComponents = pages.sort((a, b) => a.url.length < b.url.length).map(currentPage => {
     return (
       <li key={currentPage.id}>
         <NavLink to={`/${currentPage.url}`}>{currentPage.url}</NavLink>
