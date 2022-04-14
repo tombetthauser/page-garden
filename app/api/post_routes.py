@@ -113,20 +113,32 @@ def edit_message(post_id):
 @post_routes.route('/<post_id>', methods=['DELETE'])
 @login_required
 def delete_post(post_id):
-    # if "clobber" in request:
-      # print("\n\n\n", {
-      #   "request": request
-      # }, "\n\n\n")
-
+    
     post = Post.query.filter_by(id=post_id).one()
 
-    try:
-      filename = post.imageUrl.split("/")[-1].lower()
-      delete_file_from_s3(filename)
+    # data_json = jsonify(request.data)
+    if "clobber" in request.json:
+      print("\n\n\ndeleting without AWS <-----------------------\n\n\n")
       db.session.delete(post)
       db.session.commit()
-    except:
-      db.session.delete(post)
-      db.session.commit()
+    else:
+      print("\n\n\ndeleting with AWS <-----------------------\n\n\n")
+      try:
+        filename = post.imageUrl.split("/")[-1].lower()
+        delete_file_from_s3(filename)
+        db.session.delete(post)
+        db.session.commit()
+      except:
+        db.session.delete(post)
+        db.session.commit()
+
+    # try:
+    #   filename = post.imageUrl.split("/")[-1].lower()
+    #   delete_file_from_s3(filename)
+    #   db.session.delete(post)
+    #   db.session.commit()
+    # except:
+    #   db.session.delete(post)
+    #   db.session.commit()
     
     return post_id

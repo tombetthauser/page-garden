@@ -71,7 +71,10 @@ function Page() {
         await await fetch(`/api/posts/${movePost.id}`, {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ page_id: movePost.id }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
+          body: JSON.stringify({ 
+            page_id: movePost.id,
+            clobber: true,
+          }), // <------ this doesn't seem to be necessary since the id is sent via the api route, maybe this isnt safe though since anyone could delete anything...
         });
         
         // create new duplicate post
@@ -125,21 +128,13 @@ function Page() {
 
     return (
       <li class="post-li" key={post.id}>
-          {post.title ? <h2>{post.title}</h2> : null}
-
-          {/* {post.imageUrl ? (<div class="postimg-div" style={{ backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
-          {/* {post.imageUrl ? (<div style={{ display: "block", height: '500px', width: "500px", backgroundPosition: "center", backgroundSize: "cover", backgroundImage: `url(${post.imageUrl}`}}></div>) : null} */}
-          {/* {post.imageUrl ? (<div style={`height: 100%; width: 100%; background-image: url(${post.imageUrl});`}></div>) : null} */}
-          {post.imageUrl ? <img src={post.imageUrl} /> : null}
-
-          {post.text ? <p>{post.text}</p> : null}
-
+        {post.title ? <h2>{post.title}</h2> : null}
+        {post.imageUrl ? <img src={post.imageUrl} /> : null}
+        {post.text ? <p>{post.text}</p> : null}
         {currUserId && currUserId == page.userId && view !== 'preview' ? (
           <ul class="user-links-ul">
-            <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li>
-            <vr/>
-            <li><NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink></li>
-            <vr/>
+            <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li><vr/>
+            <li><NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink></li><vr/>
             <li><button class="movetop-button" onClick={() => handlePostDelete(post)}>delete post</button></li>
           </ul>
         ) : null }
@@ -152,7 +147,7 @@ function Page() {
 
   window.addEventListener('click', function (evt) {
     if (evt.detail === 5) {
-      // alert("hello")
+
       history.push('/');
       history.go(0);
     }
@@ -172,16 +167,11 @@ function Page() {
         { page.contact ? <p class="page-contact">{page.contact}</p> : null }
         { currUserId && currUserId == page.userId && view !== 'preview' ? (
           <ul class="user-links-ul">
-            <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li>
-            <vr/>
-            <li><NavLink to={`/home`}>home</NavLink></li>
-            <vr/>
-            <li><button onClick={handleLogout}>logout</button></li>
-            <vr/>
-            <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li>
-            <vr/>
-            <li><a href={`/${page.url}?view=preview`}>preview</a></li>
-            <vr/>
+            <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li><vr/>
+            <li><NavLink to={`/home`}>home</NavLink></li><vr/>
+            <li><button onClick={handleLogout}>logout</button></li><vr/>
+            <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li><vr/>
+            <li><a href={`/${page.url}?view=preview`}>preview</a></li><vr/>
             <li><button onClick={handleDelete}>delete page</button></li>
           </ul>
         ) : null }
