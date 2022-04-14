@@ -64,7 +64,8 @@ splash vr {
   margin-right: 5px;
   height: 15px;
   display: inline-block;
-  border-right: 1px solid cornflowerblue;
+  border-right: 1px solid black;
+  /* border-right: 1px solid cornflowerblue; */
   transform: translateY(4px);
 }
 
@@ -72,13 +73,22 @@ navbar {
   margin-bottom: 70px;
 }
 
+splash a:hover, splash:hover .logout-button:hover {
+  text-decoration: underline;
+}
+
 splash a, splash .logout-button {
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   margin-right: 2.5px;
   margin-left: 2.5px;
   font-size: 15px;
   text-transform: lowercase;
-  text-decoration: none;
+  text-decoration: und;
+  /* border: 1px solid gray;
+  padding: 3px 18px;
+  background:linear-gradient(white, lightgray);
+  border-radius: 3px; */
 }
 
 navbar a {
@@ -153,15 +163,18 @@ home ul li {
 }
 
 home ul li a {
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   text-decoration: none;
 }
 
 home .new-page {
-  border: 1.5px solid cornflowerblue;
+  border: 1.5px solid black;
+  /* border: 1.5px solid cornflowerblue; */
   border-radius: 3px;
   padding: 7px 25px;
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   text-decoration: none;
   display: block;
   width: fit-content;
@@ -171,7 +184,8 @@ home .new-page {
 home .bottom-link, home button {
   border: none;
   padding: 0;
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   text-decoration: none;
   width: fit-content;
   margin-top: 20px;
@@ -186,7 +200,8 @@ home vr {
   margin-right: 6.5px;
   height: 15px;
   display: inline-block;
-  border-right: 1.5px solid cornflowerblue;
+  border-right: 1.5px solid black;
+  /* border-right: 1.5px solid cornflowerblue; */
   transform: translateY(4px);
 }
 
@@ -221,7 +236,8 @@ page .links-ul li {
 }
 
 page .links-ul li a {
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   /* text-decoration: none; */
   font-size: 15px;
 }
@@ -248,13 +264,18 @@ page .page-location {
   margin-bottom: 17.5px;
 }
 
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
 page .user-links-ul {
   padding-left: 0;
   padding-top: 5px;
   margin-bottom: 0;
   margin-top: 10px;
   height: 22px;
-  border-top: .5px solid cornflowerblue;
+  border-top: .5px solid black;
+  /* border-top: .5px solid cornflowerblue; */
 }
 
 page .pageheader .user-links-ul {
@@ -271,7 +292,8 @@ page .user-links-ul button {
   display: inline-block;;
   border: none;
   background-color: #00000000;
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   font-size: 12px;
   font-family: serif;
   padding: 0;
@@ -279,7 +301,8 @@ page .user-links-ul button {
 }
 
 page .user-links-ul li a, page .user-links-ul li button {
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   font-size: 12px;
   text-decoration: none;
   cursor: pointer;
@@ -290,7 +313,8 @@ page vr {
   margin-right: 5px;
   height: 15px;
   display: inline-block;
-  border-right: 1px solid cornflowerblue;
+  border-right: 1px solid black;
+  /* border-right: 1px solid cornflowerblue; */
   transform: translateY(4px);
 }
 
@@ -327,7 +351,8 @@ page .pageheader {
 }
 
 post .post-li {
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
 }
 
 /* post .post-li img {
@@ -381,11 +406,13 @@ login .submit-button, .styled-form .submit-button, postcreate .submit-button, po
   font-size: 14px;
   margin-top: 25px;
   width: 100px;
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   font-family: serif;
   padding: 5px 12px;
   background-color: #00000000;
-  border: 1px solid cornflowerblue;
+  border: 1px solid black;
+  /* border: 1px solid cornflowerblue; */
   border-radius: 5px;
 }
 
@@ -393,8 +420,10 @@ login .submit-button, .styled-form .submit-button, postcreate .submit-button, po
 login a, .styled-form a, postcreate a, postedit a, pagecreate a, pageedit a {
   border: none;
   padding: 0;
-  color: cornflowerblue;
-  text-decoration: none;
+  color: black;
+  text-decoration: underline;
+  /* color: cornflowerblue; */
+  /* text-decoration: none; */
   width: fit-content;
   background-color: #00000000;
   font-family: serif;
@@ -407,7 +436,8 @@ login vr, .styled-form vr, page vr, postcreate vr, postedit vr, pagecreate vr, p
   margin-right: 5px;
   height: 15px;
   display: inline-block;
-  border-right: 1px solid cornflowerblue;
+  border-right: 1px solid black;
+  /* border-right: 1px solid cornflowerblue; */
   transform: translateY(4px);
 }
 
@@ -477,11 +507,30 @@ details summary {
   font-size: 14px;
   margin-top: 25px;
   width: fit-content;
-  color: cornflowerblue;
+  color: black;
+  /* color: cornflowerblue; */
   font-family: serif;
   padding: 5px 30px;
   background-color: #00000000;
-  border: 1px solid cornflowerblue;
+  border: 1px solid black;
+  /* border: 1px solid cornflowerblue; */
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.add-post {
+  display: block;
+  font-size: 14px;
+  margin-top: 7.5px;
+  margin-right: 7.5px;
+  width: fit-content;
+  color: black;
+  /* color: cornflowerblue; */
+  font-family: serif;
+  padding: 5px 30px;
+  background-color: #00000000;
+  border: 1px solid black;
+  /* border: 1px solid cornflowerblue; */
   border-radius: 5px;
   text-decoration: none;
 }

@@ -133,9 +133,9 @@ function Page() {
         {post.text ? <p>{post.text}</p> : null}
         {currUserId && currUserId == page.userId && view !== 'preview' ? (
           <ul class="user-links-ul">
-            <li><button class="movetop-button" onClick={() => handleMoveToTop(post)}>move to top</button></li><vr/>
-            <li><NavLink to={`/${page.url}/${post.id}/edit`}>edit post</NavLink></li><vr/>
-            <li><button class="movetop-button" onClick={() => handlePostDelete(post)}>delete post</button></li>
+            <li><button class="movetop-button hover-underline" onClick={() => handleMoveToTop(post)}>move to top</button></li><vr/>
+            <li><NavLink class="hover-underline" to={`/${page.url}/${post.id}/edit`}>edit post</NavLink></li><vr/>
+            <li><button class="movetop-button hover-underline" onClick={() => handlePostDelete(post)}>delete post</button></li>
           </ul>
         ) : null }
       </li>
@@ -166,14 +166,17 @@ function Page() {
         </ul>
         { page.contact ? <p class="page-contact">{page.contact}</p> : null }
         { currUserId && currUserId == page.userId && view !== 'preview' ? (
-          <ul class="user-links-ul">
-            <li><NavLink to={`/${page.url}/new`}>add post</NavLink></li><vr/>
-            <li><NavLink to={`/home`}>home</NavLink></li><vr/>
-            <li><button onClick={handleLogout}>logout</button></li><vr/>
-            <li><NavLink to={`/pages/${page.id}/edit`}>edit page</NavLink></li><vr/>
-            <li><a href={`/${page.url}?view=preview`}>preview</a></li><vr/>
-            <li><button onClick={handleDelete}>delete page</button></li>
-          </ul>
+          <div>
+            <ul class="user-links-ul">
+              <li><NavLink class="add-post" to={`/${page.url}/new`}>add post</NavLink></li>
+              <li><NavLink class="hover-underline" to={`/home`}>home</NavLink></li><vr/>
+              <li><button class="hover-underline" onClick={handleLogout}>logout</button></li><vr/>
+              <li><NavLink class="hover-underline" to={`/pages/${page.id}/edit`}>edit page</NavLink></li><vr/>
+              <li><a class="hover-underline" href={`/${page.url}?view=preview`}>preview</a></li><vr/>
+              <li><button class="hover-underline" onClick={handleDelete}>delete page</button></li>
+            </ul>
+            {/* <NavLink class="blue-button" to={`/${page.url}/new`}>add post</NavLink> */}
+          </div>
         ) : null }
       </div>
       <ul class="posts-ul">
