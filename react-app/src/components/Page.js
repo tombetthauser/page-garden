@@ -76,11 +76,11 @@ function Page() {
     if (posts) {
       let i = 0;
       let currPost = posts[i];
-      while (!currPost.imageUrl && i < posts.length) {
+      while (currPost && !currPost.imageUrl && i < posts.length) {
         i += 1
         currPost = posts[i]
       }
-      if (currPost.imageUrl) {
+      if (currPost && currPost.imageUrl) {
         smsImage.setAttribute("content", currPost.imageUrl);
       }
     }
