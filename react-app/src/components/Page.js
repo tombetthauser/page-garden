@@ -211,6 +211,7 @@ function Page() {
           <div>
             <ul class="user-links-ul">
               <li><NavLink class="add-post" to={`/${page.url}/new`}>add post</NavLink></li>
+              <hr/>
               <li><NavLink class="hover-underline" to={`/home`}>home</NavLink></li><vr/>
               <li><button class="hover-underline" onClick={handleLogout}>logout</button></li><vr/>
               <li><NavLink class="hover-underline" to={`/pages/${page.id}/edit`}>edit page</NavLink></li><vr/>

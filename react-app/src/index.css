@@ -271,10 +271,10 @@ page .page-location {
 page .user-links-ul {
   padding-left: 0;
   padding-top: 5px;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   margin-top: 10px;
-  height: 22px;
-  border-top: .5px solid black;
+  /* height: 22px; */
+  /* border-top: .5px solid black; */
   /* border-top: .5px solid cornflowerblue; */
 }
 
@@ -522,6 +522,7 @@ details summary {
   display: block;
   font-size: 14px;
   margin-top: 7.5px;
+  margin-bottom: 7.5px;
   margin-right: 7.5px;
   width: fit-content;
   color: black;
