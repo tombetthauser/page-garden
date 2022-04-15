@@ -48,6 +48,8 @@ function Page() {
         if (page && page.title) { document.querySelector("title").innerHTML = page.title }
       })();
     }
+
+    addSMSPrieviewHeaderMetas();
   }, [pageId, pageUrl]);
 
   const handleDelete = async (e) => {
@@ -63,6 +65,31 @@ function Page() {
     }
   };
   
+  const addSMSPrieviewHeaderMetas = () => {
+    const header = document.getElementsByName("header");
+
+    const meta1 = document.createElement("meta");
+    const meta2 = document.createElement("meta");
+    const meta3 = document.createElement("meta");
+
+    meta1.setAttribute("property", "og:title");
+    meta1.setAttribute("content", page.title);
+    
+    meta2.setAttribute("property", "og:image");
+    meta2.setAttribute("content", posts[0].imageUrl);
+    
+    meta3.setAttribute("property", "og:url");
+    meta3.setAttribute("content", `https://page.garden/${page.url}`);
+
+    header.appendChild(meta1);
+    header.appendChild(meta2);
+    header.appendChild(meta3);
+
+    // <meta property="og:title" content="Sample Preview" />
+    // <meta property="og:image" content="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/seedling_1f331.png" />
+    // <meta property="og:url" content="http://google.com" />
+  }
+
   const handleMoveToTop = (movePost) => {
     const isConfirmed = window.confirm("This can't be undone, are you sure?")
     if (isConfirmed) {
