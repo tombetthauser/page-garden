@@ -76,7 +76,7 @@ function Page() {
     meta1.setAttribute("content", page.title);
     
     meta2.setAttribute("property", "og:image");
-    meta2.setAttribute("content", posts[0].imageUrl);
+    meta2.setAttribute("content", "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/page-facing-up_1f4c4.png");
     
     meta3.setAttribute("property", "og:url");
     meta3.setAttribute("content", `https://page.garden/${page.url}`);
