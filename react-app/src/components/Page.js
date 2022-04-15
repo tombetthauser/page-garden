@@ -49,7 +49,7 @@ function Page() {
       })();
     }
 
-    addSMSPrieviewHeaderMetas();
+    // addSMSPrieviewHeaderMetas();
   }, [pageId, pageUrl]);
 
   const handleDelete = async (e) => {
