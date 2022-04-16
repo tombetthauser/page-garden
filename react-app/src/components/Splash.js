@@ -28,7 +28,8 @@ const Splash = () => {
         built mainly for personal use<br />
         open to anyone though if you want<br />
         make pages and post images<br />
-        thats it for now!<br />
+        more soon maybe!<br />
+        {/* thats it for now!<br /> */}
       </p>
       {/* <p class="splash-text">
         a minimal image sharing app<br />
