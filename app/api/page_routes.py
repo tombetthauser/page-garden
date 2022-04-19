@@ -121,6 +121,8 @@ def delete_page(page_id):
 import subprocess
 from subprocess import Popen, PIPE
 from subprocess import check_output
+from flask import send_from_directory, url_for
+
 # from flask import Flask
 
 def get_shell_script_output_using_communicate():
@@ -157,5 +159,19 @@ def shell_test():
     # check_output([delete_image], shell=True)
     bar = check_output([ls_input], shell=True)
 
-    return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
+    # path = send_from_directory("static", "input/test-red.jpg")
+    path = url_for('static', filename = 'input/test.jpg')
+
+
+
+    # return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
+    return {'test': 'before ---> {} \n\n after --> {} || path --> {}'.format(foo, bar, path)}
     # return {'test': 'ls ---> {}'.format(foo)}
+
+
+
+# app = Flask(__name__)
+
+# @app.route("/static/<path:path>")
+# def static_dir(path):
+#     return send_from_directory("static", path)
