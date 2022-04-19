@@ -142,9 +142,14 @@ def get_shell_script_output_using_check_output():
 def shell_test():
     # return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
     # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
-    shell_command_1 = "echo 'testing 1 2 3' >> ./app/static/input/test.txt"
-    shell_command_2 = "ls ./app/static/input"
-    shell_command_3 = "cat ./app/static/input/test.txt"
-    check_output([shell_command_1], shell=True)
-    foo = check_output([shell_command_3], shell=True)
-    return {'test': '$ {} ---> {}'.format(shell_command_3, foo)}
+    grab_image = "curl -k https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg > ./app/static/input/test.jpg"
+    ls_input = "ls ./app/static/input/"
+    delete_image = "rm ./app/static/input/test.jpg"
+
+    check_output([grab_image], shell=True)
+    foo = check_output([ls_input], shell=True)
+    # check_output([delete_image], shell=True)
+    # bar = check_output([ls_input], shell=True)
+
+    # return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
+    return {'test': 'ls ---> {}'.format(foo)}
