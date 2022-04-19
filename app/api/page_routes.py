@@ -142,6 +142,9 @@ def get_shell_script_output_using_check_output():
 def shell_test():
     # return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
     # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
-    shell_command = "ls"
-    foo = check_output([shell_command], shell=True)
-    return {'test': '$ {} ---> {}'.format(shell_command, foo)}
+    shell_command_1 = "echo 'testing 1 2 3' >> ./app/static/input/test.txt"
+    shell_command_2 = "ls ./app/static/input"
+    shell_command_3 = "cat ./app/static/input/test.txt"
+    check_output([shell_command_1], shell=True)
+    foo = check_output([shell_command_3], shell=True)
+    return {'test': '$ {} ---> {}'.format(shell_command_3, foo)}
