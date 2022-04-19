@@ -23,6 +23,7 @@ import PostsList from './components/PostsList';
 // import NewPostCreate from './components/NewPostCreate';
 import PostCreateAWS from './components/PostCreateAWS';
 import PageRedirect from './components/PageRedirect';
+import Magick from './components/Magick';
 
 // import UploadPicture from './components/UploadPicture';
 
@@ -62,6 +63,7 @@ function App() {
         <Route path='/pages/:pageId' exact={true}><PageRedirect/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
 
+        <Route path='/:pageUrl/magick' exact={true}><Magick/></Route>
         <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreateAWS /></ProtectedRoute>
         <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
         

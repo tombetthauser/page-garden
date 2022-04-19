@@ -76,3 +76,4 @@ def react_root(path):
     if path == 'favicon.png':
         return app.send_static_file('favicon.png')
     return app.send_static_file('index.html')
+

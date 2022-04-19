@@ -113,3 +113,35 @@ def delete_page(page_id):
     db.session.delete(page)
     db.session.commit()
     return page_id
+
+
+
+# ~~~~~~~~~~~ Shell Script Test Route ~~~~~~~~~~~ 
+
+import subprocess
+from subprocess import Popen, PIPE
+from subprocess import check_output
+# from flask import Flask
+
+def get_shell_script_output_using_communicate():
+    session = Popen(['./script.sh'], stdout=PIPE, stderr=PIPE)
+    stdout, stderr = session.communicate()
+    if stderr:
+        raise Exception("Error "+str(stderr))
+    return stdout.decode('utf-8')
+
+def get_shell_script_output_using_check_output():
+    # stdout = check_output(['./script.sh']).decode('utf-8')
+    stdout = check_output(["pwd"], shell=True)
+    return jsonify(stdout)
+
+# app = Flask(__name__)
+
+# @app.route('/shell',methods=['GET'])
+@page_routes.route('/magick', methods=['GET'])
+def shell_test():
+    # return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
+    # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
+    shell_command = "ls"
+    foo = check_output([shell_command], shell=True)
+    return {'test': '$ {} ---> {}'.format(shell_command, foo)}
