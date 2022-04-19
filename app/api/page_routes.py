@@ -144,12 +144,14 @@ def shell_test():
     # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
     grab_image = "curl -k https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg > ./app/static/input/test.jpg"
     ls_input = "ls ./app/static/input/"
+    convert_mono = "convert ./app/static/input/test.jpg -type Grayscale ./app/static/input/test-mono.jpg"
     delete_image = "rm ./app/static/input/test.jpg"
 
     check_output([grab_image], shell=True)
     foo = check_output([ls_input], shell=True)
+    check_output([convert_mono], shell=True)
     # check_output([delete_image], shell=True)
-    # bar = check_output([ls_input], shell=True)
+    bar = check_output([ls_input], shell=True)
 
-    # return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
-    return {'test': 'ls ---> {}'.format(foo)}
+    return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
+    # return {'test': 'ls ---> {}'.format(foo)}
