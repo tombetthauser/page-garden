@@ -122,6 +122,7 @@ import subprocess
 from subprocess import Popen, PIPE
 from subprocess import check_output
 from flask import send_from_directory, url_for
+import os
 
 # from flask import Flask
 
@@ -160,7 +161,8 @@ def shell_test():
     bar = check_output([ls_input], shell=True)
 
     # path = send_from_directory("static", "input/test-red.jpg")
-    path = url_for('static', filename = 'input/test.jpg')
+    # path = url_for('static', filename = 'input/test.jpg')
+    path = os.path
 
 
 
