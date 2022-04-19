@@ -142,13 +142,17 @@ def get_shell_script_output_using_check_output():
 def shell_test():
     # return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
     # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
+    empty_folder = "rm ./app/static/input/*"
     grab_image = "curl -k https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg > ./app/static/input/test.jpg"
     ls_input = "ls ./app/static/input/"
     convert_mono = "convert ./app/static/input/test.jpg -type Grayscale ./app/static/input/test-mono.jpg"
+    saturate_red = "convert ./app/static/input/test.jpg -colorspace HSL -channel R -separate ./app/static/input/test-red.jpg"
     delete_image = "rm ./app/static/input/test.jpg"
 
+    check_output([empty_folder], shell=True)
     check_output([grab_image], shell=True)
     foo = check_output([ls_input], shell=True)
+    check_output([saturate_red], shell=True)
     check_output([convert_mono], shell=True)
     # check_output([delete_image], shell=True)
     bar = check_output([ls_input], shell=True)
