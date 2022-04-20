@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, send_from_directory, url_for
+from flask import Blueprint, jsonify, request, send_from_directory, url_for, current_app
 from subprocess import Popen, PIPE, check_output
 from flask_login import login_required
 from app.api.post_routes import posts
@@ -142,8 +142,8 @@ But I want to leave it open-ended so students can perform any kind
 of imagemagick script they want.
 """
 
-@page_routes.route('/magick', methods=['GET'])
-def shell_test():
+@page_routes.route('/magick/<path:filename>', methods=['GET'])
+def shell_test(filename):
     # some basic shell commands to run in the heroku shell
     ls_input = "ls ./app/static/input/"
     empty_folder = "rm ./app/static/input/*"
@@ -163,6 +163,13 @@ def shell_test():
     check_output([saturate_red], shell=True)
     check_output([convert_mono], shell=True)
 
+    werkzeugFileWrapper = send_from_directory(current_app.static_folder, filename).response
+    # testing this on heroku deployment
+    # confirmed that this file wrapper seems to be working
+    # going to try sending it to aws
+    # then return the new aws url
+    # wouldn't need the static url in that case
+
     # how do we get the url for this image 
     # so that can be used as an image src?
     # the image is being created and can be seen on localhost:5000/static/input/test-mono.jpg
@@ -170,4 +177,7 @@ def shell_test():
     url = "???"
 
     # just returns the path for testing
-    return {'test': 'url --> {}'.format(url)}
+    # return {'test': 'url --> {}'.format(url)}
+    # return send_from_directory(current_app.static_folder, 'input/{}'.format(filename), as_attachment=True)
+    # return send_from_directory(current_app.static_folder, 'input/{}'.format(filename))
+    return {'test': '{}'.format(werkzeugFileWrapper)}

@@ -79,7 +79,8 @@ def react_root(path):
     return app.send_static_file('index.html')
 
 
-
+# no longer using this, moved over to pages route ~~~~~~~~~~
 @app.route('/api/static/<path:filename>')  
 def send_file(filename):  
-    return send_from_directory(app.static_folder, filename, as_attachment=True)
+    werkzeugFileWrapper = send_from_directory(app.static_folder, filename).response
+    return {'test': '{}'.format(werkzeugFileWrapper)}
