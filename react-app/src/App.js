@@ -63,7 +63,7 @@ function App() {
         <Route path='/pages/:pageId' exact={true}><PageRedirect/></Route>
         <Route path='/pages/:pageId/edit' exact={true}><PageEdit/></Route>
 
-        <Route path='/:pageUrl/magick' exact={true}><Magick/></Route>
+        {/* <Route path='/:pageUrl/magick' exact={true}><Magick/></Route> */}
         <ProtectedRoute path='/:pageUrl/new' exact={true}><PostCreateAWS /></ProtectedRoute>
         <ProtectedRoute path='/:pageUrl/:postId/edit' exact={true}><PostEdit /></ProtectedRoute>
         

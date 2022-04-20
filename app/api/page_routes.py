@@ -7,7 +7,7 @@ from app.forms import NewPageForm
 import os
 
 
-from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
+from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3, upload_raw_file_to_s3)
 
 page_routes = Blueprint('pages', __name__)
 
@@ -164,6 +164,29 @@ def shell_test(filename):
     check_output([convert_mono], shell=True)
 
     werkzeugFileWrapper = send_from_directory(current_app.static_folder, filename).response
+
+    # image = request.files["image"]
+    image = werkzeugFileWrapper
+
+    # if not allowed_file(image.filename):
+    #   return {"errors": "file type not permitted"}, 400
+
+    # image.filename = get_unique_filename(image.filename)
+    image.filename = get_unique_filename("test-cat.jpg")
+    image.content_type = "jpg"
+    upload = upload_raw_file_to_s3(image)
+    # at this point I'm getting {'errors': 'Fileobj must implement read'} back from this s3 upload
+    # seems like I'm in too deep, very few resources out there
+    # going to try pivoting to more traditional path to resize images first
+    # then maybe something will reveal itself as a way forward for more interesting imagemagick work
+    # the only problem at this point really seems to be getting the image to AWS
+
+    # ~~~~~ commented out to see output ~~~~~
+    # if "url" not in upload:
+    #   return upload, 400
+    # url = upload["url"]
+
+
     # testing this on heroku deployment
     # confirmed that this file wrapper seems to be working
     # going to try sending it to aws
@@ -174,10 +197,10 @@ def shell_test(filename):
     # so that can be used as an image src?
     # the image is being created and can be seen on localhost:5000/static/input/test-mono.jpg
     # Essentially I just need to know what to replace 'localhost' with...
-    url = "???"
+    # url = "???"
 
     # just returns the path for testing
     # return {'test': 'url --> {}'.format(url)}
     # return send_from_directory(current_app.static_folder, 'input/{}'.format(filename), as_attachment=True)
     # return send_from_directory(current_app.static_folder, 'input/{}'.format(filename))
-    return {'test': '{}'.format(werkzeugFileWrapper)}
+    return {'test': 'werkzeugFileWrapper --> {} --- upload --> {}'.format(werkzeugFileWrapper, upload)}
