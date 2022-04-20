@@ -162,7 +162,7 @@ def shell_test():
 
     # path = send_from_directory("static", "input/test-red.jpg")
     # path = url_for('static', filename = 'input/test.jpg')
-    path = os.path
+    path = os.path.join("static/input/", "test.jpg")
 
 
 
