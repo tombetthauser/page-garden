@@ -1,8 +1,11 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, send_from_directory, url_for
+from subprocess import Popen, PIPE, check_output
+from flask_login import login_required
 from app.api.post_routes import posts
 from app.models import Page, Post, db
-from flask_login import login_required
 from app.forms import NewPageForm
+import os
+
 
 from app.s3_helpers import (upload_file_to_s3, allowed_file, get_unique_filename, delete_file_from_s3)
 
@@ -116,64 +119,55 @@ def delete_page(page_id):
 
 
 
-# ~~~~~~~~~~~ Shell Script Test Route ~~~~~~~~~~~ 
+# ~~~~~~~~~~~ ImageMagick / Shell Script Test Route ~~~~~~~~~~~ 
 
-import subprocess
-from subprocess import Popen, PIPE
-from subprocess import check_output
-from flask import send_from_directory, url_for
-import os
+"""
+So far this is successfully doing the following:
+  * curling an image from an external url
+  * processing it with imagemagic to be black and white
+  * saving the new processed version in app/static/input
+  * the processed image can be accessed locally at localhost:5000/static/input/test-mono.jpg
 
-# from flask import Flask
+What I need now:
+  * I need to get the full url for the image on the deployed version of the app
 
-def get_shell_script_output_using_communicate():
-    session = Popen(['./script.sh'], stdout=PIPE, stderr=PIPE)
-    stdout, stderr = session.communicate()
-    if stderr:
-        raise Exception("Error "+str(stderr))
-    return stdout.decode('utf-8')
+The eventual goal is to:
+  * curl an image from AWS
+  * process it with imagemagick on heroku
+  * delete the old AWS image
+  * replace it with the processed version
 
-def get_shell_script_output_using_check_output():
-    # stdout = check_output(['./script.sh']).decode('utf-8')
-    stdout = check_output(["pwd"], shell=True)
-    return jsonify(stdout)
+There are easier ways to do this for simple imagemagick recoloring / resizing etc.
+But I want to leave it open-ended so students can perform any kind 
+of imagemagick script they want.
+"""
 
-# app = Flask(__name__)
-
-# @app.route('/shell',methods=['GET'])
 @page_routes.route('/magick', methods=['GET'])
 def shell_test():
-    # return '<pre>'+get_shell_script_output_using_check_output()+'</pre>'
-    # foo = check_output(["touch ./app/static/input/TEST.txt"], shell=True) # <--- WORKS
-    empty_folder = "rm ./app/static/input/*"
-    grab_image = "curl -k https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg > ./app/static/input/test.jpg"
+    # some basic shell commands to run in the heroku shell
     ls_input = "ls ./app/static/input/"
+    empty_folder = "rm ./app/static/input/*"
+
+    # curls and successfully saves 
+    # a random cat image in app/static/input
+    grab_image = "curl -k https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg > ./app/static/input/test.jpg"
+
+    # performs some random imagemagick processing 
+    # and saves new images in app/static/input
     convert_mono = "convert ./app/static/input/test.jpg -type Grayscale ./app/static/input/test-mono.jpg"
     saturate_red = "convert ./app/static/input/test.jpg -colorspace HSL -channel R -separate ./app/static/input/test-red.jpg"
-    delete_image = "rm ./app/static/input/test.jpg"
 
+    # ~~~~~~~~~~ runs shell commands ~~~~~~~~~~
     check_output([empty_folder], shell=True)
     check_output([grab_image], shell=True)
-    foo = check_output([ls_input], shell=True)
     check_output([saturate_red], shell=True)
     check_output([convert_mono], shell=True)
-    # check_output([delete_image], shell=True)
-    bar = check_output([ls_input], shell=True)
 
-    # path = send_from_directory("static", "input/test-red.jpg")
-    # path = url_for('static', filename = 'input/test.jpg')
-    path = os.path.join("static/input/", "test.jpg")
+    # how do we get the url for this image 
+    # so that can be used as an image src?
+    # the image is being created and can be seen on localhost:5000/static/input/test-mono.jpg
+    # I just need to know what to replace 'localhost' with...
+    path = "???"
 
-
-
-    # return {'test': 'before ---> {} \n\n after --> {}'.format(foo, bar)}
-    return {'test': 'before ---> {} \n\n after --> {} || path --> {}'.format(foo, bar, path)}
-    # return {'test': 'ls ---> {}'.format(foo)}
-
-
-
-# app = Flask(__name__)
-
-# @app.route("/static/<path:path>")
-# def static_dir(path):
-#     return send_from_directory("static", path)
+    # just returns the path for testing
+    return {'test': 'path --> {}'.format(path)}
