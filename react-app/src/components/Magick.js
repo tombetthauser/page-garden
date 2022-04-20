@@ -28,7 +28,7 @@ function Magick() {
     // document.querySelector("#sms-image").setAttribute("content", "")
 
     (async () => {
-      const response = await fetch(`/api/pages/magick`);
+      const response = await fetch(`/api/static/test.jpg`);
       const data = await response.json();
       setMagick(data);
       // const page = await response.json();

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, send_from_directory, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -16,7 +16,8 @@ from .seeds import seed_commands
 
 from .config import Config
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
+
 
 # Setup login manager
 login = LoginManager(app)
@@ -77,3 +78,8 @@ def react_root(path):
         return app.send_static_file('favicon.png')
     return app.send_static_file('index.html')
 
+
+
+@app.route('/api/static/<path:filename>')  
+def send_file(filename):  
+    return send_from_directory(app.static_folder, filename, as_attachment=True)
