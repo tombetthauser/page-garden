@@ -166,8 +166,8 @@ def shell_test():
     # how do we get the url for this image 
     # so that can be used as an image src?
     # the image is being created and can be seen on localhost:5000/static/input/test-mono.jpg
-    # I just need to know what to replace 'localhost' with...
-    path = "???"
+    # Essentially I just need to know what to replace 'localhost' with...
+    url = "???"
 
     # just returns the path for testing
-    return {'test': 'path --> {}'.format(path)}
+    return {'test': 'url --> {}'.format(url)}
