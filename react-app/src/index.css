@@ -546,3 +546,34 @@ details summary {
 .url-part1 {
   font-weight: 50;
 }
+
+.welcome-homepage {
+  border: 1px solid black;
+  /* border: 2px dotted black; */
+  box-shadow: -7px 7px 0 black;
+  /* border-radius: 25px; */
+  margin-top: 20px;
+  margin-bottom: 25px;
+  padding-top: 12px;
+  padding-bottom: 17px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 13px;
+}
+
+.welcome-homepage ul li {
+  list-style: circle;
+  margin-left: 20px;
+  margin-bottom: 2px;
+}
+
+.homepage-close {
+  /* text-decoration: underline; */
+  /* font-size: 11px; */
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.no-pages {
+  font-size: 13px;
+}

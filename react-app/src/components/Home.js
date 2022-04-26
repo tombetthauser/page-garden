@@ -37,15 +37,42 @@ function Home() {
     )
   })
 
+  const closeWelcome = event => {
+    const welcomeDiv = document.querySelector(".welcome-homepage")
+    welcomeDiv.style.display = "none";
+  }
+
+  const welcomeMessage = (
+    <>
+      <p className='no-pages'>( no pages yet )</p>
+      <div class="welcome-homepage">
+        <p>
+          Welcome to page garden, a minimal instagram replacement that I built mainly for personal use.
+        </p><p>
+          I use it as a simple way to make pages about art, home improvement projects, hiking, my family etc that are easy to update from my phone and share with people. But you can use it for anything you want if you want. All you have to do is...
+        </p><ul>
+          <li>make a page</li>
+          <li>add a title / description</li>
+          <li>add some pictures / words</li>
+          <li>share it with somebody</li>
+        </ul><p>
+          In any case welcome again and enjoy!
+        </p>
+        <a onClick={closeWelcome} class="homepage-close">👍</a>
+      </div>
+    </>
+  )
+
   return (
     <home>
       {/* <NavBar /> */}
       <h1>{user.username}</h1>
       <h2>{user.email}</h2>
       <h3>your pages:</h3>
+      { pages.length == 0 ? welcomeMessage : null }
       <ul>{pageComponents}</ul>
-      <NavLink class="blue-button" to="/pages/new">Create New Page!</NavLink>
-      {currUser ? <LogoutButton class="bottom-link" /> : null}
+      <NavLink className="blue-button" to="/pages/new">Create New Page!</NavLink>
+      {currUser ? <LogoutButton className="bottom-link" /> : null}
       <vr/>
       <NavLink class="bottom-link" to={`/users/edit`}>edit profile</NavLink>
     </home>
