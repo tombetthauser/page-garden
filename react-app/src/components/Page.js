@@ -8,8 +8,7 @@ function Page() {
   const [previewImage, setPreviewImage] = useState("");
   const [secretClick, setSecretClick] = useState(false);
   const { pageId, pageUrl } = useParams();
-
-
+  
   const search = useLocation().search; 
   const view = new URLSearchParams(search).get('view');
   
@@ -40,24 +39,7 @@ function Page() {
           document.querySelector("title").innerHTML = page.title;
           document.querySelector("#sms-title").setAttribute(`content`, page.title);
           document.querySelector("#sms-url").setAttribute(`content`, `https://page.garden/${page.url}`);
-
-        // document.querySelector("#sms-image").setAttribute("content", "");
-        // if (posts) {
-        //   let i = 0;
-        //   let currPost = posts[i];
-        //   while (currPost && !currPost.imageUrl && i < posts.length) {
-        //     i += 1
-        //     currPost = posts[i]
-        //   }
-        //   console.log({posts: posts, posts0: posts[0]})
-        //   if (currPost && currPost.imageUrl) {
-        //     document.querySelector("#sms-image").setAttribute("content", currPost.imageUrl);
-        //   }
-        // }
-
-          // document.querySelector("#sms-title").setAttribute("content", page.title);
         }
-        // setSMSPreview();
       })();
     } else {
       (async () => {
@@ -73,24 +55,7 @@ function Page() {
           document.querySelector("title").innerHTML = page.title;
           document.querySelector("#sms-title").setAttribute("content", page.title);
           document.querySelector("#sms-url").setAttribute("content", `https://page.garden/${page.url}`);
-
-        // document.querySelector("#sms-image").setAttribute("content", "");
-        // if (posts) {
-        //   let i = 0;
-        //   let currPost = posts[i];
-        //   while (currPost && !currPost.imageUrl && i < posts.length) {
-        //     i += 1
-        //     currPost = posts[i]
-        //   }
-        //   console.log({posts: posts, posts0: posts[0]})
-        //   if (currPost && currPost.imageUrl) {
-        //     document.querySelector("#sms-image").setAttribute("content", currPost.imageUrl);
-        //   }
-        // }
-
-          // document.querySelector("#sms-title").setAttribute("content", page.title);
         }
-        // setSMSPreview();
       })();
     }
 
@@ -110,40 +75,6 @@ function Page() {
     }
   };
   
-  const setSMSPreview = () => {
-    // const smsTitle =  document.querySelector("#sms-title");
-    // const smsImage =  document.querySelector("#sms-image");
-    // const smsUrl =  document.querySelector("#sms-url");
-
-    let previewImageUrl = '';
-    const previewTitle = page.title ? page.title : page.url;
-    const previewUrl = `https://page.garden/${page.url}`;
-
-    // if (page.title) smsTitle.setAttribute("content", page.title);
-
-    if (posts) {
-      let i = 0;
-      let currPost = posts[i];
-      while (currPost && !currPost.imageUrl && i < posts.length) {
-        i += 1
-        currPost = posts[i]
-      }
-      if (currPost && currPost.imageUrl) {
-        // smsImage.setAttribute("content", currPost.imageUrl);
-        previewImageUrl = currPost.imageUrl
-      }
-    }
-
-    // smsUrl.setAttribute("content", `https://page.garden/${page.url}`);
-    const oldHead = document.querySelector("#head").innerHTML
-
-    document.querySelector("#head").innerHTML = `NewHead <meta property="og:title" content="${previewTitle}" /><meta property="og:image" content="${previewImageUrl}" /><meta property="og:url" content="${previewImageUrl}" /> ${oldHead}`
-    // + `${document.querySelector("#head").innerHTML}`
-    // + `<meta property="og:title" content="${previewTitle} />`
-    // + `<meta property="og:image" content="${previewImageUrl} />`
-    // + `<meta property="og:url" content="${previewImageUrl} />`
-  }
-
   const handleMoveToTop = (movePost) => {
     const isConfirmed = window.confirm("This can't be undone, are you sure?")
     if (isConfirmed) {
@@ -174,8 +105,6 @@ function Page() {
           }),
         });
         
-        // redirect back to page
-        // history.push(`/pages/${movePost.pageId}`)
         history.go(0);
       })();
     }
@@ -278,7 +207,6 @@ function Page() {
               <li><button class="hover-underline" onClick={handleDelete}>delete page</button></li>
               {navigator.share ? <><vr/><li><button class="hover-underline" onClick={handleShareClick}>share</button></li></> : null}
             </ul>
-            {/* <NavLink class="blue-button" to={`/${page.url}/new`}>add post</NavLink> */}
           </div>
         ) : null }
       </div>

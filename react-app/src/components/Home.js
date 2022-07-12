@@ -9,6 +9,7 @@ import LogoutButton from './auth/LogoutButton';
 function Home() {
   const [user, setUser] = useState({});
   const [pages, setPages] = useState([]);
+  const [pageLoaded, setPageLoaded] = useState(false);
   // const { userId }  = useParams();
   const currUser = useSelector(state => state.session.user)
 
@@ -22,6 +23,7 @@ function Home() {
       const data = await response2.json();
       console.log(data.pages.map(page => page.url))
       setPages(data.pages);
+      setPageLoaded(true);
     })();
   }, []);
 
@@ -63,19 +65,23 @@ function Home() {
     </>
   )
 
-  return (
-    <home>
-      {/* <NavBar /> */}
-      <h1>{user.username}</h1>
-      <h2>{user.email}</h2>
-      <h3>your pages:</h3>
-      { pages.length == 0 ? welcomeMessage : null }
-      <ul>{pageComponents}</ul>
-      <NavLink className="blue-button" to="/pages/new">Create New Page!</NavLink>
-      {currUser ? <LogoutButton className="bottom-link" /> : null}
-      <vr/>
-      <NavLink class="bottom-link" to={`/users/edit`}>edit profile</NavLink>
-    </home>
-  );
+  if (pageLoaded) {
+    return (
+      <home>
+        {/* <NavBar /> */}
+        <h1>{user.username}</h1>
+        <h2>{user.email}</h2>
+        <h3>your pages:</h3>
+        { pages.length == 0 && pageLoaded ? welcomeMessage : null }
+        <ul>{pageComponents}</ul>
+        <NavLink className="blue-button" to="/pages/new">Create New Page!</NavLink>
+        {currUser ? <LogoutButton className="bottom-link" /> : null}
+        <vr/>
+        <NavLink class="bottom-link" to={`/users/edit`}>edit profile</NavLink>
+      </home>
+    );
+  } else {
+    return (<></>);
+  }
 }
 export default Home;

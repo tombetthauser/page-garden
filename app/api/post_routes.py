@@ -116,13 +116,10 @@ def delete_post(post_id):
     
     post = Post.query.filter_by(id=post_id).one()
 
-    # data_json = jsonify(request.data)
     if "clobber" in request.json:
-      print("\n\n\ndeleting without AWS <-----------------------\n\n\n")
       db.session.delete(post)
       db.session.commit()
     else:
-      print("\n\n\ndeleting with AWS <-----------------------\n\n\n")
       try:
         filename = post.imageUrl.split("/")[-1].lower()
         delete_file_from_s3(filename)
@@ -131,14 +128,5 @@ def delete_post(post_id):
       except:
         db.session.delete(post)
         db.session.commit()
-
-    # try:
-    #   filename = post.imageUrl.split("/")[-1].lower()
-    #   delete_file_from_s3(filename)
-    #   db.session.delete(post)
-    #   db.session.commit()
-    # except:
-    #   db.session.delete(post)
-    #   db.session.commit()
     
     return post_id

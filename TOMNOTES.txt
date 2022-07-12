@@ -19,6 +19,7 @@ $ pipenv run flask db upgrade
 $ pipenv run flask seed all
 $ pipenv run flask seed undo
 
+$ cd react-app
 $ npm install
 $ npm start
 
