@@ -23,10 +23,14 @@ $ cd react-app
 $ npm install
 $ npm start
 
+$ heroku container:push web -a {NAME_OF_HEROKU_APP}
+$ heroku container:push web -a minstagram-beta
 
 
 
-pl[$ touch app/models/foo.py
+
+
+$ touch app/models/foo.py
 import Foo model into app/models/__init__.py
 Note - you have to drop and recreate the db before migrations can be re-generated
 $ pipenv run flask db migrate -m "Meaningless message"
@@ -45,6 +49,24 @@ Heroku will set a DATABASE_URL for you in Config Vars (section in heroku browser
 But you will need to set a SECRET_KEY there too
 
 https://github.com/appacademy-starters/python-project-starter
+
+
+
+
+
+Pushing Changes with docker
+
+$ git add .
+$ git commit -m 'Commit message'
+$ git push
+
+$ heroku login
+$ heroku container:login
+$ heroku container:push web -a {NAME_OF_HEROKU_APP}
+$ heroku container:release web -a {NAME_OF_HEROKU_APP}
+
+
+
 
 
 
