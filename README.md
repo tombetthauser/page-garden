@@ -6,6 +6,50 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
 
 ---
 
+## Overhaul Plans
+
+### Basic Overhaul...
+* make invite system for artists / spaces
+* open accounts for followers / collectors
+* rebuild with express / ejs
+* chronological feed
+* non-public follows
+* non-public bookmarks
+* tiered follows
+      - follow posts
+      - follow bookmarks and follows
+
+### Stretch Goals...
+* make custom image editor
+      - crop
+      - keystone
+      - white balance
+      - brightness
+      - contrast
+      - invert
+* make pricing / sales system
+
+### What Instagram Was...
+* chronological feed
+* simple user pages
+
+### What Instagram Could Have Been...
+* unrestricted links
+* image editor
+* buying / selling
+* private likes / follows
+* customizable user pages
+* customizable domain names
+* studio calendar
+      - for studio visits
+      - for logging studio work
+      - attach images to studio log
+      - leave notes for studio log
+
+
+
+---
+
 ## Development Notes
 
 1. To install dependencies:
