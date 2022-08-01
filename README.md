@@ -16,17 +16,17 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
 * non-public follows
 * non-public bookmarks
 * tiered follows
-      - follow posts
-      - follow bookmarks and follows
+* follow posts
+* follow bookmarks and follows
 
 ### stretch goals...
 * make custom image editor
-      - crop
-      - keystone
-      - white balance
-      - brightness
-      - contrast
-      - invert
+* crop
+* keystone
+* white balance
+* brightness
+* contrast
+* invert
 * make pricing / sales system
 
 ### what instagram was...
@@ -41,10 +41,10 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
 * customizable user pages
 * customizable domain names
 * studio calendar
-      - for studio visits
-      - for logging studio work
-      - attach images to studio log
-      - leave notes for studio log
+* for studio visits
+* for logging studio work
+* attach images to studio log
+* leave notes for studio log
 
 ---
 
