@@ -8,7 +8,7 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
 
 ## Overhaul Plans
 
-### Basic Overhaul...
+### basic overhaul...
 * make invite system for artists / spaces
 * open accounts for followers / collectors
 * rebuild with express / ejs
@@ -19,7 +19,7 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
       - follow posts
       - follow bookmarks and follows
 
-### Stretch Goals...
+### stretch goals...
 * make custom image editor
       - crop
       - keystone
@@ -29,11 +29,11 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
       - invert
 * make pricing / sales system
 
-### What Instagram Was...
+### what instagram was...
 * chronological feed
 * simple user pages
 
-### What Instagram Could Have Been...
+### what instagram could have been...
 * unrestricted links
 * image editor
 * buying / selling
@@ -45,8 +45,6 @@ A minimal page building site in the spirit of geocities or angelfire maybe. Prim
       - for logging studio work
       - attach images to studio log
       - leave notes for studio log
-
-
 
 ---
 
